@@ -1,4 +1,4 @@
-package com.selenium.demo.BMSProject;
+package com.selenium.demo.BMSProject.base;
 
 
 import org.openqa.selenium.*;

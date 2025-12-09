@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.selenium.demo.BMSProject.BasePage;
+import com.selenium.demo.BMSProject.base.BasePage;
 
 public class ForgetPasswordPage extends BasePage {
 	public ForgetPasswordPage(WebDriver driver){
