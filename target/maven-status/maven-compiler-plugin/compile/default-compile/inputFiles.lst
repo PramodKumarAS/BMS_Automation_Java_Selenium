@@ -1,4 +1,8 @@
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\com\selenium\demo\BMSProject\base\BasePage.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\com\selenium\demo\BMSProject\Pages\ForgetPasswordPage.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\com\selenium\demo\BMSProject\Pages\LoginPage.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\com\selenium\demo\BMSProject\Pages\RegisterPage.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\base\BasePage.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\customElements\Button.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\customElements\Element.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\customElements\Input.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\customElements\Link.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\pages\ForgetPasswordPage.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\pages\LoginPage.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\main\java\pages\RegisterPage.java
