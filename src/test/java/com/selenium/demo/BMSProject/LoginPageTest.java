@@ -6,11 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pages.*;
 
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-
-import com.selenium.demo.BMSProject.Pages.*;
 
 public class LoginPageTest {
     WebDriver driver = null;
@@ -40,17 +39,17 @@ public class LoginPageTest {
     public void loginPageTest() {
         driver.get(testURL);
         
-        boolean isloginPageHeader_Exists=loginPage.ele_loginPageHeader().isDisplayed();
-        boolean isEmailTextField_Exists=loginPage.txt_EmailField().isDisplayed();
-        boolean isPasswordTextField_Exists=loginPage.txt_PasswordField().isDisplayed();
-        boolean isLoginButton_Exists=loginPage.btn_Login().isDisplayed();
-        boolean isNewRegisterButton_Exists=loginPage.btn_NewRegister().isDisplayed();
-        boolean isFogotPasswordButton_Exists=loginPage.btn_FogotPassword().isDisplayed();
+        boolean isloginPageHeader_Exists=loginPage.ele_loginPageHeader().exist();
+        boolean isEmailTextField_Exists=loginPage.txt_EmailField().exist();
+        boolean isPasswordTextField_Exists=loginPage.txt_PasswordField().exist();
+        boolean isLoginButton_Exists=loginPage.btn_Login().exist();
+        boolean isNewRegisterButton_Exists=loginPage.btn_NewRegister().exist();
+        boolean isFogotPasswordButton_Exists=loginPage.btn_FogotPassword().exist();
             
         loginPage.waitForElementVisible(By.xpath("//img[@alt='carousel-left']"),10);
         
-        boolean isLeftCarousel_Exists=loginPage.ele_LeftCarousel().isDisplayed();
-        boolean isRightCarousel_Exists=loginPage.ele_RightCarousel().isDisplayed();
+        boolean isLeftCarousel_Exists=loginPage.ele_LeftCarousel().exist();
+        boolean isRightCarousel_Exists=loginPage.ele_RightCarousel().exist();
 
         sa.assertTrue(isloginPageHeader_Exists,"Login Page Header is not showing");
         sa.assertTrue(isEmailTextField_Exists,"Email Text Field is not showing");
@@ -70,14 +69,14 @@ public class LoginPageTest {
     	loginPage.btn_NewRegister().click();
     	
         loginPage.waitForElementVisible(By.xpath("//*[normalize-space(text())='Register to BookMyShow']"), 10);
-        
-    	boolean isRegisterFullNameTextField_Exists = registerPage.txt_RegisterFullName().isDisplayed();
-    	boolean isRegisterMailTextField_Exists = registerPage.txt_RegisterMail().isDisplayed();
-    	boolean isRegisterPasswordTextField_Exists = registerPage.txt_RegisterPassword().isDisplayed();
-    	boolean isRegisterAsAdminRadioButton_Exists = registerPage.ele_RegisterAsAdmin().isDisplayed();
-    	boolean isRegisterAsPartnerRadioButton_Exists = registerPage.ele_RegisterAsPartner().isDisplayed();
-    	boolean isRegisterButton_Exists = registerPage.btn_Register().isDisplayed();
-    	boolean isLoginNowButton_Exists = registerPage.lnk_LoginNow().isDisplayed();
+
+    	boolean isRegisterFullNameTextField_Exists = registerPage.txt_RegisterFullName().exist();
+    	boolean isRegisterMailTextField_Exists = registerPage.txt_RegisterMail().exist();
+    	boolean isRegisterPasswordTextField_Exists = registerPage.txt_RegisterPassword().exist();
+    	boolean isRegisterAsAdminRadioButton_Exists = registerPage.ele_RegisterAsAdmin().exist();
+    	boolean isRegisterAsPartnerRadioButton_Exists = registerPage.ele_RegisterAsPartner().exist();
+    	boolean isRegisterButton_Exists = registerPage.btn_Register().exist();
+    	boolean isLoginNowButton_Exists = registerPage.lnk_LoginNow().exist();
 
     	sa.assertTrue(isRegisterFullNameTextField_Exists,"Register Full Name Text field is not showing");
     	sa.assertTrue(isRegisterMailTextField_Exists,"Register Email Text field is not showing");
@@ -93,11 +92,12 @@ public class LoginPageTest {
     @Test(priority=3,testName="Forget Password Page UI Test")
     public void forgetPasswordPageTest() {
     	driver.get(testURL);
-    	loginPage.btn_FogotPassword().click();
-    	
-    	boolean isEmailTextField_Exists = forgetPasswordPage.txt_Email().isDisplayed();
-    	boolean isSendOTPButton_Exists = forgetPasswordPage.btn_SendOTP().isDisplayed();
-    	boolean isLoginHereLink_Exists = forgetPasswordPage.lnk_LoginHere().isDisplayed();
+    	loginPage
+    			.btn_FogotPassword().click();
+
+    	boolean isEmailTextField_Exists = forgetPasswordPage.txt_Email().exist();   			                                             			
+    	boolean isSendOTPButton_Exists = forgetPasswordPage.btn_SendOTP().exist();
+    	boolean isLoginHereLink_Exists = forgetPasswordPage.lnk_LoginHere().exist();
     	
     	sa.assertTrue(isEmailTextField_Exists,"Email Text Field is not showing");
     	sa.assertTrue(isSendOTPButton_Exists,"Send OTP button is not showing");
