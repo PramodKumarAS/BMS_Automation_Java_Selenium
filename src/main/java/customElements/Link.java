@@ -13,8 +13,8 @@ public class Link<T> {
 	private T _page;
 	
 	public Link(T page,WebDriver driver){
-		_page=page;
 		_driver=driver;
+		_page=page;
 	}
 	
 	public Link<T> setProperties(By locator) {

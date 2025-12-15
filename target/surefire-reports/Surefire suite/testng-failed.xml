@@ -5,7 +5,7 @@
     <classes>
       <class name="com.selenium.demo.BMSProject.LoginPageTest">
         <methods>
-          <include name="loginPageTest"/>
+          <include name="forgetPasswordPageTest"/>
           <include name="oneTimeSetUp"/>
           <include name="tearDown"/>
         </methods>

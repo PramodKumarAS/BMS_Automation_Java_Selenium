@@ -11,6 +11,7 @@ import pages.*;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+@Listeners(listeners.ExtentTestListener.class)
 public class LoginPageTest {
     WebDriver driver = null;
     String testURL = "";
