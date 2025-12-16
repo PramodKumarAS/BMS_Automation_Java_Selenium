@@ -165,9 +165,10 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;1&quot; name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
-  &lt;test thread-count=&quot;1&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
+&lt;suite name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
+      &lt;class name=&quot;base.BaseTest&quot;/&gt;
       &lt;class name=&quot;com.selenium.demo.BMSProject.LoginPageTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Surefire test --&gt;
@@ -182,7 +183,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Surefire test (1 class)</span>
+                <span class="test-name">Surefire test (2 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -212,20 +213,20 @@ data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'loginPageTest')
 data.setCell(0, 2, 'com.selenium.demo.BMSProject.LoginPageTest')
-data.setCell(0, 3, 5396);
+data.setCell(0, 3, 2822);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'registerPageTest')
 data.setCell(1, 2, 'com.selenium.demo.BMSProject.LoginPageTest')
-data.setCell(1, 3, 694);
+data.setCell(1, 3, 904);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'forgetPasswordPageTest')
 data.setCell(2, 2, 'com.selenium.demo.BMSProject.LoginPageTest')
-data.setCell(2, 3, 453);
+data.setCell(2, 3, 684);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 seconds</span>
+              <span class="suite-total-time">Total running time: 4 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -253,24 +254,36 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.selenium.demo.BMSProject.LoginPageTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">oneTimeSetUp</span>
+                <span class="method-name">OneTimeSetUp</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">initPages</span>
+                <span class="method-start">1685 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">loginPageTest</span>
-                <span class="method-start">2331 ms</span>
+                <span class="method-start">1730 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initPages</span>
+                <span class="method-start">4574 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">registerPageTest</span>
-                <span class="method-start">7735 ms</span>
+                <span class="method-start">4578 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initPages</span>
+                <span class="method-start">5495 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">forgetPasswordPageTest</span>
-                <span class="method-start">8431 ms</span>
+                <span class="method-start">5498 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">8885 ms</span>
+                <span class="method-name">OneTimeTearDown</span>
+                <span class="method-start">6186 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

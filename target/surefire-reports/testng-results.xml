@@ -2,31 +2,43 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-15T09:09:30 IST" name="Surefire suite" finished-at="2025-12-15T09:09:39 IST" duration-ms="9131">
+  <suite started-at="2025-12-16T09:20:18 IST" name="Surefire suite" finished-at="2025-12-16T09:20:24 IST" duration-ms="6394">
     <groups>
     </groups>
-    <test started-at="2025-12-15T09:09:30 IST" name="Surefire test" finished-at="2025-12-15T09:09:39 IST" duration-ms="9131">
+    <test started-at="2025-12-16T09:20:18 IST" name="Surefire test" finished-at="2025-12-16T09:20:24 IST" duration-ms="6394">
       <class name="com.selenium.demo.BMSProject.LoginPageTest">
-        <test-method is-config="true" signature="oneTimeSetUp()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@6d2a209c]" started-at="2025-12-15T09:09:30 IST" name="oneTimeSetUp" finished-at="2025-12-15T09:09:32 IST" duration-ms="2315" status="PASS">
+        <test-method is-config="true" signature="OneTimeSetUp()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:18 IST" name="OneTimeSetUp" finished-at="2025-12-16T09:20:20 IST" duration-ms="1671" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- oneTimeSetUp -->
-        <test-method signature="loginPageTest()[pri:1, instance:com.selenium.demo.BMSProject.LoginPageTest@6d2a209c]" started-at="2025-12-15T09:09:32 IST" name="loginPageTest" finished-at="2025-12-15T09:09:38 IST" duration-ms="5396" status="PASS">
+        </test-method> <!-- OneTimeSetUp -->
+        <test-method is-config="true" signature="initPages()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:20 IST" name="initPages" finished-at="2025-12-16T09:20:20 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initPages -->
+        <test-method signature="loginPageTest()[pri:1, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:20 IST" name="loginPageTest" finished-at="2025-12-16T09:20:22 IST" duration-ms="2822" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginPageTest -->
-        <test-method signature="registerPageTest()[pri:2, instance:com.selenium.demo.BMSProject.LoginPageTest@6d2a209c]" started-at="2025-12-15T09:09:38 IST" name="registerPageTest" finished-at="2025-12-15T09:09:38 IST" duration-ms="694" status="PASS">
+        <test-method is-config="true" signature="initPages()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:22 IST" name="initPages" finished-at="2025-12-16T09:20:22 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initPages -->
+        <test-method signature="registerPageTest()[pri:2, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:23 IST" name="registerPageTest" finished-at="2025-12-16T09:20:23 IST" duration-ms="904" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- registerPageTest -->
-        <test-method signature="forgetPasswordPageTest()[pri:3, instance:com.selenium.demo.BMSProject.LoginPageTest@6d2a209c]" started-at="2025-12-15T09:09:38 IST" name="forgetPasswordPageTest" finished-at="2025-12-15T09:09:39 IST" duration-ms="453" status="PASS">
+        <test-method is-config="true" signature="initPages()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:23 IST" name="initPages" finished-at="2025-12-16T09:20:23 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initPages -->
+        <test-method signature="forgetPasswordPageTest()[pri:3, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:23 IST" name="forgetPasswordPageTest" finished-at="2025-12-16T09:20:24 IST" duration-ms="684" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- forgetPasswordPageTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@6d2a209c]" started-at="2025-12-15T09:09:39 IST" name="tearDown" finished-at="2025-12-15T09:09:39 IST" duration-ms="213" status="PASS">
+        <test-method is-config="true" signature="OneTimeTearDown()[pri:0, instance:com.selenium.demo.BMSProject.LoginPageTest@272113c4]" started-at="2025-12-16T09:20:24 IST" name="OneTimeTearDown" finished-at="2025-12-16T09:20:24 IST" duration-ms="185" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
+        </test-method> <!-- OneTimeTearDown -->
       </class> <!-- com.selenium.demo.BMSProject.LoginPageTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->

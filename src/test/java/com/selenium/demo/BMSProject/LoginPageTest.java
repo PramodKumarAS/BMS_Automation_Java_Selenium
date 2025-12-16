@@ -1,44 +1,29 @@
 package com.selenium.demo.BMSProject;
 
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.*;
-
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-@Listeners(listeners.ExtentTestListener.class)
-public class LoginPageTest {
-    WebDriver driver = null;
-    String testURL = "";
-    SoftAssert sa = null;
+import base.BaseTest;
+
+public class LoginPageTest extends BaseTest{
     LoginPage loginPage = null;
     RegisterPage registerPage = null;
     ForgetPasswordPage forgetPasswordPage=null;
-    
-    @BeforeClass
-    public void oneTimeSetUp() {
-    	driver = new ChromeDriver();   
-    	WebDriverManager.chromedriver().setup();
-    	sa = new SoftAssert();
-    	loginPage = new LoginPage(driver);
-    	registerPage = new RegisterPage(driver);
-    	forgetPasswordPage = new ForgetPasswordPage(driver);
-    	testURL ="https://bookmyshow0101.netlify.app/login";
-    }
-    
-	@AfterClass
-	public void tearDown() {
-        driver.quit();		
-	}
 	
+    @BeforeMethod
+    public void initPages() {
+        loginPage = new LoginPage(driver);
+        registerPage = new RegisterPage(driver);
+        forgetPasswordPage = new ForgetPasswordPage(driver);
+    }
+
     @Test(priority=1,testName="Login Page UI Test")
     public void loginPageTest() {
-        driver.get(testURL);
+    	SoftAssert sa = new SoftAssert();
+
+        driver.get(baseURL);
         
         boolean isloginPageHeader_Exists=loginPage.ele_loginPageHeader().exist();
         boolean isEmailTextField_Exists=loginPage.txt_EmailField().exist();
@@ -66,7 +51,9 @@ public class LoginPageTest {
     
     @Test(priority=2,testName="Register Page UI Test")
     public void registerPageTest() {
-    	driver.get(testURL);
+    	SoftAssert sa = new SoftAssert();
+
+    	driver.get(baseURL);
     	loginPage.btn_NewRegister().click();
     	
         loginPage.waitForElementVisible(By.xpath("//*[normalize-space(text())='Register to BookMyShow']"), 10);
@@ -92,7 +79,9 @@ public class LoginPageTest {
     
     @Test(priority=3,testName="Forget Password Page UI Test")
     public void forgetPasswordPageTest() {
-    	driver.get(testURL);
+    	SoftAssert sa = new SoftAssert();
+
+    	driver.get(baseURL);
     	loginPage
     			.btn_FogotPassword().click();
 
