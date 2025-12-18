@@ -1,0 +1,43 @@
+package com.selenium.demo.BMSProject;
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import base.BaseTest;
+import pages.HomePage;
+
+public class UserHomePageTest extends BaseTest {
+	HomePage homePage;
+	
+	@BeforeClass
+	public void setUp() {
+		loginToApp();
+	}
+	
+	@BeforeMethod
+	public void initPages() {
+		homePage = new HomePage(driver);
+	}
+	
+	@Test (priority=1,testName="Validate User Home Page")
+	public void TS01_Validate_userHomePageTest() {
+				
+		boolean isSearchMovie_Exists = homePage.txt_SearchMovies().exist();
+		boolean isMoviePoster_Exists = homePage.ele_MoviesPoster("Avengers: Endgame").exist();
+		boolean isUserMenu_Exists = homePage.ele_UserMenu().exist();
+		
+		boolean isUserProfile_Exists = homePage.ele_UserMenu().click().ele_UserProfile().exist();
+		boolean isUserLogout_Exists = homePage.ele_Logout().exist();
+
+		SoftAssert sa = new SoftAssert();
+		sa.assertTrue(isSearchMovie_Exists,"Search Movie Input is not showing");
+		sa.assertTrue(isMoviePoster_Exists,"Movie poster is not showing");
+		sa.assertTrue(isUserMenu_Exists,"User Menu is not showing");
+		sa.assertTrue(isUserProfile_Exists,"User Profile is not showing");
+		sa.assertTrue(isUserLogout_Exists,"User Logout is not showing");
+
+		sa.assertAll();
+	}
+}

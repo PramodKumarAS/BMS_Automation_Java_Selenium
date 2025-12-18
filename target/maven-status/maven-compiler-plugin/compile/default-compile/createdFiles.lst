@@ -1,9 +1,9 @@
-base\BasePage.class
-customElements\Button.class
 pages\LoginPage.class
 customElements\Input.class
 customElements\Link.class
 pages\ForgetPasswordPage.class
 pages\RegisterPage.class
+base\BasePage.class
+customElements\Button.class
 utils\ExtentManager.class
 customElements\Element.class

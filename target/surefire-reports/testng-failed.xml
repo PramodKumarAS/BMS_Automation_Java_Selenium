@@ -3,15 +3,34 @@
 <suite name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
+      <class name="com.selenium.demo.BMSProject.UserHomePageTest">
+        <methods>
+          <include name="initPages"/>
+          <include name="TS01_Validate_userHomePageTest"/>
+          <include name="setUp"/>
+          <include name="OneTimeSetUp"/>
+          <include name="loginToApp"/>
+          <include name="OneTimeTearDown"/>
+        </methods>
+      </class> <!-- com.selenium.demo.BMSProject.UserHomePageTest -->
       <class name="com.selenium.demo.BMSProject.LoginPageTest">
         <methods>
+          <include name="loginToApp"/>
           <include name="OneTimeSetUp"/>
-          <include name="forgetPasswordPageTest"/>
+          <include name="TS03_Validate_forgetPasswordPageTest"/>
+          <include name="TS02_Validate_registerPageTest"/>
+          <include name="TS01_Validate_loginPageTest"/>
           <include name="OneTimeTearDown"/>
-          <include name="oneTimeSetUp"/>
-          <include name="tearDown"/>
+          <include name="initPages"/>
         </methods>
       </class> <!-- com.selenium.demo.BMSProject.LoginPageTest -->
+      <class name="base.BaseTest">
+        <methods>
+          <include name="OneTimeSetUp"/>
+          <include name="loginToApp"/>
+          <include name="OneTimeTearDown"/>
+        </methods>
+      </class> <!-- base.BaseTest -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->

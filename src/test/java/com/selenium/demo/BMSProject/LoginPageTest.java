@@ -20,7 +20,7 @@ public class LoginPageTest extends BaseTest{
     }
 
     @Test(priority=1,testName="Login Page UI Test")
-    public void loginPageTest() {
+    public void TS01_Validate_loginPageTest() {
     	SoftAssert sa = new SoftAssert();
 
         driver.get(baseURL);
@@ -50,7 +50,7 @@ public class LoginPageTest extends BaseTest{
     } 
     
     @Test(priority=2,testName="Register Page UI Test")
-    public void registerPageTest() {
+    public void TS02_Validate_registerPageTest() {
     	SoftAssert sa = new SoftAssert();
 
     	driver.get(baseURL);
@@ -78,7 +78,7 @@ public class LoginPageTest extends BaseTest{
     }
     
     @Test(priority=3,testName="Forget Password Page UI Test")
-    public void forgetPasswordPageTest() {
+    public void TS03_Validate_forgetPasswordPageTest() {
     	SoftAssert sa = new SoftAssert();
 
     	driver.get(baseURL);
