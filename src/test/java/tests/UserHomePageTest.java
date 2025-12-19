@@ -1,5 +1,10 @@
-package com.selenium.demo.BMSProject;
+package tests;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,11 +29,19 @@ public class UserHomePageTest extends BaseTest {
 	@Test (priority=1,testName="Validate User Home Page")
 	public void TS01_Validate_userHomePageTest() {
 				
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@alt='Movie Poster']")));
+
 		boolean isSearchMovie_Exists = homePage.txt_SearchMovies().exist();
+			
 		boolean isMoviePoster_Exists = homePage.ele_MoviesPoster("Avengers: Endgame").exist();
 		boolean isUserMenu_Exists = homePage.ele_UserMenu().exist();
 		
-		boolean isUserProfile_Exists = homePage.ele_UserMenu().click().ele_UserProfile().exist();
+		waitForSeconds(5);
+		homePage.ele_UserMenu().click();
+		waitForSeconds(5);		
+		
+		boolean isUserProfile_Exists = homePage.ele_UserProfile().exist();
 		boolean isUserLogout_Exists = homePage.ele_Logout().exist();
 
 		SoftAssert sa = new SoftAssert();

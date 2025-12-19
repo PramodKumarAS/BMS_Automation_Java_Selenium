@@ -31,5 +31,20 @@ public class HomePage extends BasePage<HomePage> {
 	public Element<HomePage> ele_Logout(){
 		return element().setProperties(By.xpath("//li[contains(@data-menu-id,'logout')]"));
 	}
+	
+	public Element<HomePage> ele_Movies(){
+		return element().setProperties(By.xpath("//*[normalize-space(text())='Movies']"));
+	}
+	
+	public Element<HomePage> ele_Theatres(){
+		return element().setProperties(By.xpath("//*[normalize-space(text())='Theatres']"));
+	}
 
+	public Button<HomePage> btn_AddMovie(){
+		return button().setProperties(By.xpath("//*[normalize-space(text())='Add Movie']/ancestor::button"));
+	}
+	
+	public Button<HomePage> btn_AddTheatre(){
+		return button().setProperties(By.xpath("//*[normalize-space(text())='Add Theatre']/ancestor::button"));
+	}
 }

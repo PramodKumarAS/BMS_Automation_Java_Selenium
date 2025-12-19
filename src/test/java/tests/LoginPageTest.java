@@ -1,4 +1,4 @@
-package com.selenium.demo.BMSProject;
+package tests;
 
 import org.openqa.selenium.By;
 import pages.*;

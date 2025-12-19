@@ -42,7 +42,27 @@ public class BaseTest {
            .txt_PasswordField().setText("14036")
 	       .btn_Login().click();
 		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[@placeholder='Type here to search for movies']")));
+//		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+//		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[@placeholder='Type here to search for movies']")));
+	}
+	
+	public void loginToApp(String userEmail,String userPassword) {
+		driver.get(baseURL);
+		
+		LoginPage loginPage = new LoginPage(driver);
+		
+		loginPage
+		   .txt_EmailField().setText(userEmail)
+           .txt_PasswordField().setText(userPassword)
+	       .btn_Login().click();		
+	}
+	
+	public void waitForSeconds(int seconds) {
+	    try {
+	        Thread.sleep(seconds * 1000L);
+	    } catch (InterruptedException e) {
+	        Thread.currentThread().interrupt();
+	        throw new RuntimeException("Thread interrupted while waiting", e);
+	    }
 	}
 }
