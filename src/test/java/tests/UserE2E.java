@@ -19,5 +19,7 @@ public class UserE2E extends BaseTest{
 		homePage
 		   .txt_SearchMovies().setText("Avengers: Endgame")
 		   .ele_MoviesPoster("Avengers: Endgame").click();
+		
+		
 	}
 }
