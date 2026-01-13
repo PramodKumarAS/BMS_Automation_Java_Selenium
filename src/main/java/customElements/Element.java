@@ -38,4 +38,9 @@ public class Element<T> {
 		
 		return _page;
 	}
+	
+	public String getText() {
+		_componentElement=_driver.findElement(_locator);
+		return _componentElement.getText();
+	}
 }

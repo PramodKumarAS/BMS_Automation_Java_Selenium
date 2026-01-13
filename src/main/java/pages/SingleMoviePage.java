@@ -34,4 +34,12 @@ public class SingleMoviePage extends BasePage<SingleMoviePage> {
 		return input().setProperties(By.xpath("//*[@type=\"date\"]"));
 	}
 	
+	public Element<SingleMoviePage> ele_MoviePoster(){
+		return element().setProperties(By.xpath("//img[@alt='Movie Poster']"));
+	}
+	
+	public Element<SingleMoviePage> ele_NoTheatreAvailableMessage(){
+		return element().setProperties(By.xpath("//*[normalize-space(text())='Currently, no theatres available for this movie!']"));
+	}
+	
 }

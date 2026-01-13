@@ -1,7 +1,13 @@
 package pages;
 
+
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.BasePage;
 import customElements.*;
@@ -46,5 +52,12 @@ public class HomePage extends BasePage<HomePage> {
 	
 	public Button<HomePage> btn_AddTheatre(){
 		return button().setProperties(By.xpath("//*[normalize-space(text())='Add Theatre']/ancestor::button"));
+	}
+	
+	public HomePage waitForPageToLoad() {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@alt='Movie Poster']")));
+
+		return this;
 	}
 }

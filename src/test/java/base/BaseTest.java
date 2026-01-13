@@ -42,8 +42,8 @@ public class BaseTest {
            .txt_PasswordField().setText("14036")
 	       .btn_Login().click();
 		
-//		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
-//		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[@placeholder='Type here to search for movies']")));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[@placeholder='Type here to search for movies']")));
 	}
 	
 	public void loginToApp(String userEmail,String userPassword) {

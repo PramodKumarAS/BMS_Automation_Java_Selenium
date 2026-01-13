@@ -3,15 +3,14 @@
 <suite name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
-      <class name="tests.UserHomePageTest">
+      <class name="tests.SingleMovieTest">
         <methods>
           <include name="OneTimeSetUp"/>
-          <include name="setUp"/>
-          <include name="initPages"/>
           <include name="OneTimeTearDown"/>
-          <include name="TS01_Validate_userHomePageTest"/>
+          <include name="singleMovie"/>
+          <include name="beforeClass"/>
         </methods>
-      </class> <!-- tests.UserHomePageTest -->
+      </class> <!-- tests.SingleMovieTest -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->
