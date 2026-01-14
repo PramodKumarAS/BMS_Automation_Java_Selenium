@@ -2,7 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 import base.BasePage;
 import customElements.*;
 
@@ -42,4 +44,13 @@ public class SingleMoviePage extends BasePage<SingleMoviePage> {
 		return element().setProperties(By.xpath("//*[normalize-space(text())='Currently, no theatres available for this movie!']"));
 	}
 	
+	public Button<SingleMoviePage> btn_BookShow(){
+		return button().setProperties(By.xpath("//*[normalize-space(text())='Book Show -']/ancestor::button"));
+	}
+	
+	public SingleMoviePage waitForPageLoad() {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@alt='Movie Poster']")));
+		return this;
+	}
 }

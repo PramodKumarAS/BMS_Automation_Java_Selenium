@@ -43,7 +43,7 @@ public class BaseTest {
 	       .btn_Login().click();
 		
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[@placeholder='Type here to search for movies']")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Type here to search for movies']")));
 	}
 	
 	public void loginToApp(String userEmail,String userPassword) {
