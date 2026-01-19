@@ -1,11 +1,10 @@
-package tests.EndToEndTest;
+package tests.EndToEndTests;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.testng.annotations.Test;
 import base.BaseTest;
-import pages.HomePage;
-import pages.SingleMoviePage;
+import pages.*;
 
 public class UserBookingShow extends BaseTest {
 	
@@ -26,6 +25,20 @@ public class UserBookingShow extends BaseTest {
 		singleMoviePage
 		   .input_ChooseTheDate().setText(todayDate)
 		   .btn_BookShow().click();
+		
+		MovieDetailsPage movieDetailsPage = new MovieDetailsPage(driver);
+		
+		movieDetailsPage
+		   .btn_SelectSeat("12").click()
+		   .btn_SelectSeat("13").click()
+		   .btn_PayNow().click()
+		   .input_Email().setText("pramodkumaras143@gmail.com")
+		   .input_CardNumber().setText("4242424242424242")
+		   .input_ExpDate().setText("02 / 30")
+		   .input_CVC().setText("123")
+		   .btn_Pay().click();
+		
+		//TODO: Validate booked show in MongoDB
 		   
 	}
 }

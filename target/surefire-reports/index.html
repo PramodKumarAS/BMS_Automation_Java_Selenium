@@ -103,7 +103,7 @@
                     <div class="method-list-content failed suite-Surefire_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="tests.EndToEndTest.UserBookingShow" class="method navigator-link" hash-for-method="bookShow">bookShow</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="tests.EndToEndTests.UserBookingShow" class="method navigator-link" hash-for-method="bookShow">bookShow</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Surefire_suite -->
@@ -121,7 +121,7 @@
           <div class="suite-Surefire_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">tests.EndToEndTest.UserBookingShow</span>
+              <span class="class-name">tests.EndToEndTests.UserBookingShow</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -133,12 +133,12 @@
 Build info: version: &apos;4.18.1&apos;, revision: &apos;b1d3319b48&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.9&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.147, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\pramo\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65046}, goog:processID: 1280, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65046/devtoo..., se:cdpVersion: 143.0.7499.147, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 521cf9dc437bb0a82858af8892911909
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.147, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\pramo\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49674}, goog:processID: 8552, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49674/devtoo..., se:cdpVersion: 143.0.7499.147, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ea3e565a8608134d7eea4800083d0482
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 	at pages.HomePage.waitForPageToLoad(HomePage.java:59)
-	at tests.EndToEndTest.UserBookingShow.bookShow(UserBookingShow.java:14)
+	at tests.EndToEndTests.UserBookingShow.bookShow(UserBookingShow.java:13)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ... Removed 30 stack frames
 </div> <!-- stack-trace -->
@@ -157,7 +157,7 @@ Session ID: 521cf9dc437bb0a82858af8892911909
 &lt;suite name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;tests.EndToEndTest.UserBookingShow&quot;/&gt;
+      &lt;class name=&quot;tests.EndToEndTests.UserBookingShow&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Surefire test --&gt;
 &lt;/suite&gt; &lt;!-- Surefire suite --&gt;
@@ -200,8 +200,8 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'bookShow')
-data.setCell(0, 2, 'tests.EndToEndTest.UserBookingShow')
-data.setCell(0, 3, 45563);
+data.setCell(0, 2, 'tests.EndToEndTests.UserBookingShow')
+data.setCell(0, 3, 45296);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
@@ -232,7 +232,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">tests.EndToEndTest.UserBookingShow</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">tests.EndToEndTests.UserBookingShow</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">OneTimeSetUp</span>
                 <span class="method-start">0 ms</span>
@@ -241,11 +241,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">bookShow</span>
-                <span class="method-start">2715 ms</span>
+                <span class="method-start">6040 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">OneTimeTearDown</span>
-                <span class="method-start">48407 ms</span>
+                <span class="method-start">51430 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

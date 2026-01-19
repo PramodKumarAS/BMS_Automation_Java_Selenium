@@ -1,8 +1,8 @@
 C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\base\BaseTest.java
 C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\listeners\ExtentTestListener.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\AdminHomePageTest.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\EndToEndTest\UserBookingShow.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\LoginPageTest.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\PartnerHomePageTest.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\SingleMoviePageTest.java
-C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\UserHomePageTest.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\EndToEndTests\UserBookingShow.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\FunctionTests\AdminHomePageTest.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\FunctionTests\LoginPageTest.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\FunctionTests\PartnerHomePageTest.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\FunctionTests\SingleMoviePageTest.java
+C:\SDET\Selenium_Java_Automation\Selenium_with_Maven\BMSProject\src\test\java\tests\FunctionTests\UserHomePageTest.java

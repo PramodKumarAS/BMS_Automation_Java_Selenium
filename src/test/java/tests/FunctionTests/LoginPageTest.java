@@ -1,4 +1,4 @@
-package tests;
+package tests.FunctionTests;
 
 import org.openqa.selenium.By;
 import pages.*;

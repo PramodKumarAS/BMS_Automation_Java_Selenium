@@ -3,13 +3,13 @@
 <suite name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
-      <class name="tests.EndToEndTest.UserBookingShow">
+      <class name="tests.EndToEndTests.UserBookingShow">
         <methods>
           <include name="OneTimeSetUp"/>
-          <include name="OneTimeTearDown"/>
           <include name="bookShow"/>
+          <include name="OneTimeTearDown"/>
         </methods>
-      </class> <!-- tests.EndToEndTest.UserBookingShow -->
+      </class> <!-- tests.EndToEndTests.UserBookingShow -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->
