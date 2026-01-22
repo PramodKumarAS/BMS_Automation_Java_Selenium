@@ -1,10 +1,16 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.BasePage;
-import customElements.*;
+import customElements.Button;
+import customElements.Element;
+import customElements.Input;
 
 public class MovieDetailsPage extends BasePage<MovieDetailsPage> {
 
@@ -39,7 +45,11 @@ public class MovieDetailsPage extends BasePage<MovieDetailsPage> {
 	}
 	
 	public Button<MovieDetailsPage> btn_SelectSeat(String seatNumber){
-		return button().setProperties(By.xpath("//button[normalize-space(text())='"+seatNumber+"']"));
+		return button().setProperties(By.xpath("//button[@class='seat-btn'][normalize-space(text())='"+seatNumber+"']"));
+	}
+	
+	public Button<MovieDetailsPage> btn_BookedSeat(String seatNumber){
+		return button().setProperties(By.xpath(".//button[@class='seat-btn booked'][normalize-space(text())='"+seatNumber+"']")); 
 	}
 	
 	public Element<MovieDetailsPage> ele_SelectedSeats(){
@@ -72,5 +82,12 @@ public class MovieDetailsPage extends BasePage<MovieDetailsPage> {
 	
 	public Button<MovieDetailsPage> btn_Pay(){
 		return button().setProperties(By.xpath("//form//*[contains(text(),'Pay')]"));
+	}
+	
+	public MovieDetailsPage waitForPageLoad() {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[contains(@class,'seat-ul')]")));
+		
+		return this;
 	}
 }
