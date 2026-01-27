@@ -41,7 +41,7 @@ public class MovieDetailsPage extends BasePage<MovieDetailsPage> {
 	}
 	
 	public Element<MovieDetailsPage> ele_AvailableSeats(){
-		return element().setProperties(By.xpath("//span[normalize-space(text())='Available Seats:']/ancestor::h3"));
+		return element().setProperties(By.xpath("//span[contains(text(),' Available Seats:')]//ancestor::h3"));
 	}
 	
 	public Button<MovieDetailsPage> btn_SelectSeat(String seatNumber){

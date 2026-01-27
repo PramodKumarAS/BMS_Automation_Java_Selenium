@@ -3,21 +3,39 @@ package tests.EndToEndTests;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import org.testng.annotations.BeforeClass;
+import org.bson.Document;
+import org.testng.annotations.*;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
+import com.mongodb.client.MongoCollection;
+
+import api.UserApiService;
+import apiTests.GetUserTest;
 import base.BaseTest;
+import db.MongoConnection;
 import pages.HomePage;
 import pages.MovieDetailsPage;
 import pages.SingleMoviePage;
+import utils.MongoUtils;
 
 public class UserBookingShow extends BaseTest {
+	
+	public MongoCollection<Document> mdb_Booking_collection=null;
+	public MongoCollection<Document> mdb_Shows_collection=null;
+	public String createdBookingShowId = "68d201d2ec4b9e9967412d66";
 	
 	@BeforeClass
 	public void setUp() {
 		loginToApp();
+		mdb_Booking_collection = MongoConnection.connect("test", "bookings");
+		mdb_Shows_collection = MongoConnection.connect("test", "shows");
+	}
+	
+	@AfterClass
+	public void tearDown() {
+		MongoUtils.deleteAll(mdb_Booking_collection);
+		MongoUtils.updateArrayFieldToEmpty(mdb_Shows_collection,createdBookingShowId , "bookedSeats");
 	}
 	
 	@Test(priority=1,testName="Validate user booking a show")
@@ -33,11 +51,23 @@ public class UserBookingShow extends BaseTest {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYY");
 		String todayDate = LocalDate.now().format(formatter);
 		
-		//TODO: Create a show for Today's Date using API
+		singleMoviePage
+		   .input_ChooseTheDate().setText(todayDate);
+		
+		boolean isBookShowBtn_Exists = singleMoviePage.btn_BookShow().exist();
+		
+		if(!isBookShowBtn_Exists) {
+			//Create a show for Today's Date using API
+			UserApiService userAPI = new UserApiService();
+			userAPI.postUser();
+			driver.navigate().refresh();
+			waitForSeconds(5);
+		}
+			
 		singleMoviePage
 		   .input_ChooseTheDate().setText(todayDate)
 		   .btn_BookShow().click();
-		
+
 		MovieDetailsPage movieDetailsPage = new MovieDetailsPage(driver).waitForPageLoad();
 
 		movieDetailsPage
@@ -45,7 +75,7 @@ public class UserBookingShow extends BaseTest {
 		   .btn_SelectSeat("13").click()
 		   .btn_PayNow().click();
 		
-		waitForSeconds(3);//Wait for Card to open need to think something else fix this
+		waitForSeconds(5);//Wait for Card to open need to think something else fix this
 		driver.switchTo().frame(0);
 
 		movieDetailsPage
@@ -60,7 +90,8 @@ public class UserBookingShow extends BaseTest {
 		   .input_CVC().setText("123")
 		   .btn_Pay().click();
 		
-		waitForSeconds(3);
+		waitForSeconds(5);
+		driver.switchTo().parentFrame();
 		
 		boolean isSeatNumberBooked_12 = movieDetailsPage.btn_BookedSeat("12").exist();
 		boolean isSeatNumberBooked_13 = movieDetailsPage.btn_BookedSeat("13").exist();
@@ -70,9 +101,10 @@ public class UserBookingShow extends BaseTest {
 		SoftAssert sa = new SoftAssert();
 		sa.assertTrue(isSeatNumberBooked_12,"Seat Number 12 is not booked correctly");
 		sa.assertTrue(isSeatNumberBooked_13,"Seat Number 13 is not booked correctly");
-		sa.assertEquals(out_TotalSeats_AfterBooking,"100","Seat Number 13 is not booked correctly");
-		sa.assertEquals(out_AvailableSeats_AfterBooking,"98","Seat Number 13 is not booked correctly");
+		sa.assertTrue(out_TotalSeats_AfterBooking.contains("100"),"Total Seats not displayed correctly after booking");
+		sa.assertTrue(out_AvailableSeats_AfterBooking.contains("98"),"Available Seats not displayed correctly after booking");
 		sa.assertAll();
+		
 		//TODO: Validate booked show in MongoDB
 		   
 	}

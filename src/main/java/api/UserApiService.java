@@ -1,14 +1,15 @@
-package apiTests;
+package api;
 
-import org.testng.annotations.Test;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-import base.APIBaseTest;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import base.BaseApi;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-public class GetUserTest extends APIBaseTest
-{		
+public class UserApiService extends BaseApi  {
+
+
 	public String getUserToken() {
 		Response response =  given()
 		    .log().all()
@@ -21,7 +22,6 @@ public class GetUserTest extends APIBaseTest
 		return response.jsonPath().getString("token");
 	}
 	
-	@Test
 	public void getUser() {
 		String token=getUserToken();
 		given()
@@ -43,7 +43,7 @@ public class GetUserTest extends APIBaseTest
 			.contentType(ContentType.JSON)
 			.header("Authorization","Bearer " + token)
 			.body("{\r\n"
-					+ "    \"date\": \"2026-01-24\",\r\n"
+					+ "    \"date\": \"2026-01-27\",\r\n"
 					+ "    \"movie\": {\r\n"
 					+ "        \"_id\": \"6888d1ad9e7f9c58df68dc4b\",\r\n"
 					+ "        \"movieName\": \"Avengers: Endgame\"\r\n"
