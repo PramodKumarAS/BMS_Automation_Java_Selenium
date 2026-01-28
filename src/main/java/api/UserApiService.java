@@ -43,7 +43,7 @@ public class UserApiService extends BaseApi  {
 			.contentType(ContentType.JSON)
 			.header("Authorization","Bearer " + token)
 			.body("{\r\n"
-					+ "    \"date\": \"2026-01-27\",\r\n"
+					+ "    \"date\": \"2026-01-28\",\r\n"
 					+ "    \"movie\": {\r\n"
 					+ "        \"_id\": \"6888d1ad9e7f9c58df68dc4b\",\r\n"
 					+ "        \"movieName\": \"Avengers: Endgame\"\r\n"

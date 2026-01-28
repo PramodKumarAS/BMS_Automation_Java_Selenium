@@ -1,17 +1,21 @@
 package tests.EndToEndTests;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.bson.Document;
-import org.testng.annotations.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.mongodb.client.MongoCollection;
 
 import api.UserApiService;
-import apiTests.GetUserTest;
 import base.BaseTest;
 import db.MongoConnection;
 import pages.HomePage;
@@ -75,9 +79,12 @@ public class UserBookingShow extends BaseTest {
 		   .btn_SelectSeat("13").click()
 		   .btn_PayNow().click();
 		
-		waitForSeconds(5);//Wait for Card to open need to think something else fix this
-		driver.switchTo().frame(0);
-
+		String bookingURL = driver.getCurrentUrl();
+		
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0));
+		waitForSeconds(5);//Wait for Card to open 
+		
 		movieDetailsPage
 		   .input_Email().setText("pramodkumaras143@gmail.com")
 		   .input_CardNumber().setText("6011")
@@ -90,9 +97,12 @@ public class UserBookingShow extends BaseTest {
 		   .input_CVC().setText("123")
 		   .btn_Pay().click();
 		
-		waitForSeconds(5);
-		driver.switchTo().parentFrame();
+		driver.switchTo().defaultContent();
+		homePage.waitForPageToLoad();
 		
+		driver.get(bookingURL);
+		waitForSeconds(5);//Wait for Card to open 
+
 		boolean isSeatNumberBooked_12 = movieDetailsPage.btn_BookedSeat("12").exist();
 		boolean isSeatNumberBooked_13 = movieDetailsPage.btn_BookedSeat("13").exist();
 		String out_TotalSeats_AfterBooking = movieDetailsPage.ele_TotalSeats().getText();
