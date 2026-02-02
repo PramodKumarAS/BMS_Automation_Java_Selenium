@@ -1,13 +1,16 @@
-package apiModel;
+package api.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserServiceModel {
 
     private String name;
-    private String date;        // "2026-01-28"
-    private String time;        // "10:00"
+    private String date;        
+    private String time;        
     private Movie movie;
-    private int ticketPrice;
-    private int totalSeats;
+    private Integer ticketPrice;
+    private Integer totalSeats;
     private String showId;
     private String theatre;
 
@@ -44,7 +47,7 @@ public class UserServiceModel {
         this.movie = movie;
     }
 
-    public int getTicketPrice() {
+    public Integer getTicketPrice() {
         return ticketPrice;
     }
 
@@ -52,7 +55,7 @@ public class UserServiceModel {
         this.ticketPrice = ticketPrice;
     }
 
-    public int getTotalSeats() {
+    public Integer getTotalSeats() {
         return totalSeats;
     }
 
@@ -76,3 +79,4 @@ public class UserServiceModel {
         this.theatre = theatre;
     }
 }
+

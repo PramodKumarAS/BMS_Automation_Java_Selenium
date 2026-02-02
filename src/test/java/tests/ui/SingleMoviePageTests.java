@@ -1,4 +1,4 @@
-package tests.FunctionTests;
+package tests.ui;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,7 +8,7 @@ import base.BaseTest;
 import pages.HomePage;
 import pages.SingleMoviePage;
 
-public class SingleMoviePageTest extends BaseTest{
+public class SingleMoviePageTests extends BaseTest{
 	
 	@BeforeClass
 	public void beforeClass() {

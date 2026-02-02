@@ -1,4 +1,4 @@
-package utils;
+package db;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.result.UpdateResult;
 

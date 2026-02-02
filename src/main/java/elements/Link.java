@@ -1,23 +1,23 @@
-package customElements;
+package elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Element<T> {
+public class Link<T> {
 
 	public WebDriver _driver;
 	private WebElement _componentElement=null;
 	private By _locator;
 	private T _page;
 	
-	public Element(T page,WebDriver driver){
-		_page=page;
+	public Link(T page,WebDriver driver){
 		_driver=driver;
+		_page=page;
 	}
 	
-	public Element<T> setProperties(By locator) {
+	public Link<T> setProperties(By locator) {
 		this._locator = locator;
 		
 		return this;
@@ -37,10 +37,5 @@ public class Element<T> {
 		_componentElement.click();
 		
 		return _page;
-	}
-	
-	public String getText() {
-		_componentElement=_driver.findElement(_locator);
-		return _componentElement.getText();
 	}
 }

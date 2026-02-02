@@ -1,4 +1,4 @@
-package tests.FunctionTests;
+package tests.ui;
 
 import java.time.Duration;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 import base.BaseTest;
 import pages.HomePage;
 
-public class AdminHomePageTest extends BaseTest {
+public class AdminHomePageTests extends BaseTest {
 	HomePage homePage;
 	
 	@BeforeClass

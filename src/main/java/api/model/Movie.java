@@ -1,16 +1,17 @@
-package apiModel;
+package api.model;
 
-public class MovieServiceModel {
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Movie{
     private String _id;
     private String movieName;
     private String description;
-    private int duration;
+    private Integer duration;
     private String genre;
     private String language;
     private String releaseDate;   // ISO string
     private String poster;
-    private int __v;
 
     // Getters and Setters
     public String get_id() {
@@ -37,7 +38,7 @@ public class MovieServiceModel {
         this.description = description;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
@@ -75,13 +76,5 @@ public class MovieServiceModel {
 
     public void setPoster(String poster) {
         this.poster = poster;
-    }
-
-    public int get__v() {
-        return __v;
-    }
-
-    public void set__v(int __v) {
-        this.__v = __v;
     }
 }

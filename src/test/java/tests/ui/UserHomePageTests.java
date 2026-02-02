@@ -1,4 +1,4 @@
-package tests.FunctionTests;
+package tests.ui;
 
 import java.time.Duration;
 
@@ -13,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 import base.BaseTest;
 import pages.HomePage;
 
-public class UserHomePageTest extends BaseTest {
+public class UserHomePageTests extends BaseTest {
 	HomePage homePage;
 	
 	@BeforeClass

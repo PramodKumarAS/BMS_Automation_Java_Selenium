@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.BasePage;
-import customElements.Button;
-import customElements.Element;
-import customElements.Input;
+import elements.Button;
+import elements.Element;
+import elements.Input;
 
 public class MovieDetailsPage extends BasePage<MovieDetailsPage> {
 

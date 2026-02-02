@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import base.BasePage;
-import customElements.*;
+import elements.*;
 
 public class SingleMoviePage extends BasePage<SingleMoviePage> {
  

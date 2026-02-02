@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-28T08:25:36 IST" name="Surefire suite" finished-at="2026-01-28T08:26:13 IST" duration-ms="37095">
+  <suite started-at="2026-02-02T07:51:12 IST" name="Surefire suite" finished-at="2026-02-02T07:52:08 IST" duration-ms="55175">
     <groups>
     </groups>
-    <test started-at="2026-01-28T08:25:36 IST" name="Surefire test" finished-at="2026-01-28T08:26:13 IST" duration-ms="37095">
+    <test started-at="2026-02-02T07:51:12 IST" name="Surefire test" finished-at="2026-02-02T07:52:08 IST" duration-ms="55175">
       <class name="tests.EndToEndTests.UserBookingShow">
-        <test-method is-config="true" signature="OneTimeSetUp()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-01-28T08:25:36 IST" name="OneTimeSetUp" finished-at="2026-01-28T08:25:37 IST" duration-ms="1625" status="PASS">
+        <test-method is-config="true" signature="OneTimeSetUp()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-02-02T07:51:12 IST" name="OneTimeSetUp" finished-at="2026-02-02T07:51:14 IST" duration-ms="1702" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OneTimeSetUp -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-01-28T08:25:37 IST" name="setUp" finished-at="2026-01-28T08:25:45 IST" duration-ms="7761" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-02-02T07:51:14 IST" name="setUp" finished-at="2026-02-02T07:51:22 IST" duration-ms="7841" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="bookShow()[pri:1, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-01-28T08:25:45 IST" name="bookShow" finished-at="2026-01-28T08:26:12 IST" duration-ms="26674" status="PASS">
+        <test-method signature="bookShow()[pri:1, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-02-02T07:51:22 IST" name="bookShow" finished-at="2026-02-02T07:52:06 IST" duration-ms="44433" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- bookShow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-01-28T08:26:12 IST" name="tearDown" finished-at="2026-01-28T08:26:13 IST" duration-ms="595" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-02-02T07:52:07 IST" name="tearDown" finished-at="2026-02-02T07:52:07 IST" duration-ms="750" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="OneTimeTearDown()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-01-28T08:26:13 IST" name="OneTimeTearDown" finished-at="2026-01-28T08:26:13 IST" duration-ms="293" status="PASS">
+        <test-method is-config="true" signature="OneTimeTearDown()[pri:0, instance:tests.EndToEndTests.UserBookingShow@41a0aa7d]" started-at="2026-02-02T07:52:07 IST" name="OneTimeTearDown" finished-at="2026-02-02T07:52:08 IST" duration-ms="291" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OneTimeTearDown -->

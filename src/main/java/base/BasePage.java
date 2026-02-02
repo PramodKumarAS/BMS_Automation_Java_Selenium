@@ -2,7 +2,7 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 
-import customElements.*;
+import elements.*;
 
 public class BasePage<T> {
 

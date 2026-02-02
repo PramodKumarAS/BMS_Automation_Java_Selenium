@@ -1,4 +1,4 @@
-package tests.FunctionTests;
+package tests.ui;
 
 import org.openqa.selenium.By;
 import pages.*;
@@ -7,7 +7,7 @@ import org.testng.asserts.SoftAssert;
 
 import base.BaseTest;
 
-public class LoginPageTest extends BaseTest{
+public class LoginPageTests extends BaseTest{
     LoginPage loginPage = null;
     RegisterPage registerPage = null;
     ForgetPasswordPage forgetPasswordPage=null;

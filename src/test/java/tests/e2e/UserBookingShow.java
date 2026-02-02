@@ -1,11 +1,10 @@
-package tests.EndToEndTests;
+package tests.e2e;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.bson.Document;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -15,19 +14,19 @@ import org.testng.asserts.SoftAssert;
 
 import com.mongodb.client.MongoCollection;
 
-import api.UserApiService;
+import api.service.UserApiService;
 import base.BaseTest;
 import db.MongoConnection;
+import db.MongoUtils;
 import pages.HomePage;
 import pages.MovieDetailsPage;
 import pages.SingleMoviePage;
-import utils.MongoUtils;
 
 public class UserBookingShow extends BaseTest {
 	
 	public MongoCollection<Document> mdb_Booking_collection=null;
 	public MongoCollection<Document> mdb_Shows_collection=null;
-	public String createdBookingShowId = "68d201d2ec4b9e9967412d66";
+	public String createdBookingShowId = "697c1c7f0476ba2e220e7476";
 	
 	@BeforeClass
 	public void setUp() {
@@ -111,8 +110,8 @@ public class UserBookingShow extends BaseTest {
 		SoftAssert sa = new SoftAssert();
 		sa.assertTrue(isSeatNumberBooked_12,"Seat Number 12 is not booked correctly");
 		sa.assertTrue(isSeatNumberBooked_13,"Seat Number 13 is not booked correctly");
-		sa.assertTrue(out_TotalSeats_AfterBooking.contains("100"),"Total Seats not displayed correctly after booking");
-		sa.assertTrue(out_AvailableSeats_AfterBooking.contains("98"),"Available Seats not displayed correctly after booking");
+		sa.assertTrue(out_TotalSeats_AfterBooking.contains("250"),"Total Seats not displayed correctly after booking");
+		sa.assertTrue(out_AvailableSeats_AfterBooking.contains("248"),"Available Seats not displayed correctly after booking");
 		sa.assertAll();
 		
 		//TODO: Validate booked show in MongoDB

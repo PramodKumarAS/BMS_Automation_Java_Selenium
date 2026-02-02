@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import base.BasePage;
-import customElements.*;
+import elements.*;
 
 public class RegisterPage extends BasePage<RegisterPage>{
 

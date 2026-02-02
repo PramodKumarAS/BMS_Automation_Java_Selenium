@@ -1,7 +1,9 @@
 package listeners;
 
-import utils.ExtentManager;
 import com.aventstack.extentreports.*;
+
+import reporting.ExtentManager;
+
 import org.testng.*;
 
 public class ExtentTestListener implements ITestListener {

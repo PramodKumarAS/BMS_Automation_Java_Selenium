@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.BasePage;
-import customElements.*;
+import elements.*;
 
 public class HomePage extends BasePage<HomePage> {
 
