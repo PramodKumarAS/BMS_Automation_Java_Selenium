@@ -26,7 +26,7 @@ public class UserBookingShow extends BaseTest {
 	
 	public MongoCollection<Document> mdb_Booking_collection=null;
 	public MongoCollection<Document> mdb_Shows_collection=null;
-	public String createdBookingShowId = "697c1c7f0476ba2e220e7476";
+	public String bookingShowId = "697c1c7f0476ba2e220e7476";
 	
 	@BeforeClass
 	public void setUp() {
@@ -38,7 +38,7 @@ public class UserBookingShow extends BaseTest {
 	@AfterClass
 	public void tearDown() {
 		MongoUtils.deleteAll(mdb_Booking_collection);
-		MongoUtils.updateArrayFieldToEmpty(mdb_Shows_collection,createdBookingShowId , "bookedSeats");
+		MongoUtils.updateArrayFieldToEmpty(mdb_Shows_collection,bookingShowId , "bookedSeats");
 	}
 	
 	@Test(priority=1,testName="Validate user booking a show")

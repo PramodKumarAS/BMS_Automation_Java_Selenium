@@ -18,6 +18,8 @@ import io.restassured.response.Response;
 
 public class GetUserTest extends APIBaseTest
 {		
+	
+	@Test
 	public String getUserToken() {
 		Response response =  given()
 		    .log().all()
@@ -45,6 +47,7 @@ public class GetUserTest extends APIBaseTest
 			.body("success",equalTo(true));
 	}
 	
+	@Test
 	public void postUser() {
 		String token=getUserToken();
 		

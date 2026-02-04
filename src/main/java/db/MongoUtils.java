@@ -14,7 +14,7 @@ public class MongoUtils {
             throw new IllegalStateException("Mongo not initialized");
         }
 
-        collection.deleteMany(new Document());
+        collection.deleteMany(new Document()); 
     }
     
     public static UpdateResult  updateArrayFieldToEmpty(MongoCollection<Document> collection,String id, String arrayFieldName) {
@@ -25,9 +25,12 @@ public class MongoUtils {
 
         Document filter = new Document("_id", new ObjectId(id));
 
-        Document update = new Document("$set",new Document(arrayFieldName, Collections.emptyList())
-        );
+        Document update = new Document("$set",new Document(arrayFieldName, Collections.emptyList()));
 
         return collection.updateOne(filter, update);
     }
+    
+    public static Object findOne(MongoCollection<Document> collection,String id) {
+    	return collection.find(new Document("_id", new ObjectId(id)));
+    }  
 }

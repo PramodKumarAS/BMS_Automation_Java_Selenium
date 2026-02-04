@@ -1,8 +1,2 @@
 base\BaseTest.class
-tests\FunctionTests\UserHomePageTest.class
 listeners\ExtentTestListener.class
-tests\EndToEndTests\UserBookingShow.class
-tests\FunctionTests\PartnerHomePageTest.class
-tests\FunctionTests\SingleMoviePageTest.class
-tests\FunctionTests\AdminHomePageTest.class
-tests\FunctionTests\LoginPageTest.class
