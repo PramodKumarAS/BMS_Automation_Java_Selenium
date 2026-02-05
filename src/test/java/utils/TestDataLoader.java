@@ -1,16 +1,23 @@
 package utils;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import api.model.UsersList;
 
 public class TestDataLoader {
 	
-	public static String load(String fileName) throws IOException {
+	public static UsersList loadUsers(String fileName) throws IOException {
 		
-		byte[] fileData=Files.readAllBytes(Paths.get("src/test/resources/testdata/" + fileName));
-
-		return new String(fileData);
+		ObjectMapper mapper = new ObjectMapper();
+		
+		InputStream is = TestDataLoader.class
+		     .getClassLoader()
+		     .getResourceAsStream("testdata/" + fileName);
+		
+		return mapper.readValue(is, UsersList.class);
 	}
 	
 }

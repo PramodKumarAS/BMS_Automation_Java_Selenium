@@ -1,7 +1,7 @@
 pages\LoginPage.class
-pages\MovieDetailsPage.class
-pages\HomePage.class
 pages\ForgetPasswordPage.class
-pages\SingleMoviePage.class
 pages\RegisterPage.class
 base\BasePage.class
+pages\MovieDetailsPage.class
+pages\HomePage.class
+pages\SingleMoviePage.class
