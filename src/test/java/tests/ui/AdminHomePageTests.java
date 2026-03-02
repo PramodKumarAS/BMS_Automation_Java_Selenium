@@ -21,7 +21,7 @@ public class AdminHomePageTests extends BaseTest {
 	
 	@BeforeMethod
 	public void initPages() {
-		homePage = new HomePage(driver);
+		homePage = new HomePage();
 	}
 	
 	@Test (priority=1,testName="Validate Admin Home Page")

@@ -5,7 +5,6 @@ package pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,10 +13,6 @@ import elements.*;
 
 public class HomePage extends BasePage<HomePage> {
 
-	public HomePage(WebDriver driver){
-		super(driver);
-	}
-	
 	public Input<HomePage> txt_SearchMovies(){
 		return input().setProperties(By.xpath("//input[@placeholder='Type here to search for movies']"));
 	}

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -24,15 +25,24 @@ import pages.SingleMoviePage;
 
 public class UserBookingShow extends BaseTest {
 	
+	HomePage homePage;
+	SingleMoviePage singleMoviePage;
+	MovieDetailsPage movieDetailsPage;
+	UserApiService userAPI ;
 	public MongoCollection<Document> mdb_Booking_collection=null;
 	public MongoCollection<Document> mdb_Shows_collection=null;
-	public String bookingShowId = "697c1c7f0476ba2e220e7476";
+	public MongoCollection<Document> mdb_Movies_collection=null;
+	
+	public String bookingShowId = "";
 	
 	@BeforeClass
 	public void setUp() {
 		loginToApp();
+		
+		userAPI = new UserApiService();
 		mdb_Booking_collection = MongoConnection.connect("test", "bookings");
 		mdb_Shows_collection = MongoConnection.connect("test", "shows");
+		mdb_Movies_collection=MongoConnection.connect("test", "movies");
 	}
 	
 	@AfterClass
@@ -41,39 +51,44 @@ public class UserBookingShow extends BaseTest {
 		MongoUtils.updateArrayFieldToEmpty(mdb_Shows_collection,bookingShowId , "bookedSeats");
 	}
 	
+	@BeforeMethod
+	public void initPages() {
+		homePage = new HomePage();
+		singleMoviePage = new SingleMoviePage();
+		movieDetailsPage = new MovieDetailsPage();
+	}
+		
 	@Test(priority=1,testName="Validate user booking a show")
 	public void bookShow() {
-		HomePage homePage = new HomePage(driver).waitForPageToLoad();
+		HomePage homePage = new HomePage().waitForPageToLoad();
 		
 		homePage
 		   .txt_SearchMovies().setText("Avengers: Endgame")
 		   .ele_MoviesPoster("Avengers: Endgame").click();
-		
-		SingleMoviePage singleMoviePage = new SingleMoviePage(driver).waitForPageLoad();
-		
+				
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYY");
 		String todayDate = LocalDate.now().format(formatter);
 		
 		singleMoviePage
+		   .waitForPageLoad()
 		   .input_ChooseTheDate().setText(todayDate);
 		
 		boolean isBookShowBtn_Exists = singleMoviePage.btn_BookShow().exist();
 		
 		if(!isBookShowBtn_Exists) {
 			//Create a show for Today's Date using API
-			UserApiService userAPI = new UserApiService();
 			userAPI.postUser();
 			driver.navigate().refresh();
 			waitForSeconds(5);
 		}
 			
+		//System.out.print("Theater id is "+ userAPI.getTheatreId());
 		singleMoviePage
 		   .input_ChooseTheDate().setText(todayDate)
 		   .btn_BookShow().click();
 
-		MovieDetailsPage movieDetailsPage = new MovieDetailsPage(driver).waitForPageLoad();
-
 		movieDetailsPage
+		   .waitForPageLoad()
 		   .btn_SelectSeat("12").click()
 		   .btn_SelectSeat("13").click()
 		   .btn_PayNow().click();
@@ -100,6 +115,9 @@ public class UserBookingShow extends BaseTest {
 		homePage.waitForPageToLoad();
 		
 		driver.get(bookingURL);
+		String[] url=bookingURL.split("/");
+		bookingShowId = url[url.length-1];
+		
 		waitForSeconds(5);//Wait for Card to open 
 
 		boolean isSeatNumberBooked_12 = movieDetailsPage.btn_BookedSeat("12").exist();
@@ -112,9 +130,6 @@ public class UserBookingShow extends BaseTest {
 		sa.assertTrue(isSeatNumberBooked_13,"Seat Number 13 is not booked correctly");
 		sa.assertTrue(out_TotalSeats_AfterBooking.contains("250"),"Total Seats not displayed correctly after booking");
 		sa.assertTrue(out_AvailableSeats_AfterBooking.contains("248"),"Available Seats not displayed correctly after booking");
-		sa.assertAll();
-		
-		//TODO: Validate booked show in MongoDB
-		   
+		sa.assertAll();		   
 	}
 }

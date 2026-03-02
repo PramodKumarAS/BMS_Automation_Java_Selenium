@@ -15,7 +15,7 @@ public class Element<T> {
 	public Element(T page,WebDriver driver){
 		_page=page;
 		_driver=driver;
-	}
+	} 
 	
 	public Element<T> setProperties(By locator) {
 		this._locator = locator;

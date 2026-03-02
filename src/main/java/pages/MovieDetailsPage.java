@@ -3,7 +3,6 @@ package pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,10 +12,6 @@ import elements.Element;
 import elements.Input;
 
 public class MovieDetailsPage extends BasePage<MovieDetailsPage> {
-
-	public MovieDetailsPage(WebDriver driver) {
-		super(driver);
-	}
 	
 	public Element<MovieDetailsPage> ele_MovieTitle(){
 		return element().setProperties(By.xpath("//*[@class='movie-title-details']//h1"));

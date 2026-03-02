@@ -1,14 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import base.BasePage;
 import elements.*;
 
 public class ForgetPasswordPage extends BasePage<ForgetPasswordPage> {
-	public ForgetPasswordPage(WebDriver driver){
-		super(driver);
-	}
 	
 	public Input<ForgetPasswordPage> txt_Email() {
 	    return input().setProperties(By.id("email"));

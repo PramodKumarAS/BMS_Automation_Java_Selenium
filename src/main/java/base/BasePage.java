@@ -3,13 +3,14 @@ package base;
 import org.openqa.selenium.WebDriver;
 
 import elements.*;
+import utilities.DriverManager;
 
 public class BasePage<T> {
 
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    public BasePage() {
+        this.driver = DriverManager.getDriver();
     }
 
     public Input<T> input() {
@@ -26,5 +27,9 @@ public class BasePage<T> {
     
     public Element<T> element(){
     	return new Element<>((T) this,driver);
+    }
+    
+    public Table<T> table(){
+    	return new Table<>((T) this,driver);
     }
 }

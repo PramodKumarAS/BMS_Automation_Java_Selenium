@@ -23,7 +23,7 @@ public class UserHomePageTests extends BaseTest {
 	
 	@BeforeMethod
 	public void initPages() {
-		homePage = new HomePage(driver);
+		homePage = new HomePage();
 	}
 	
 	@Test (priority=1,testName="Validate User Home Page")

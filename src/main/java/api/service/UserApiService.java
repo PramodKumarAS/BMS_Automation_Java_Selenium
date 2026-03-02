@@ -30,18 +30,17 @@ public class UserApiService extends BaseApi  {
 		return response.jsonPath().getString("token");
 	}
 	
-	public void getUser() {
+	public String getUser() {
+	
 		String token=getUserToken();
-		given()
+		Response response = given()
 			.log().all()
 			.contentType(ContentType.JSON)
 			.header("Authorization","Bearer " + token)
 		.when()
-			.get("/user/get-currentUser")
-		.then()
-			.log().all()
-			.statusCode(200)
-			.body("success",equalTo(true));
+			.get("/user/get-currentUser");
+		
+		return  response.jsonPath().getString("user._id");
 	}
 	
 	public void postUser() {
@@ -79,5 +78,19 @@ public class UserApiService extends BaseApi  {
 		    .log().all()
 		    .statusCode(200)
 		    .body("message",equalTo("The show has been updated!"));
+	}
+	
+	public String getTheatreId() {
+		String token = getUserToken();
+		String userId= getUser();
+		
+		Response response = given()
+				            .log().all()
+				            .contentType(ContentType.JSON)
+							.header("Authorization","Bearer " + token)
+							.when()
+								.get("theatre/get-theatres-ByOwner/" + userId);
+		
+		return response.jsonPath().getString("allTheatres[0]._id");
 	}
 }  

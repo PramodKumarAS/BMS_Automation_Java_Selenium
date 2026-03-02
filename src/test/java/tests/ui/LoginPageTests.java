@@ -14,9 +14,9 @@ public class LoginPageTests extends BaseTest{
 	
     @BeforeMethod
     public void initPages() {
-        loginPage = new LoginPage(driver);
-        registerPage = new RegisterPage(driver);
-        forgetPasswordPage = new ForgetPasswordPage(driver);
+        loginPage = new LoginPage();
+        registerPage = new RegisterPage();
+        forgetPasswordPage = new ForgetPasswordPage();
     }
 
     @Test(priority=1,testName="Login Page UI Test")

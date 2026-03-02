@@ -8,11 +8,7 @@ import base.BasePage;
 import elements.*;
 
 public class LoginPage extends BasePage<LoginPage> {
-		
-	public LoginPage(WebDriver driver){
-		super(driver);
-	}
-	
+
     public Element<LoginPage> ele_loginPageHeader()  { 
     	return element().setProperties(By.xpath("//h2[normalize-space(text())='🎬 BookMyShow']"));
     };

@@ -1,0 +1,13 @@
+
+	<suite name="Suite" parallel="classes" thread-count="3">
+	
+	   <parameter name="browser" value="chrome"/>
+	   <test name="ChromeTest">
+	      <packages>
+	         <package name="tests.e2e"/>
+	         <package name="tests.ui"/>
+	      </packages>
+	   </test>
+	
+
+	</suite>

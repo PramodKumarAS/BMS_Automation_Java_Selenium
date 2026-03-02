@@ -21,7 +21,7 @@ public class PartnerHomePageTests extends BaseTest {
 	
 	@BeforeMethod
 	public void initPages() {
-		homePage = new HomePage(driver);
+		homePage = new HomePage();
 	}
 	
 	@Test (priority=1,testName="Validate Partner Home Page")

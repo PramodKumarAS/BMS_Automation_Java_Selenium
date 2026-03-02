@@ -3,6 +3,14 @@
 		{
 			"email":"pkUser@gmail.com",
 			"password":"14036"
-		}
+		},
+		{
+			"email":"pkPartner@gmail.com",
+			"password":"14036"			
+		},
+		{
+			"email":"pkAdmin@gmail.com",
+			"password":"14036"			
+		}	
 	]
 }

@@ -1,2 +1,13 @@
+tests\e2e\PartnerAddingShow.class
+tests\api\GetUserTest.class
+base\APIBaseTest.class
+utils\TestDataLoader.class
+tests\ui\LoginPageTests.class
+utils\ConfigReader.class
+tests\ui\AdminHomePageTests.class
 base\BaseTest.class
 listeners\ExtentTestListener.class
+tests\e2e\UserBookingShow.class
+tests\ui\PartnerHomePageTests.class
+tests\ui\SingleMoviePageTests.class
+tests\ui\UserHomePageTests.class

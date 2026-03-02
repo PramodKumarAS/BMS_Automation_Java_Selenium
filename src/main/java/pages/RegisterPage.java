@@ -1,16 +1,11 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import base.BasePage;
 import elements.*;
 
 public class RegisterPage extends BasePage<RegisterPage>{
 
-	public RegisterPage(WebDriver driver){
-		super(driver);
-	}
-	
 	public Input<RegisterPage> txt_RegisterFullName() {
 		return input().setProperties(By.id("name"));
 	}
