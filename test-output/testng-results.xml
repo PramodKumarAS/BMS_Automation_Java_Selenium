@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-26T07:30:36 IST" name="Default suite" finished-at="2026-02-26T07:30:56 IST" duration-ms="19703">
+  <suite started-at="2026-03-05T07:57:27 IST" name="Default suite" finished-at="2026-03-05T07:57:51 IST" duration-ms="24410">
     <groups>
     </groups>
-    <test started-at="2026-02-26T07:30:36 IST" name="Default test" finished-at="2026-02-26T07:30:56 IST" duration-ms="19703">
-      <class name="tests.ui.LoginWithDifferentUser">
-        <test-method is-config="true" signature="OneTimeSetUp(java.lang.String)[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:36 IST" name="OneTimeSetUp" finished-at="2026-02-26T07:30:39 IST" duration-ms="2944" status="PASS">
+    <test started-at="2026-03-05T07:57:27 IST" name="Default test" finished-at="2026-03-05T07:57:51 IST" duration-ms="24410">
+      <class name="tests.e2e.AdminAddingMovie">
+        <test-method is-config="true" signature="OneTimeSetUp(java.lang.String)[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:27 IST" name="OneTimeSetUp" finished-at="2026-03-05T07:57:30 IST" duration-ms="3035" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,101 +18,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OneTimeSetUp -->
-        <test-method is-config="true" signature="initPages()[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:39 IST" name="initPages" finished-at="2026-02-26T07:30:39 IST" duration-ms="16" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:30 IST" name="beforeClass" finished-at="2026-03-05T07:57:39 IST" duration-ms="8960" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initPages -->
-        <test-method signature="login(java.lang.String,java.lang.String,java.lang.String,org.openqa.selenium.By)[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:39 IST" name="login" data-provider="login-data-provider" finished-at="2026-02-26T07:30:46 IST" duration-ms="7128" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[pkUser@gmail.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[14036]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[UserPramod]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[By.xpath: //input[@placeholder='Type here to search for movies']]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- beforeClass -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:39 IST" name="setUp" finished-at="2026-03-05T07:57:39 IST" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- login -->
-        <test-method is-config="true" signature="initPages()[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:46 IST" name="initPages" finished-at="2026-02-26T07:30:46 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="addMovieTest()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:39 IST" name="addMovieTest" finished-at="2026-03-05T07:57:50 IST" duration-ms="10659" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initPages -->
-        <test-method signature="login(java.lang.String,java.lang.String,java.lang.String,org.openqa.selenium.By)[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:46 IST" name="login" data-provider="login-data-provider" finished-at="2026-02-26T07:30:51 IST" duration-ms="4361" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[pkPartner@gmail.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[14036]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[PartnerPramod]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[By.xpath: //*[normalize-space(text())='Add Theatre']/ancestor::button]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- addMovieTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:50 IST" name="tearDown" finished-at="2026-03-05T07:57:51 IST" duration-ms="891" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- login -->
-        <test-method is-config="true" signature="initPages()[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:51 IST" name="initPages" finished-at="2026-02-26T07:30:51 IST" duration-ms="3" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- initPages -->
-        <test-method signature="login(java.lang.String,java.lang.String,java.lang.String,org.openqa.selenium.By)[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:51 IST" name="login" data-provider="login-data-provider" finished-at="2026-02-26T07:30:55 IST" duration-ms="4520" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[pkAdmin@gmail.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[14036]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[AdminPramod]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[By.xpath: //*[normalize-space(text())='Add Movie']/ancestor::button]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- login -->
-        <test-method is-config="true" signature="OneTimeTearDown()[pri:0, instance:tests.ui.LoginWithDifferentUser@1e4f4a5c]" started-at="2026-02-26T07:30:55 IST" name="OneTimeTearDown" finished-at="2026-02-26T07:30:56 IST" duration-ms="377" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="OneTimeTearDown()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:51 IST" name="OneTimeTearDown" finished-at="2026-03-05T07:57:51 IST" duration-ms="514" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OneTimeTearDown -->
-      </class> <!-- tests.ui.LoginWithDifferentUser -->
+      </class> <!-- tests.e2e.AdminAddingMovie -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

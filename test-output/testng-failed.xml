@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.ui.PartnerHomePageTests">
+      <class name="tests.e2e.AdminAddingMovie">
         <methods>
+          <include name="addMovieTest"/>
           <include name="OneTimeSetUp"/>
-          <include name="initPages"/>
-          <include name="TS01_Validate_userHomePageTest"/>
+          <include name="beforeClass"/>
           <include name="setUp"/>
           <include name="OneTimeTearDown"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- tests.ui.PartnerHomePageTests -->
+      </class> <!-- tests.e2e.AdminAddingMovie -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

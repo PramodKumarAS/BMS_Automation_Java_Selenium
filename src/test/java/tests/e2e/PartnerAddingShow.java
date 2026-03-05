@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.bson.Document;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -63,20 +64,22 @@ public class PartnerAddingShow extends BaseTest {
 	@Test(priority=1,testName="Partner able to add show from partner page")
 	public void partnerAbleToAddShow() {
 		
-		int theatreCount = partnerPage
+		int theatreCount = 
+		partnerPage
 			.waitForPageLoad()
 			.tbl_Theatres().getRowCount();
 		
 		if(theatreCount==0) {
-			//Fail
+			Assert.fail("No Theatre records found");
 		}
 		
 		partnerPage
-		   .btn_AddShows("PVR").click();
+		    .btn_AddShows("PVR").click();
 		
-		int showsCountBefore = showsModalPage
-				.waitForTableToLoad()
-			    .tbl_Shows().getRowCount();
+		int showsCountBefore = 
+		showsModalPage
+			.waitForTableToLoad()
+		    .tbl_Shows().getRowCount();
 		
 		showsModalPage
 			.btn_AddShow().click();
@@ -90,11 +93,13 @@ public class PartnerAddingShow extends BaseTest {
 		    .selectFromVirtualDropdown(showData.getMovieName())
 		    .btn_AddTheShow().click();
 		
-		int showsCountAfter = showsModalPage
-				.waitForTableToLoad()
-				.tbl_Shows().getRowCount();		
+		int showsCountAfter = 
+		showsModalPage
+			.waitForTableToLoad()
+			.tbl_Shows().getRowCount();		
 		
-		HashMap<String,String> addedShowRowData = showsModalPage
+		HashMap<String,String> addedShowRowData = 
+		showsModalPage
 		    .tbl_Shows().getRowRecordByValue(showData.getShowName());
 		    
 		SoftAssert sa = new SoftAssert();
@@ -105,6 +110,7 @@ public class PartnerAddingShow extends BaseTest {
 		sa.assertEquals(addedShowRowData.get("Movie"), showData.getMovieName());
 		sa.assertEquals(addedShowRowData.get("Ticket Price"), showData.getTicketPrice());
 		sa.assertEquals(addedShowRowData.get("Total Seats"), showData.getTotalSeats());
-		sa.assertEquals(addedShowRowData.get("Available Seats"), showData.getTotalSeats());			
+		sa.assertEquals(addedShowRowData.get("Available Seats"), showData.getTotalSeats());	
+		sa.assertAll();		   		
 	}
 }

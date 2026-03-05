@@ -31,8 +31,7 @@ public class UserBookingShow extends BaseTest {
 	UserApiService userAPI ;
 	public MongoCollection<Document> mdb_Booking_collection=null;
 	public MongoCollection<Document> mdb_Shows_collection=null;
-	public MongoCollection<Document> mdb_Movies_collection=null;
-	
+	public MongoCollection<Document> mdb_Movies_collection=null;	
 	public String bookingShowId = "";
 	
 	@BeforeClass
@@ -59,9 +58,7 @@ public class UserBookingShow extends BaseTest {
 	}
 		
 	@Test(priority=1,testName="Validate user booking a show")
-	public void bookShow() {
-		HomePage homePage = new HomePage().waitForPageToLoad();
-		
+	public void bookShow() {		
 		homePage
 		   .txt_SearchMovies().setText("Avengers: Endgame")
 		   .ele_MoviesPoster("Avengers: Endgame").click();
@@ -82,7 +79,6 @@ public class UserBookingShow extends BaseTest {
 			waitForSeconds(5);
 		}
 			
-		//System.out.print("Theater id is "+ userAPI.getTheatreId());
 		singleMoviePage
 		   .input_ChooseTheDate().setText(todayDate)
 		   .btn_BookShow().click();

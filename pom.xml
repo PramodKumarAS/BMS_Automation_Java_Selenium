@@ -7,7 +7,7 @@
   <groupId>com.selenium.demo</groupId>
   <artifactId>BMSProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>maven-plugin</packaging>
 
   <name>BMSProject</name>
   <url>http://www.example.com</url>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.18.1</version>
+			<version>4.21.0</version>
         </dependency>
 
         <!-- WebDriverManager (auto-manages ChromeDriver, no need for chromedriver.exe) -->

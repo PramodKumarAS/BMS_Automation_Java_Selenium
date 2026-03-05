@@ -42,8 +42,12 @@ public class Table<T> {
 	
 	public HashMap<String,String> getRowRecordByValue(String colValue){
 		HashMap<String,String> rowData = new HashMap<>();
-		List<WebElement> columnHeaders = _driver.findElements(By.xpath("//thead"));
+		List<WebElement> columnHeaders = _driver.findElements(By.xpath("//thead//tr//th"));
 		List<WebElement> columnRowValues = _driver.findElements(By.xpath("//td[normalize-space(text())='"+ colValue +"']/ancestor::tr//td"));
+		
+		if(columnRowValues.isEmpty()) {
+			throw new RuntimeException("No row found for value " + colValue);
+		}
 		
 		for(int i=0; i<columnRowValues.size(); i++) {
 			if(!columnHeaders.get(i).getText().equals("Action")) {				

@@ -7,7 +7,7 @@ public class Movie{
     private String _id;
     private String movieName;
     private String description;
-    private Integer duration;
+    private String duration;
     private String genre;
     private String language;
     private String releaseDate;   // ISO string
@@ -38,11 +38,11 @@ public class Movie{
         this.description = description;
     }
 
-    public Integer getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
