@@ -1,5 +1,6 @@
 package elements;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Table<T> {
 	public WebDriver _driver;
@@ -41,15 +44,20 @@ public class Table<T> {
 	}
 	
 	public HashMap<String,String> getRowRecordByValue(String colValue){
+		
 		HashMap<String,String> rowData = new HashMap<>();
-		List<WebElement> columnHeaders = _driver.findElements(By.xpath("//thead//tr//th"));
+		List<WebElement> columnHeaders = _driver.findElements(By.xpath("//*[normalize-space(text())='"+ colValue +"']/ancestor::table//thead//tr//th"));
+		
+		WebDriverWait wait = new WebDriverWait(_driver,Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By.xpath("//td[normalize-space(text())='"+ colValue +"']/ancestor::tr//td"))));
 		List<WebElement> columnRowValues = _driver.findElements(By.xpath("//td[normalize-space(text())='"+ colValue +"']/ancestor::tr//td"));
+	
 		
 		if(columnRowValues.isEmpty()) {
 			throw new RuntimeException("No row found for value " + colValue);
 		}
 		
-		for(int i=0; i<columnRowValues.size(); i++) {
+		for(int i=0; i<columnHeaders.size(); i++) {
 			if(!columnHeaders.get(i).getText().equals("Action")) {				
 				rowData.put(columnHeaders.get(i).getText(), columnRowValues.get(i).getText()); 
 			}

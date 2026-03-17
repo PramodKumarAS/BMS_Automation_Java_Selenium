@@ -11,11 +11,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import api.model.Movie;
 import api.model.UserServiceModel;
-import base.BaseApi;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-public class UserApiService extends BaseApi  {
+public class UserApiService  {
 
 
 	public String getUserToken() {

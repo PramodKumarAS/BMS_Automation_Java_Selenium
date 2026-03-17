@@ -3,16 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.e2e.AdminAddingMovie">
+      <class name="tests.api.AuthAPITests">
         <methods>
-          <include name="addMovieTest"/>
-          <include name="OneTimeSetUp"/>
-          <include name="beforeClass"/>
+          <include name="verifyUserGetErrorForInvalidEmailForReset"/>
           <include name="setUp"/>
-          <include name="OneTimeTearDown"/>
-          <include name="tearDown"/>
         </methods>
-      </class> <!-- tests.e2e.AdminAddingMovie -->
+      </class> <!-- tests.api.AuthAPITests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

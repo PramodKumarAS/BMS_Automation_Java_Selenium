@@ -19,9 +19,9 @@ import api.model.UsersList;
 import base.BaseTest;
 import db.MongoConnection;
 import db.MongoUtils;
+import driver.TestDataLoader;
 import pages.AddMovieModalPage;
 import pages.AdminHomePage;
-import utils.TestDataLoader;
 
 public class AdminAddingMovie extends BaseTest {
 	
@@ -58,7 +58,7 @@ public class AdminAddingMovie extends BaseTest {
 	}
 	
 	@Test
-	public void addMovieTest() {
+	public void TS01_Validate_addMovieTest() {
 		adminHomePage
 			.btn_AddMovie().click();
 		

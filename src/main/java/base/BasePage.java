@@ -3,6 +3,7 @@ package base;
 import org.openqa.selenium.WebDriver;
 
 import elements.*;
+import utilities.DriverFactory;
 import utilities.DriverManager;
 
 public class BasePage<T> {
@@ -10,7 +11,7 @@ public class BasePage<T> {
     protected WebDriver driver;
 
     public BasePage() {
-        this.driver = DriverManager.getDriver();
+        this.driver = DriverFactory.getDriver();
     }
 
     public Input<T> input() {

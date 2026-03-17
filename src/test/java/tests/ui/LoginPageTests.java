@@ -19,7 +19,7 @@ public class LoginPageTests extends BaseTest{
         forgetPasswordPage = new ForgetPasswordPage();
     }
 
-    @Test(priority=1,testName="Login Page UI Test")
+    @Test(groups = {"smoke"},priority=1,testName="Login Page UI Test")
     public void TS01_Validate_loginPageTest() {
     	SoftAssert sa = new SoftAssert();
 
@@ -49,7 +49,7 @@ public class LoginPageTests extends BaseTest{
         sa.assertAll();    
     } 
     
-    @Test(priority=2,testName="Register Page UI Test")
+    @Test(groups = {"smoke"},priority=2,testName="Register Page UI Test")
     public void TS02_Validate_registerPageTest() {
     	SoftAssert sa = new SoftAssert();
 
@@ -77,7 +77,7 @@ public class LoginPageTests extends BaseTest{
     	sa.assertAll();
     }
     
-    @Test(priority=3,testName="Forget Password Page UI Test")
+    @Test(groups = {"smoke"},priority=3,testName="Forget Password Page UI Test")
     public void TS03_Validate_forgetPasswordPageTest() {
     	SoftAssert sa = new SoftAssert();
 

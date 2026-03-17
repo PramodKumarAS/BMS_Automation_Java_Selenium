@@ -24,7 +24,7 @@ public class AdminHomePageTests extends BaseTest {
 		homePage = new HomePage();
 	}
 	
-	@Test (priority=1,testName="Validate Admin Home Page")
+	@Test (groups = {"smoke"},priority=1,testName="Validate Admin Home Page")
 	public void TS01_Validate_userHomePageTest() {
 				
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));

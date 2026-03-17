@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Surefire test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>7/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/3/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Feb 13 07:43:45 IST 2026</td>
+<td>Started on:</td><td>Fri Mar 06 08:04:56 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>41 seconds (41006 ms)</td>
+<tr><td>Total time:</td><td>3 seconds (3948 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,40 +76,83 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='tests.ui.LoginPageTests.TS01_Validate_loginPageTest()'><b>TS01_Validate_loginPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
-<td></td>
-<td>7</td>
-<td>tests.ui.LoginPageTests@2e385cce</td></tr>
+<td title='tests.ui.LoginPageTests.TS03_Validate_forgetPasswordPageTest()'><b>TS03_Validate_forgetPasswordPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
+	at tests.ui.LoginPageTests.TS03_Validate_forgetPasswordPageTest(LoginPageTests.java:84)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace153931656", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace153931656'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
+	at tests.ui.LoginPageTests.TS03_Validate_forgetPasswordPageTest(LoginPageTests.java:84)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>0</td>
+<td>tests.ui.LoginPageTests@4d154ccd</td></tr>
 <tr>
-<td title='tests.ui.AdminHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.AdminHomePageTests</td>
-<td></td>
-<td>19</td>
-<td>tests.ui.AdminHomePageTests@3e27aa33</td></tr>
+<td title='tests.ui.LoginPageTests.TS01_Validate_loginPageTest()'><b>TS01_Validate_loginPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
+	at tests.ui.LoginPageTests.TS01_Validate_loginPageTest(LoginPageTests.java:26)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace544259723", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace544259723'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
+	at tests.ui.LoginPageTests.TS01_Validate_loginPageTest(LoginPageTests.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>0</td>
+<td>tests.ui.LoginPageTests@4d154ccd</td></tr>
 <tr>
 <td title='tests.ui.LoginPageTests.TS02_Validate_registerPageTest()'><b>TS02_Validate_registerPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
-<td></td>
-<td>1</td>
-<td>tests.ui.LoginPageTests@2e385cce</td></tr>
-<tr>
-<td title='tests.ui.PartnerHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.PartnerHomePageTests</td>
-<td></td>
-<td>18</td>
-<td>tests.ui.PartnerHomePageTests@2ddc9a9f</td></tr>
-<tr>
-<td title='tests.ui.LoginPageTests.TS03_Validate_forgetPasswordPageTest()'><b>TS03_Validate_forgetPasswordPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
-<td></td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
+	at tests.ui.LoginPageTests.TS02_Validate_registerPageTest(LoginPageTests.java:56)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1164604804", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1164604804'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
+	at tests.ui.LoginPageTests.TS02_Validate_registerPageTest(LoginPageTests.java:56)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
 <td>0</td>
-<td>tests.ui.LoginPageTests@2e385cce</td></tr>
-<tr>
-<td title='tests.ui.SingleMoviePageTests.singleMovie()'><b>singleMovie</b><br>Test class: tests.ui.SingleMoviePageTests</td>
-<td></td>
-<td>4</td>
-<td>tests.ui.SingleMoviePageTests@298a5e20</td></tr>
-<tr>
-<td title='tests.ui.UserHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.UserHomePageTests</td>
-<td></td>
-<td>17</td>
-<td>tests.ui.UserHomePageTests@2a7f1f10</td></tr>
+<td>tests.ui.LoginPageTests@4d154ccd</td></tr>
 </table><p>
 </body>
 </html>

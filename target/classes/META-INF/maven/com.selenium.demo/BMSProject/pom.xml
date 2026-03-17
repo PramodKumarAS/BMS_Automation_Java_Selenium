@@ -7,7 +7,7 @@
   <groupId>com.selenium.demo</groupId>
   <artifactId>BMSProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>maven-plugin</packaging>
+  <packaging>jar</packaging>
 
   <name>BMSProject</name>
   <url>http://www.example.com</url>
@@ -79,7 +79,7 @@
 
     </dependencies>
 
-	<build>
+  <build>
   <plugins>
 
     <plugin>
@@ -89,9 +89,9 @@
 
       <configuration>
 
-        <parallel>classes</parallel>
-        <threadCount>8</threadCount>
-        <useUnlimitedThreads>false</useUnlimitedThreads>
+        <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+        </suiteXmlFiles>
 
         <systemPropertyVariables>
           <allure.results.directory>
@@ -104,6 +104,6 @@
     </plugin>
 
   </plugins>
-</build>
+  </build>
 
 </project>

@@ -3,8 +3,6 @@ package tests.api;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import org.testng.annotations.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import api.model.Movie;

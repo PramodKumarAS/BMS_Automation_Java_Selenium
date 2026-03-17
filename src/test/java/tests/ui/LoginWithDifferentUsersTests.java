@@ -24,8 +24,8 @@ public class LoginWithDifferentUsersTests extends BaseTest{
         homePage = new HomePage();
     }
     
-    @Test (dataProvider="login-data-provider",dataProviderClass=LoginDataProvider.class)
-	public void login(String userEmail,String password,String userName,By waitLocator) {
+    @Test (groups = {"smoke"},dataProvider="login-data-provider",dataProviderClass=LoginDataProvider.class)
+	public void TS01_login(String userEmail,String password,String userName,By waitLocator) {
 		
         driver.get(baseURL);
 		

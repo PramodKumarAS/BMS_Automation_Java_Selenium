@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import org.bson.Document;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -44,23 +44,30 @@ public class UserBookingShow extends BaseTest {
 		mdb_Movies_collection=MongoConnection.connect("test", "movies");
 	}
 	
-	@AfterClass
-	public void tearDown() {
-		MongoUtils.deleteAll(mdb_Booking_collection);
-		MongoUtils.updateArrayFieldToEmpty(mdb_Shows_collection,bookingShowId , "bookedSeats");
-	}
-	
 	@BeforeMethod
 	public void initPages() {
 		homePage = new HomePage();
 		singleMoviePage = new SingleMoviePage();
 		movieDetailsPage = new MovieDetailsPage();
 	}
+	
+	@AfterMethod
+	public void tearDown() {
+		MongoUtils.deleteAll(mdb_Booking_collection);
 		
+		if(!bookingShowId.equals("")) {
+			MongoUtils.updateArrayFieldToEmpty(mdb_Shows_collection,bookingShowId , "bookedSeats");			
+		}
+	}
+			
 	@Test(priority=1,testName="Validate user booking a show")
-	public void bookShow() {		
+	public void TS01_Validate_UserbookShow() {		
 		homePage
-		   .txt_SearchMovies().setText("Avengers: Endgame")
+		   .txt_SearchMovies().setText("Avengers: Endgame");
+		
+		waitForSeconds(3);
+	
+		homePage		
 		   .ele_MoviesPoster("Avengers: Endgame").click();
 				
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYY");

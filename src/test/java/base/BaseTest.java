@@ -1,5 +1,6 @@
 package base;
 
+import org.testng.annotations.AfterClass;
 import java.io.IOException;
 import java.time.Duration;
 
@@ -7,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -15,26 +15,43 @@ import org.testng.annotations.Parameters;
 
 import api.model.User;
 import api.model.UsersList;
+import driver.ConfigReader;
+import driver.TestDataLoader;
 import pages.LoginPage;
-import utilities.DriverManager;
-import utils.ConfigReader;
-import utils.TestDataLoader;
+import utilities.DriverConfig;
+import utilities.DriverFactory;
 
 @Listeners(listeners.ExtentTestListener.class)
 public class BaseTest {
 
 	public WebDriver driver;
 	public String baseURL;
-	User userData;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void OneTimeSetUp(@Optional("chrome") String browserName) {
-		DriverManager.initDriver(browserName);
-		driver = DriverManager.getDriver();
+		
+		DriverConfig config = new DriverFactory.Builder()
+                .browser(browserName)
+                .headless(false)
+                .incognito(false)
+                .build();
+
+		DriverFactory.initDriver(config);	
+		driver = DriverFactory.getDriver();
+		
 		driver.manage().window().maximize();
 		baseURL=ConfigReader.get("baseUrl");
 
+	}
+	
+	@AfterClass
+	public void OneTimeTearDown() {
+		DriverFactory.quitDriver();
+	}
+	
+	public void loginToApp() {
+		User userData=null;
 		try {
 			UsersList users = TestDataLoader.loadUsers("users.json");
 			userData = users.getUsers().get(0);
@@ -42,14 +59,7 @@ public class BaseTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	@AfterClass
-	public void OneTimeTearDown() {
-		DriverManager.quitDriver();
-	}
-	
-	public void loginToApp() {
+		
 		driver.get(baseURL);
 		
 		LoginPage loginPage = new LoginPage();

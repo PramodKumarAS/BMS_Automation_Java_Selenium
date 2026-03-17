@@ -2,43 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-05T07:57:27 IST" name="Default suite" finished-at="2026-03-05T07:57:51 IST" duration-ms="24410">
+  <suite started-at="2026-03-17T08:18:59 IST" name="Default suite" finished-at="2026-03-17T08:19:02 IST" duration-ms="2867">
     <groups>
     </groups>
-    <test started-at="2026-03-05T07:57:27 IST" name="Default test" finished-at="2026-03-05T07:57:51 IST" duration-ms="24410">
-      <class name="tests.e2e.AdminAddingMovie">
-        <test-method is-config="true" signature="OneTimeSetUp(java.lang.String)[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:27 IST" name="OneTimeSetUp" finished-at="2026-03-05T07:57:30 IST" duration-ms="3035" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- OneTimeSetUp -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:30 IST" name="beforeClass" finished-at="2026-03-05T07:57:39 IST" duration-ms="8960" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:39 IST" name="setUp" finished-at="2026-03-05T07:57:39 IST" duration-ms="7" status="PASS">
+    <test started-at="2026-03-17T08:18:59 IST" name="Default test" finished-at="2026-03-17T08:19:02 IST" duration-ms="2867">
+      <class name="tests.api.AuthAPITests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.api.AuthAPITests@51891008]" started-at="2026-03-17T08:18:59 IST" name="setUp" finished-at="2026-03-17T08:19:00 IST" duration-ms="685" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="addMovieTest()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:39 IST" name="addMovieTest" finished-at="2026-03-05T07:57:50 IST" duration-ms="10659" status="PASS">
+        <test-method signature="verifyUserCanLoginSuccessfully()[pri:0, instance:tests.api.AuthAPITests@51891008]" started-at="2026-03-17T08:19:00 IST" name="verifyUserCanLoginSuccessfully" finished-at="2026-03-17T08:19:02 IST" duration-ms="2092" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addMovieTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:50 IST" name="tearDown" finished-at="2026-03-05T07:57:51 IST" duration-ms="891" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="OneTimeTearDown()[pri:0, instance:tests.e2e.AdminAddingMovie@29f7cefd]" started-at="2026-03-05T07:57:51 IST" name="OneTimeTearDown" finished-at="2026-03-05T07:57:51 IST" duration-ms="514" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- OneTimeTearDown -->
-      </class> <!-- tests.e2e.AdminAddingMovie -->
+        </test-method> <!-- verifyUserCanLoginSuccessfully -->
+      </class> <!-- tests.api.AuthAPITests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

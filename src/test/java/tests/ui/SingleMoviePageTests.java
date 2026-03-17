@@ -21,8 +21,8 @@ public class SingleMoviePageTests extends BaseTest{
 		homePage = new HomePage();
 	}
 		
-	@Test(priority=1,testName="Validation of single movie page")
-	public void singleMovie() {
+	@Test(groups = {"smoke"},priority=1,testName="Validation of single movie page")
+	public void TS01_singleMovie() {
 				
 		homePage
 		   .waitForPageToLoad()
@@ -38,7 +38,7 @@ public class SingleMoviePageTests extends BaseTest{
 		boolean chooseTheDate_DateField_Exists = singleMoviePage.input_ChooseTheDate().exist();
 		//boolean NoTheareAvailableMsg_Exists = singleMoviePage.ele_NoTheatreAvailableMessage().exist();
 
-		DateTimeFormatter dateFormatter =DateTimeFormatter.ofPattern("MMM dd yyyy");
+		DateTimeFormatter dateFormatter =DateTimeFormatter.ofPattern("MMM d yyyy");
 		String formattedDateToday = LocalDate.now().format(dateFormatter);
 		String normalizedDateInUI =out_MovieReleaseDate.replaceAll("(\\d+)(st|nd|rd|th)", "$1");
 		
