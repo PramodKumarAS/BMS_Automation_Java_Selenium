@@ -7,24 +7,28 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactory {
 	
-	//SINGLETON
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	//SINGLETON -> Private constructor + Private static instance + global access method
+	private DriverFactory() {}
 
-    private DriverFactory() {}
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver getDriver() {
-        return driver.get();
-    }
 
+	public static WebDriver getDriver() {
+	    if(driver.get() == null){
+	        throw new RuntimeException("Driver not initialized. Call initDriver() first.");
+	    }
+	    return driver.get();
+	}
+	
     public static void quitDriver() {
         if(driver.get()!=null){
             driver.get().quit();
             driver.remove();
         }
     }
-
-    //FACTORY
-    public static void initDriver(DriverConfig config) {
+     
+    //FACTORY -> Method that returns objects based on input
+    public static WebDriver createDriver(DriverConfig config) {
 
         if(driver.get()==null){
 
@@ -57,33 +61,7 @@ public class DriverFactory {
 
             driver.set(newDriver);
         }
+        
+        return driver.get();        
     }
-
-    // BUILDER
-    public static class Builder {
-
-        private String browser = "chrome";
-        private boolean headless = false;
-        private boolean incognito = false;
-
-        public Builder browser(String browser){
-            this.browser = browser;
-            return this;
-        }
-
-        public Builder headless(boolean headless){
-            this.headless = headless;
-            return this;
-        }
-
-        public Builder incognito(boolean incognito){
-            this.incognito = incognito;
-            return this;
-        }
-
-        public DriverConfig build(){
-            return new DriverConfig(browser, headless, incognito);
-        }
-    }
-
 }

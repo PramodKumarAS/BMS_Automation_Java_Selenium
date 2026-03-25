@@ -1,21 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-17T08:18:59 IST" name="Default suite" finished-at="2026-03-17T08:19:02 IST" duration-ms="2867">
+  <suite started-at="2026-03-25T09:20:26 IST" name="Default suite" finished-at="2026-03-25T09:20:36 IST" duration-ms="9800">
     <groups>
     </groups>
-    <test started-at="2026-03-17T08:18:59 IST" name="Default test" finished-at="2026-03-17T08:19:02 IST" duration-ms="2867">
-      <class name="tests.api.AuthAPITests">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.api.AuthAPITests@51891008]" started-at="2026-03-17T08:18:59 IST" name="setUp" finished-at="2026-03-17T08:19:00 IST" duration-ms="685" status="PASS">
+    <test started-at="2026-03-25T09:20:26 IST" name="Default test" finished-at="2026-03-25T09:20:36 IST" duration-ms="9800">
+      <class name="tests.api.AuthApiTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:26 IST" name="setUp" finished-at="2026-03-25T09:20:27 IST" duration-ms="691" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyUserCanLoginSuccessfully()[pri:0, instance:tests.api.AuthAPITests@51891008]" started-at="2026-03-17T08:19:00 IST" name="verifyUserCanLoginSuccessfully" finished-at="2026-03-17T08:19:02 IST" duration-ms="2092" status="PASS">
+        <test-method signature="shouldDecodeJWTBase64Successfully()[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:27 IST" name="shouldDecodeJWTBase64Successfully" finished-at="2026-03-25T09:20:29 IST" duration-ms="2211" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserCanLoginSuccessfully -->
-      </class> <!-- tests.api.AuthAPITests -->
+        </test-method> <!-- shouldDecodeJWTBase64Successfully -->
+        <test-method signature="shouldHaveValidJWTStructure()[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:29 IST" name="shouldHaveValidJWTStructure" finished-at="2026-03-25T09:20:30 IST" duration-ms="1151" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldHaveValidJWTStructure -->
+        <test-method signature="shouldHaveValidTokenExpiry()[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:30 IST" name="shouldHaveValidTokenExpiry" finished-at="2026-03-25T09:20:33 IST" duration-ms="2528" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldHaveValidTokenExpiry -->
+        <test-method signature="shouldLoginSuccessfully_withValidCredentials()[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:33 IST" name="shouldLoginSuccessfully_withValidCredentials" finished-at="2026-03-25T09:20:34 IST" duration-ms="1255" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldLoginSuccessfully_withValidCredentials -->
+        <test-method signature="shouldReturnError_withInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:34 IST" name="shouldReturnError_withInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-03-25T09:20:35 IST" duration-ms="1011" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[praod@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[14036]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[invalid email]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldReturnError_withInvalidCredentials -->
+        <test-method signature="shouldReturnError_withInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tests.api.AuthApiTests@5d908d47]" started-at="2026-03-25T09:20:35 IST" name="shouldReturnError_withInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-03-25T09:20:36 IST" duration-ms="839" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[pkUser@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[!212!!]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[invalid password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldReturnError_withInvalidCredentials -->
+      </class> <!-- tests.api.AuthApiTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

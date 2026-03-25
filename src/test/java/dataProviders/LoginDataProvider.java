@@ -28,4 +28,12 @@ public class LoginDataProvider {
 	        }			
 		};
 	}
+	
+	@DataProvider (name="invalidLoginData")
+	public Object[][] invalidLoginData(){
+		return new Object[][] {
+	        {"praod@gmail.com", "14036", "invalid email"},
+	        {"pkUser@gmail.com", "!212!!", "invalid password"}			
+		};
+	}
 }

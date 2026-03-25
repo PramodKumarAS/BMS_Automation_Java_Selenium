@@ -5,52 +5,58 @@ import static io.restassured.RestAssured.given;
 import api.model.ForgetPasswordRequest;
 import api.model.ForgetPasswordResponse;
 import api.model.LoginRequest;
-import api.model.LoginResponse;
 import api.model.RegisterRequest;
 import api.model.RegisterResponse;
 import api.model.ResetPasswordRequest;
 import api.model.ResetPasswordResponse;
+import api.wrapper.ApiResponse;
+import io.restassured.response.Response;
+import validators.ResponseValidator;
 
 public class AuthClient {
-	public LoginResponse login(LoginRequest request) {		
-		return given()
+	public ApiResponse login(LoginRequest request) {		
+		Response response =  given()
 			  .body(request)
 			.when()
-			  .post("/user/login")
-			.then()
-			  .extract()
-			  .as(LoginResponse.class);
+			  .post("/user/login");
+		
+		return new ApiResponse(response);
 	}
 	
-	public RegisterResponse register(RegisterRequest request) {
-		return given()
+	public RegisterResponse register(RegisterRequest request,boolean validSchema,int expectedStatusCode) {
+		Response response =  given()
 				.body(request)
 			.when()
-			   .post("/user/register")
-			.then()
-			   .statusCode(200)
-			   .extract()
-			   .as(RegisterResponse.class);
+			   .post("/user/register");
+		
+		response.then().statusCode(expectedStatusCode).assertThat();
+		
+		if(validSchema) {					
+			ResponseValidator.validateSchema(response, "schema/register-schema.json");
+		}
+		
+		return response.as(RegisterResponse.class);
 	}
 	
 	public ForgetPasswordResponse forgetPassword(ForgetPasswordRequest request) {
-		return given()
+		Response response =   given()
 				.body(request)
 			.when()
-		    	.post("/user/forgetpassword")
-		    .then()
-		        .extract()
-		        .as(ForgetPasswordResponse.class);
+		    	.post("/user/forgetpassword");
+		
+		ResponseValidator.validateSchema(response, "schema/forget-password-schema.json");
+		
+	    return response.as(ForgetPasswordResponse.class);
 	}
 	
 	public ResetPasswordResponse resetPassword(ResetPasswordRequest request) {
-		return given()
+		Response response =   given()
 				.body(request)
 			.when()
-			    .post("/user/resetpassword")
-			.then()
-			    .statusCode(200)
-			    .extract()
-			    .as(ResetPasswordResponse.class);
-	}	
+			    .post("/user/resetpassword");
+		
+		ResponseValidator.validateSchema(response, "schema/reset-password-schema.json");
+		
+   	    return response.as(ResetPasswordResponse.class);
+ 	}	
 }

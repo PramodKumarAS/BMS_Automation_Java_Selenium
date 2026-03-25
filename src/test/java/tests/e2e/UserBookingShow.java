@@ -15,7 +15,6 @@ import org.testng.asserts.SoftAssert;
 
 import com.mongodb.client.MongoCollection;
 
-import api.service.UserApiService;
 import base.BaseTest;
 import db.MongoConnection;
 import db.MongoUtils;
@@ -28,7 +27,6 @@ public class UserBookingShow extends BaseTest {
 	HomePage homePage;
 	SingleMoviePage singleMoviePage;
 	MovieDetailsPage movieDetailsPage;
-	UserApiService userAPI ;
 	public MongoCollection<Document> mdb_Booking_collection=null;
 	public MongoCollection<Document> mdb_Shows_collection=null;
 	public MongoCollection<Document> mdb_Movies_collection=null;	
@@ -38,7 +36,6 @@ public class UserBookingShow extends BaseTest {
 	public void setUp() {
 		loginToApp();
 		
-		userAPI = new UserApiService();
 		mdb_Booking_collection = MongoConnection.connect("test", "bookings");
 		mdb_Shows_collection = MongoConnection.connect("test", "shows");
 		mdb_Movies_collection=MongoConnection.connect("test", "movies");
@@ -80,10 +77,12 @@ public class UserBookingShow extends BaseTest {
 		boolean isBookShowBtn_Exists = singleMoviePage.btn_BookShow().exist();
 		
 		if(!isBookShowBtn_Exists) {
-			//Create a show for Today's Date using API
-			userAPI.postUser();
+			//Create a show for Today's Date using DB
+			Document mdb_Movies = MongoUtils.findOneByAnyParams(mdb_Movies_collection, "movieName", "Avengers: Endgame");	
+			Object movieId = mdb_Movies.get("_id");			
+			MongoUtils.updateShowDate(mdb_Shows_collection, movieId.toString(), LocalDate.now());
 			driver.navigate().refresh();
-			waitForSeconds(5);
+			waitForSeconds(5);			
 		}
 			
 		singleMoviePage

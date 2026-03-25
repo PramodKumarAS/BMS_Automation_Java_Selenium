@@ -29,21 +29,19 @@ public class BaseTest {
 	
 	@Parameters("browser")
 	@BeforeClass
-	public void OneTimeSetUp(@Optional("chrome") String browserName) {
-		
-		DriverConfig config = new DriverFactory.Builder()
+	public void OneTimeSetUp(@Optional("chrome") String browserName) {	
+		DriverConfig config = new DriverConfig.DriverConfigBuilder()
                 .browser(browserName)
                 .headless(false)
                 .incognito(false)
                 .build();
 
-		DriverFactory.initDriver(config);	
-		driver = DriverFactory.getDriver();
+		driver = DriverFactory.createDriver(config);	
 		
 		driver.manage().window().maximize();
 		baseURL=ConfigReader.get("baseUrl");
-
 	}
+
 	
 	@AfterClass
 	public void OneTimeTearDown() {

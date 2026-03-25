@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 
 import elements.*;
 import utilities.DriverFactory;
-import utilities.DriverManager;
 
 public class BasePage<T> {
 

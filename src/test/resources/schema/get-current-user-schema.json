@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": ["success", "user"],
+  "properties": {
+    "success": { "type": "boolean" },
+    "user": {
+      "type": "object",
+      "required": ["_id", "name", "email", "role"],
+      "properties": {
+        "_id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "__v": { "type": "number" }
+      }
+    }
+  }
+}
