@@ -26,13 +26,13 @@
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>shouldReturn409_whenRegisterWithExistingMail</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
 <td>shouldReturn400_whenRequiredLoginFieldsMissing</td>
 <td>regression </td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>shouldReturn409_whenRegisterWithExistingMail</td>
+<td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
 <td>shouldReturn200_whenForgetPasswordWithInvalidEmail</td>
@@ -75,13 +75,13 @@
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>shouldReturn401_whenInvalidCredentialsProvided</td>
-<td>regression </td>
+<td>shouldReturn200_whenForgetPasswordWithValidEmail</td>
+<td>smoke </td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>shouldReturn200_whenForgetPasswordWithValidEmail</td>
-<td>smoke </td>
+<td>shouldReturn401_whenInvalidCredentialsProvided</td>
+<td>regression </td>
 </tr>
 <tr>
 <td>&nbsp;</td>
@@ -106,232 +106,6 @@
 <tr>
 <td align='center' colspan='3'>@AfterMethod</td>
 </tr>
-<tr>
-<td align='center' colspan='3'>@AfterClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>tearDown</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>tests.api.BookApiTests</td>
-<td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@Test</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldBookShow_whenValidPaymentAndShowDetailsAreProvided</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnBookingInList_whenFetchingAllBookings</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnTransactionId_whenValidPaymentIsMade</td>
-<td>@smoke </td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@BeforeClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>setUp</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>setup</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@BeforeMethod</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@AfterMethod</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>cleanup</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@AfterClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>tearDown</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>tests.api.MovieApiTests</td>
-<td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@Test</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldRemoveTheatreFromDB_whenValidMovieIdIsDeleted</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnMovieInGlobalList_whenFetchingAllMovies</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnMovieInMoviesList_whenFilteredByMovieId</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldPersistMovieInDB_whenValidAdminAddsNewMovie</td>
-<td>@smoke </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReflectUpdatedFieldsInResponseAndDB_whenExistingMovieIsModified</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@BeforeClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>setUp</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>setup</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@BeforeMethod</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@AfterMethod</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>beforeTest</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@AfterClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>tearDown</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>tests.api.ShowApiTests</td>
-<td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@Test</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldPersistShowInDB_whenValidShowIsAdded</td>
-<td>@smoke </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnShowInList_whenFetchingAllShowsByTheatre</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnShowDetails_whenFetchedByValidShowId</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldRemoveShowFromDB_whenValidShowIdIsDeleted</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReflectUpdatedFieldsInResponseAndDB_whenExistingShowIsModified</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@BeforeClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>setUp</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>setup</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@BeforeMethod</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@AfterMethod</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>cleanup</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@AfterClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>tearDown</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>tests.api.TheatreApiTests</td>
-<td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@Test</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnTheatreInGlobalList_whenFetchingAllTheatres</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldPersistTheatreInDB_whenValidPartnerAddsNewTheatre</td>
-<td>@smoke </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldRemoveTheatreFromDB_whenValidTheatreIdIsDeleted</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReflectUpdatedFieldsInResponseAndDB_whenExistingTheatreIsModified</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>shouldReturnTheatreInOwnerList_whenFilteredByOwnerId</td>
-<td>@regression </td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@BeforeClass</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>setUp</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>setup</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td align='center' colspan='3'>@BeforeMethod</td>
-</tr>
-<tr>
-<td align='center' colspan='3'>@AfterMethod</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>beforeTest</td>
-<td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
