@@ -1,80 +1,30 @@
 package api.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Movie{
-    private String _id;
+public class Movie {
+
     private String movieName;
     private String description;
-    private String duration;
+    private int duration; // response = number
     private String genre;
     private String language;
-    private String releaseDate;   // ISO string
+    private String releaseDate;
     private String poster;
 
-    // Getters and Setters
-    public String get_id() {
-        return _id;
-    }
+    @JsonProperty("_id")
+    private String id;
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
+    @JsonProperty("__v")
+    private int version;
 
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
+    public String getMovieName() { return movieName; }
+    public String getDescription() { return description; }
+    public int getDuration() { return duration; }
+    public String getGenre() { return genre; }
+    public String getLanguage() { return language; }
+    public String getReleaseDate() { return releaseDate; }
+    public String getPoster() { return poster; }
+    public String getId() { return id; }
+    public int getVersion() { return version; }
 }

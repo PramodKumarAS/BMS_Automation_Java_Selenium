@@ -5,8 +5,10 @@
     <classes>
       <class name="tests.api.AuthApiTests">
         <methods>
+          <include name="shouldReturn400_whenRequiredRegisterFieldsMissing"/>
+          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="shouldReturnError_withInvalidCredentials" invocation-numbers="0 1"/>
+          <include name="shouldReturn401_whenInvalidCredentialsProvided"/>
         </methods>
       </class> <!-- tests.api.AuthApiTests -->
     </classes>

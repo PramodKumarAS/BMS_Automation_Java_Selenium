@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": ["success", "message", "show"],
+  "properties": {
+    "success": { "type": "boolean" },
+    "message": { "type": "string" },
+    "show": {
+      "type": "object",
+      "required": [
+        "name","date","time","movie",
+        "ticketPrice","totalSeats","theatre","_id","__v"
+      ],
+      "properties": {
+        "name": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "time": { "type": "string" },
+        "movie": { "type": "string" },
+        "ticketPrice": { "type": "number" },
+        "totalSeats": { "type": "number" },
+        "bookedSeats": {
+          "type": "array",
+          "items": {}
+        },
+        "theatre": { "type": "string" },
+        "_id": { "type": "string" },
+        "__v": { "type": "integer" }
+      }
+    }
+  }
+}

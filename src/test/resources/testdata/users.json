@@ -2,15 +2,18 @@
 	"users":[
 		{
 			"email":"pkUser@gmail.com",
-			"password":"14036"
+			"password":"14036",
+			"role":"User"
 		},
 		{
 			"email":"pkPartner@gmail.com",
-			"password":"14036"			
+			"password":"14036"		,
+			"role":"Partner"	
 		},
 		{
 			"email":"pkAdmin@gmail.com",
-			"password":"14036"			
+			"password":"14036"	,
+			"role":"Admin"		
 		}	
 	]
 }

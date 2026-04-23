@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["success", "message", "allTheatres"],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "allTheatres": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["_id", "name", "address", "phone", "email", "owner", "isActive", "createdAt", "updatedAt"],
+        "properties": {
+          "_id": { "type": "string" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "phone": { "type": "number" },
+          "email": { "type": "string" },
+		  "owner": {
+		    "type": "object",
+		    "properties": {
+		      "_id": { "type": "string" },
+		      "name": { "type": "string" },
+		      "email": { "type": "string" },
+		      "password": { "type": "string" },
+		      "role": { "type": "string" },
+		      "__v": { "type": "number" },
+		      "otp": { "type": "string" },
+		      "otpExpiry": { "type": "string", "format": "date-time" }
+		    },
+		    "required": ["_id", "name", "email"]
+		  },
+          "isActive": { "type": "boolean" },
+          "createdAt": { "type": "string" },
+          "updatedAt": { "type": "string" },
+          "__v": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

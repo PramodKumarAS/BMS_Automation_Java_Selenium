@@ -1,13 +1,17 @@
 package base;
 
-import org.testng.annotations.AfterClass;
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -15,13 +19,15 @@ import org.testng.annotations.Parameters;
 
 import api.model.User;
 import api.model.UsersList;
-import driver.ConfigReader;
-import driver.TestDataLoader;
-import pages.LoginPage;
-import utilities.DriverConfig;
-import utilities.DriverFactory;
+import config.ConfigReader;
+import data.TestDataLoader;
+import driver.DriverConfig;
+import driver.DriverFactory;
+import listeners.ExtentTestListener;
+import listeners.RetryListener;
+import ui.pages.LoginPage;
 
-@Listeners(listeners.ExtentTestListener.class)
+@Listeners({RetryListener.class, ExtentTestListener.class})
 public class BaseTest {
 
 	public WebDriver driver;
@@ -41,7 +47,6 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		baseURL=ConfigReader.get("baseUrl");
 	}
-
 	
 	@AfterClass
 	public void OneTimeTearDown() {
@@ -50,13 +55,8 @@ public class BaseTest {
 	
 	public void loginToApp() {
 		User userData=null;
-		try {
-			UsersList users = TestDataLoader.loadUsers("users.json");
-			userData = users.getUsers().get(0);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		UsersList users = TestDataLoader.loadUsers("users.json");
+		userData = users.getUsers().get(0);
 		
 		driver.get(baseURL);
 		
@@ -92,5 +92,18 @@ public class BaseTest {
 	        Thread.currentThread().interrupt();
 	        throw new RuntimeException("Thread interrupted while waiting", e);
 	    }
+	}
+	
+	public void captureScreenShot(String testName) {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		File dest = new File("target/screenshots/" +testName+ ".png");
+		
+		try {
+			FileUtils.copyFile(src, dest);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

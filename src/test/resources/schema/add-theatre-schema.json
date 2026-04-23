@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "required": ["success", "message", "theatre"],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "theatre": {
+      "type": "object",
+      "required": [
+        "name",
+        "address",
+        "phone",
+        "email",
+        "owner",
+        "isActive",
+        "_id",
+        "createdAt",
+        "updatedAt",
+        "__v"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "number"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "__v": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string" },
+        "name": { "type": "string" },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "time": {
+          "type": "string",
+          "pattern": "^([01]\\d|2[0-3]):([0-5]\\d)$"
+        },
+
+        "movie": {
+          "type": "object",
+          "properties": {
+            "_id": { "type": "string" },
+            "movieName": { "type": "string" },
+            "description": { "type": "string" },
+            "duration": { "type": "integer" },
+            "genre": { "type": "string" },
+            "language": { "type": "string" },
+            "releaseDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "poster": { "type": "string" },
+            "__v": { "type": "integer" }
+          },
+          "required": [
+            "_id",
+            "movieName",
+            "duration",
+            "genre",
+            "language",
+            "releaseDate"
+          ]
+        },
+
+        "ticketPrice": {
+          "type": "number",
+          "minimum": 0
+        },
+        "totalSeats": {
+          "type": "integer",
+          "minimum": 1
+        },
+
+        "theatre": {
+          "type": "object",
+          "properties": {
+            "_id": { "type": "string" },
+            "name": { "type": "string" },
+            "address": { "type": "string" },
+            "phone": { "type": "number" },
+            "email": { "type": "string", "format": "email" },
+            "owner": { "type": "string" },
+            "isActive": { "type": "boolean" },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "__v": { "type": "integer" }
+          },
+          "required": ["_id", "name", "address"]
+        },
+
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "__v": { "type": "integer" },
+
+        "bookedSeats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "_id",
+        "name",
+        "date",
+        "time",
+        "movie",
+        "ticketPrice",
+        "totalSeats",
+        "theatre"
+      ]
+    }
+  },
+  "required": ["success", "message", "data"]
+}

@@ -1,47 +1,40 @@
 package api.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ShowModel {
-	private String showName;
-	private String showDate;
-	private String showTime;
-	private String movieName;
-	private String ticketPrice;
-	private String totalSeats;
-	
-	public String getShowName() {
-		return showName;
-	}
-	public void setShowName(String showName) {
-		this.showName = showName;
-	}
-	public String getShowDate() {
-		return showDate;
-	}
-	public void setShowDate(String showDate) {
-		this.showDate = showDate;
-	}
-	public String getShowTime() {
-		return showTime;
-	}
-	public void setShowTime(String showTime) {
-		this.showTime = showTime;
-	}
-	public String getTicketPrice() {
-		return ticketPrice;
-	}
-	public void setTicketPrice(String ticketPrice) {
-		this.ticketPrice = ticketPrice;
-	}
-	public String getMovieName() {
-		return movieName;
-	}
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
-	}
-	public String getTotalSeats() {
-		return totalSeats;
-	}
-	public void setTotalSeats(String totalSeats) {
-		this.totalSeats = totalSeats;
-	}
+    @JsonProperty("_id")
+    private String id;
+
+    private String name;
+    private String date;
+    private String time;
+
+    private Movie movie;
+    private int ticketPrice;
+    private int totalSeats;
+    private String theatre;
+
+    private String createdAt;
+    private String updatedAt;
+
+    @JsonProperty("__v")
+    private int version;
+
+    private List<String> bookedSeats;
+
+    public String getId() { return id; }
+    public String getName() { return name; }
+    public String getDate() { return date; }
+    public String getTime() { return time; }
+    public Movie getMovie() { return movie; }
+    public int getTicketPrice() { return ticketPrice; }
+    public int getTotalSeats() { return totalSeats; }
+    public String getTheatre() { return theatre; }
+    public String getCreatedAt() { return createdAt; }
+    public String getUpdatedAt() { return updatedAt; }
+    public int getVersion() { return version; }
+    public List<String> getBookedSeats() { return bookedSeats; }
 }

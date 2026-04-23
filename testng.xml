@@ -1,13 +1,34 @@
 
-	<suite name="Suite" parallel="classes" thread-count="3">
-	
-	   <parameter name="browser" value="chrome"/>
-	   <test name="ChromeTest">
-	      <packages>
-	         <package name="tests.e2e"/>
-	         <package name="tests.ui"/>
-	      </packages>
-	   </test>
-	
+<suite name="BMSProject Suite" parallel="classes" thread-count="3" verbose="2">
 
-	</suite>
+    <listeners>
+        <listener class-name="listeners.ExtentTestListener"/>
+        <listener class-name="listeners.RetryListener"/>
+    </listeners>
+
+    <parameter name="browser" value="chrome"/>
+
+    <!-- API Tests — no browser needed, run first -->
+    <test name="API Tests">
+        <packages>
+            <package name="tests.api"/>
+        </packages>
+    </test>
+
+    <!-- UI Functional Tests -->
+    <test name="UI Functional Tests">
+        <parameter name="browser" value="chrome"/>
+        <packages>
+            <package name="tests.functional"/>
+        </packages>
+    </test>
+
+    <!-- End to End Tests -->
+    <test name="E2E Tests">
+        <parameter name="browser" value="chrome"/>
+        <packages>
+            <package name="tests.e2e"/>
+        </packages>
+    </test>
+
+</suite>

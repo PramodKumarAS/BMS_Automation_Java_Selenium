@@ -1,14 +1,15 @@
 package api.model;
 
 public class ForgetPasswordResponse {
-    private String status;
+
+    private boolean success;
     private String message;
 
-    public String getStatus() {
-        return status;
+    public boolean isSuccess() {   
+        return success;
     }
 
     public String getMessage() {
         return message;
-    }	
+    }
 }

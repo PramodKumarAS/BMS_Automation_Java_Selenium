@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "success": { "type": "boolean" },
+    "message": { "type": "string" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string" },
+        "show": { "type": "string" },
+        "user": { "type": "string" },
+        "seats": {
+          "type": "array",
+          "items": { "type": "number" }
+        },
+        "transactionId": {
+          "type": "string",
+          "pattern": "^pi_"
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "__v": { "type": "number" }
+      },
+      "required": ["_id", "show", "user", "seats", "transactionId"]
+    }
+  },
+  "required": ["success", "message", "data"]
+}

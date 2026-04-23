@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>ChromeTest</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>13/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>24/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Mar 12 07:37:05 IST 2026</td>
+<td>Started on:</td><td>Fri Mar 27 08:55:43 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>128 seconds (128938 ms)</td>
+<tr><td>Total time:</td><td>191 seconds (191009 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,57 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='tests.e2e.UserBookingShow.TS01_Validate_UserbookShow()'><b>TS01_Validate_UserbookShow</b><br>Test class: tests.e2e.UserBookingShow</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of all elements located by By.xpath: //*[contains(@class,&apos;seat-ul&apos;)] (tried for 45 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.9&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\pramo\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56727}, goog:processID: 22080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56727/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3798c0686dc1185d914eae565a7bcc2f
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at pages.MovieDetailsPage.waitForPageLoad(MovieDetailsPage.java:84)
+	at tests.e2e.UserBookingShow.TS01_Validate_UserbookShow(UserBookingShow.java:93)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace226695366", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace226695366'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of all elements located by By.xpath: //*[contains(@class,&apos;seat-ul&apos;)] (tried for 45 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.9&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\pramo\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56727}, goog:processID: 22080, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56727/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3798c0686dc1185d914eae565a7bcc2f
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at pages.MovieDetailsPage.waitForPageLoad(MovieDetailsPage.java:84)
+	at tests.e2e.UserBookingShow.TS01_Validate_UserbookShow(UserBookingShow.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>49</td>
+<td>tests.e2e.UserBookingShow@23aa363a</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,70 +127,125 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='tests.ui.LoginWithDifferentUsersTests.TS01_login()'><b>TS01_login</b><br>Test class: tests.ui.LoginWithDifferentUsersTests<br>Parameters: pkAdmin@gmail.com, 14036, AdminPramod, By.xpath: //*[normalize-space(text())='Add Movie']/ancestor::button</td>
-<td></td>
-<td>6</td>
-<td>tests.ui.LoginWithDifferentUsersTests@3e2055d6</td></tr>
-<tr>
-<td title='tests.ui.SingleMoviePageTests.TS01_singleMovie()'><b>TS01_singleMovie</b><br>Test class: tests.ui.SingleMoviePageTests</td>
+<td title='tests.ui.LoginWithDifferentUsersTests.TS01_login()'><b>TS01_login</b><br>Test class: tests.ui.LoginWithDifferentUsersTests<br>Parameters: pkUser@gmail.com, 14036, UserPramod, By.xpath: //input[@placeholder='Type here to search for movies']</td>
 <td></td>
 <td>4</td>
-<td>tests.ui.SingleMoviePageTests@e3b3b2f</td></tr>
-<tr>
-<td title='tests.ui.LoginPageTests.TS02_Validate_registerPageTest()'><b>TS02_Validate_registerPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
-<td></td>
-<td>2</td>
-<td>tests.ui.LoginPageTests@18f8cd79</td></tr>
+<td>tests.ui.LoginWithDifferentUsersTests@6e35bc3d</td></tr>
 <tr>
 <td title='tests.ui.AdminHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.AdminHomePageTests</td>
 <td></td>
 <td>10</td>
-<td>tests.ui.AdminHomePageTests@64b0598</td></tr>
-<tr>
-<td title='tests.ui.PartnerHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.PartnerHomePageTests</td>
-<td></td>
-<td>10</td>
-<td>tests.ui.PartnerHomePageTests@50029372</td></tr>
-<tr>
-<td title='tests.ui.LoginPageTests.TS03_Validate_forgetPasswordPageTest()'><b>TS03_Validate_forgetPasswordPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
-<td></td>
-<td>1</td>
-<td>tests.ui.LoginPageTests@18f8cd79</td></tr>
-<tr>
-<td title='tests.ui.LoginWithDifferentUsersTests.TS01_login()'><b>TS01_login</b><br>Test class: tests.ui.LoginWithDifferentUsersTests<br>Parameters: pkPartner@gmail.com, 14036, PartnerPramod, By.xpath: //*[normalize-space(text())='Add Theatre']/ancestor::button</td>
-<td></td>
-<td>12</td>
-<td>tests.ui.LoginWithDifferentUsersTests@3e2055d6</td></tr>
-<tr>
-<td title='tests.e2e.AdminAddingMovie.TS01_Validate_addMovieTest()'><b>TS01_Validate_addMovieTest</b><br>Test class: tests.e2e.AdminAddingMovie</td>
-<td></td>
-<td>11</td>
-<td>tests.e2e.AdminAddingMovie@4ee203eb</td></tr>
+<td>tests.ui.AdminHomePageTests@5ef6ae06</td></tr>
 <tr>
 <td title='tests.ui.UserHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.UserHomePageTests</td>
 <td></td>
 <td>12</td>
-<td>tests.ui.UserHomePageTests@50f6ac94</td></tr>
+<td>tests.ui.UserHomePageTests@5d9b7a8a</td></tr>
 <tr>
-<td title='tests.ui.LoginWithDifferentUsersTests.TS01_login()'><b>TS01_login</b><br>Test class: tests.ui.LoginWithDifferentUsersTests<br>Parameters: pkUser@gmail.com, 14036, UserPramod, By.xpath: //input[@placeholder='Type here to search for movies']</td>
+<td title='tests.ui.LoginPageTests.TS03_Validate_forgetPasswordPageTest()'><b>TS03_Validate_forgetPasswordPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
 <td></td>
-<td>36</td>
-<td>tests.ui.LoginWithDifferentUsersTests@3e2055d6</td></tr>
+<td>0</td>
+<td>tests.ui.LoginPageTests@55dfebeb</td></tr>
+<tr>
+<td title='tests.ui.PartnerHomePageTests.TS01_Validate_userHomePageTest()'><b>TS01_Validate_userHomePageTest</b><br>Test class: tests.ui.PartnerHomePageTests</td>
+<td></td>
+<td>10</td>
+<td>tests.ui.PartnerHomePageTests@1cdc4c27</td></tr>
 <tr>
 <td title='tests.ui.LoginPageTests.TS01_Validate_loginPageTest()'><b>TS01_Validate_loginPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
 <td></td>
-<td>3</td>
-<td>tests.ui.LoginPageTests@18f8cd79</td></tr>
+<td>1</td>
+<td>tests.ui.LoginPageTests@55dfebeb</td></tr>
 <tr>
-<td title='tests.e2e.UserBookingShow.TS01_Validate_UserbookShow()'><b>TS01_Validate_UserbookShow</b><br>Test class: tests.e2e.UserBookingShow</td>
+<td title='tests.api.AuthApiTests.shouldDecodeJWTBase64Successfully()'><b>shouldDecodeJWTBase64Successfully</b><br>Test class: tests.api.AuthApiTests</td>
 <td></td>
-<td>31</td>
-<td>tests.e2e.UserBookingShow@5167f57d</td></tr>
+<td>2</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
 <tr>
 <td title='tests.e2e.PartnerAddingShow.TS01_Validate_partnerAbleToAddShow()'><b>TS01_Validate_partnerAbleToAddShow</b><br>Test class: tests.e2e.PartnerAddingShow</td>
 <td></td>
-<td>25</td>
-<td>tests.e2e.PartnerAddingShow@24105dc5</td></tr>
+<td>17</td>
+<td>tests.e2e.PartnerAddingShow@ff684e1</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withMissingRequiredFieldCombination()'><b>shouldReturnError_withMissingRequiredFieldCombination</b><br>Test class: tests.api.AuthApiTests<br>Parameters: , pass123, Email and password are required</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldRegisterSuccessfully()'><b>shouldRegisterSuccessfully</b><br>Test class: tests.api.AuthApiTests</td>
+<td></td>
+<td>2</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withInvalidCredentials()'><b>shouldReturnError_withInvalidCredentials</b><br>Test class: tests.api.AuthApiTests<br>Parameters: praod@gmail.com, 14036, invalid email</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withInvalidCredentials()'><b>shouldReturnError_withInvalidCredentials</b><br>Test class: tests.api.AuthApiTests<br>Parameters: pkUser@gmail.com, !212!!, invalid password</td>
+<td></td>
+<td>1</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.e2e.AdminAddingMovie.TS01_Validate_addMovieTest()'><b>TS01_Validate_addMovieTest</b><br>Test class: tests.e2e.AdminAddingMovie</td>
+<td></td>
+<td>6</td>
+<td>tests.e2e.AdminAddingMovie@57abad67</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldLoginSuccessfully_withValidCredentials()'><b>shouldLoginSuccessfully_withValidCredentials</b><br>Test class: tests.api.AuthApiTests</td>
+<td></td>
+<td>1</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldHaveValidTokenExpiry()'><b>shouldHaveValidTokenExpiry</b><br>Test class: tests.api.AuthApiTests</td>
+<td></td>
+<td>2</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.ui.SingleMoviePageTests.TS01_singleMovie()'><b>TS01_singleMovie</b><br>Test class: tests.ui.SingleMoviePageTests</td>
+<td></td>
+<td>3</td>
+<td>tests.ui.SingleMoviePageTests@77b14724</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withMissingRequiredFieldCombination()'><b>shouldReturnError_withMissingRequiredFieldCombination</b><br>Test class: tests.api.AuthApiTests<br>Parameters: pkUser@gmail.com, null, Email and password are required</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withMissingRequiredFieldCombination()'><b>shouldReturnError_withMissingRequiredFieldCombination</b><br>Test class: tests.api.AuthApiTests<br>Parameters: null, pass123, Email and password are required</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.ui.LoginWithDifferentUsersTests.TS01_login()'><b>TS01_login</b><br>Test class: tests.ui.LoginWithDifferentUsersTests<br>Parameters: pkPartner@gmail.com, 14036, PartnerPramod, By.xpath: //*[normalize-space(text())='Add Theatre']/ancestor::button</td>
+<td></td>
+<td>3</td>
+<td>tests.ui.LoginWithDifferentUsersTests@6e35bc3d</td></tr>
+<tr>
+<td title='tests.ui.LoginWithDifferentUsersTests.TS01_login()'><b>TS01_login</b><br>Test class: tests.ui.LoginWithDifferentUsersTests<br>Parameters: pkAdmin@gmail.com, 14036, AdminPramod, By.xpath: //*[normalize-space(text())='Add Movie']/ancestor::button</td>
+<td></td>
+<td>3</td>
+<td>tests.ui.LoginWithDifferentUsersTests@6e35bc3d</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withMissingRequiredFieldCombination()'><b>shouldReturnError_withMissingRequiredFieldCombination</b><br>Test class: tests.api.AuthApiTests<br>Parameters: pkUser@gmail.com, , Email and password are required</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldHaveValidJWTStructure()'><b>shouldHaveValidJWTStructure</b><br>Test class: tests.api.AuthApiTests</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.api.AuthApiTests.shouldReturnError_withMissingRequiredFieldCombination()'><b>shouldReturnError_withMissingRequiredFieldCombination</b><br>Test class: tests.api.AuthApiTests<br>Parameters: abc, pass123, Invalid email format</td>
+<td></td>
+<td>0</td>
+<td>tests.api.AuthApiTests@604f2bd2</td></tr>
+<tr>
+<td title='tests.ui.LoginPageTests.TS02_Validate_registerPageTest()'><b>TS02_Validate_registerPageTest</b><br>Test class: tests.ui.LoginPageTests</td>
+<td></td>
+<td>0</td>
+<td>tests.ui.LoginPageTests@55dfebeb</td></tr>
 </table><p>
 </body>
 </html>
