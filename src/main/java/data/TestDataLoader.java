@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import api.model.Movie;
 import api.model.Show;
-import api.model.ShowModel;
 import api.model.Theatre;
 import api.model.UsersList;
 

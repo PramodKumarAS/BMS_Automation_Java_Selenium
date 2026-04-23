@@ -2,26 +2,22 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-23T16:04:05 IST" name="Default suite" finished-at="2026-04-23T16:05:21 IST" duration-ms="76085">
+  <suite started-at="2026-04-23T16:28:07 IST" name="Default suite" finished-at="2026-04-23T16:28:33 IST" duration-ms="26089">
     <groups>
       <group name="regression">
-        <method signature="AuthApiTests.shouldDecodeJWTPayload_whenBase64Decoded()[pri:0, instance:tests.api.AuthApiTests@13d73f29]" name="shouldDecodeJWTPayload_whenBase64Decoded" class="tests.api.AuthApiTests"/>
+        <method signature="AuthApiTests.shouldDecodeJWTPayload_whenBase64Decoded()[pri:0, instance:tests.api.AuthApiTests@9816741]" name="shouldDecodeJWTPayload_whenBase64Decoded" class="tests.api.AuthApiTests"/>
       </group> <!-- regression -->
     </groups>
-    <test started-at="2026-04-23T16:04:05 IST" name="Default test" finished-at="2026-04-23T16:05:21 IST" duration-ms="76085">
+    <test started-at="2026-04-23T16:28:07 IST" name="Default test" finished-at="2026-04-23T16:28:33 IST" duration-ms="26089">
       <class name="tests.api.AuthApiTests">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.api.AuthApiTests@13d73f29]" started-at="2026-04-23T16:04:05 IST" name="setUp" finished-at="2026-04-23T16:04:06 IST" duration-ms="608" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.api.AuthApiTests@9816741]" started-at="2026-04-23T16:28:07 IST" name="setUp" finished-at="2026-04-23T16:28:08 IST" duration-ms="733" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="shouldDecodeJWTPayload_whenBase64Decoded()[pri:0, instance:tests.api.AuthApiTests@13d73f29]" started-at="2026-04-23T16:04:06 IST" name="shouldDecodeJWTPayload_whenBase64Decoded" description="POST /login: Should return a JWT payload containing userId, role and exp fields when Base64 decoded" finished-at="2026-04-23T16:05:21 IST" duration-ms="75266" status="PASS">
+        <test-method signature="shouldDecodeJWTPayload_whenBase64Decoded()[pri:0, instance:tests.api.AuthApiTests@9816741]" started-at="2026-04-23T16:28:08 IST" name="shouldDecodeJWTPayload_whenBase64Decoded" description="POST /login: Should return a JWT payload containing userId, role and exp fields when Base64 decoded" finished-at="2026-04-23T16:28:33 IST" duration-ms="25240" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shouldDecodeJWTPayload_whenBase64Decoded -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.api.AuthApiTests@13d73f29]" started-at="2026-04-23T16:05:21 IST" name="tearDown" finished-at="2026-04-23T16:05:21 IST" duration-ms="6" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
       </class> <!-- tests.api.AuthApiTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

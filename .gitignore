@@ -1,1 +1,14 @@
-/target/
+# Maven build output - should never be committed
+target/
+
+# Eclipse IDE files - machine specific
+.classpath
+.project
+.settings/
+
+# TestNG generated output - regenerated every run
+test-output/
+
+# OS files
+.DS_Store
+Thumbs.db

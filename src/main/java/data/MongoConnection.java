@@ -33,11 +33,4 @@ public class MongoConnection {
 		
 		return database.getCollection(collectionName);
 	}
-	
-	public static void close() {
-	    if (mongoClient != null) {
-	        mongoClient.close();
-	        mongoClient = null;
-	    }
-	}
 }

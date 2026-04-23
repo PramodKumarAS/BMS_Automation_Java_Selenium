@@ -1,7 +1,6 @@
 package base;
 
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import api.client.RestAssuredClient;
@@ -12,7 +11,6 @@ import api.endpoints.ShowClient;
 import api.endpoints.TheatreClient;
 import api.model.User;
 import api.model.UsersList;
-import data.MongoConnection;
 import data.TestDataLoader;
 
 public class APIBaseTest {
@@ -31,10 +29,5 @@ public class APIBaseTest {
 		
 		UsersList users = TestDataLoader.loadUsers("users.json");
 		user = users.getUsers().get(0);				
-	}
-	
-	@AfterClass
-	public void tearDown() {
-	    MongoConnection.close();
 	}
 }
