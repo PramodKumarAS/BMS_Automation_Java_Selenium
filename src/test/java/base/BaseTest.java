@@ -35,17 +35,19 @@ public class BaseTest {
 	
 	@Parameters("browser")
 	@BeforeClass
-	public void OneTimeSetUp(@Optional("chrome") String browserName) {	
-		DriverConfig config = new DriverConfig.DriverConfigBuilder()
-                .browser(browserName)
-                .headless(false)
-                .incognito(false)
-                .build();
+	public void OneTimeSetUp(@Optional("chrome") String browserName) {
 
-		driver = DriverFactory.createDriver(config);	
-		
-		driver.manage().window().maximize();
-		baseURL=ConfigReader.get("baseUrl");
+	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+
+	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
+	            .browser(browserName)
+	            .headless(isHeadless)   // ← now CI controls this
+	            .incognito(false)
+	            .build();
+
+	    driver = DriverFactory.createDriver(config);
+	    driver.manage().window().maximize();
+	    baseURL = ConfigReader.get("baseUrl");
 	}
 	
 	@AfterClass

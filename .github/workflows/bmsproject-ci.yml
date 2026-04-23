@@ -1,0 +1,129 @@
+name: BMSProject Selenium CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  selenium-tests:
+    name: Run Selenium + API + Allure Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout BMSProject code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Java 8 — matches your pom.xml maven.compiler.source=1.8
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: maven
+
+      # 3. Chrome for Selenium (WebDriverManager handles chromedriver automatically)
+      - name: Set up Chrome Browser
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      # 4. Cache ~/.m2 (Selenium 4.21, RestAssured 5.4, Allure, MongoDB, Extent etc.)
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # 5. Run testng.xml suite — headless=true picked up by BaseTest ChromeOptions
+      - name: Run TestNG Suite (testng.xml)
+        run: mvn clean test -Dheadless=true
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          # API_BASE_URL: ${{ secrets.API_BASE_URL }}
+
+      # 6. Get Allure history for trend graphs (from gh-pages branch)
+      - name: Get Allure History
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      # 7. Generate Allure HTML report
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: target/allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+      # 8. Publish Allure to GitHub Pages (your-repo.github.io/BMSProject)
+      - name: Publish Allure to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+
+      # 9. Upload TestNG test-output (includes Extent Report HTML files)
+      - name: Upload TestNG test-output
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testng-test-output
+          path: test-output/
+          retention-days: 30
+
+      # 10. Upload Surefire XML reports
+      - name: Upload Surefire Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+          retention-days: 30
+
+      # 11. Upload raw Allure results
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results
+          path: target/allure-results/
+          retention-days: 30
+
+      # 12. Upload Extent Reports (adjust path if you save them elsewhere)
+      - name: Upload Extent Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: extent-reports
+          path: |
+            reports/
+            ExtentReports/
+            test-output/ExtentReport*.html
+          retention-days: 30
+
+      # 13. Upload screenshots only on failure
+      - name: Upload Failure Screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: failure-screenshots
+          path: |
+            screenshots/
+            test-output/screenshots/
+          retention-days: 7

@@ -36,21 +36,21 @@ public class DriverFactory {
 
             switch(config.browser.toLowerCase()) {
 
-                case "chrome":
-
-                    ChromeOptions options = new ChromeOptions();
-
-                    if(config.headless){
-                        options.addArguments("--headless=new");
-                    }
-
-                    if(config.incognito){
-                        options.addArguments("--incognito");
-                    }
-
-                    newDriver = new ChromeDriver(options);
-                    break;
-
+            	case "chrome":
+	            	ChromeOptions options = new ChromeOptions();
+	                if(config.headless){
+	                    options.addArguments("--headless=new");
+	                    options.addArguments("--no-sandbox");             
+	                    options.addArguments("--disable-dev-shm-usage"); 
+	                    options.addArguments("--disable-gpu");
+	                    options.addArguments("--window-size=1920,1080");
+	                }
+	                if(config.incognito){
+	                    options.addArguments("--incognito");
+	                }
+	                newDriver = new ChromeDriver(options);
+	                break;
+                
                 case "firefox":
                     newDriver = new FirefoxDriver();
                     break;
