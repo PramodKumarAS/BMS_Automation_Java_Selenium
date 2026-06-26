@@ -2,6 +2,8 @@ package base;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 
 import org.apache.commons.io.FileUtils;
@@ -9,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -33,19 +37,36 @@ public class BaseTest {
 	public WebDriver driver;
 	public String baseURL;
 	
-	@Parameters("browser")
+	@Parameters("browserType")
 	@BeforeClass
-	public void OneTimeSetUp(@Optional("chrome") String browserName) {
+	public void OneTimeSetUp(String browserName) throws MalformedURLException {
 
-	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+//	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+//
+//	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
+//	            .browser("remotewebdriver")
+//	            .headless(isHeadless)   // ← now CI controls this
+//	            .incognito(false)
+//	            .build();
+//
+//	    driver = DriverFactory.createDriver(config);
 
-	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
-	            .browser(browserName)
-	            .headless(isHeadless)   // ← now CI controls this
-	            .incognito(false)
-	            .build();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-	    driver = DriverFactory.createDriver(config);
+		if(browserName.equalsIgnoreCase("chrome")){
+			capabilities.setBrowserName("chrome");
+		}
+
+		if(browserName.equalsIgnoreCase("firefox")){
+			capabilities.setBrowserName("firefox");
+		}
+
+		if(browserName.equalsIgnoreCase("edge")){
+			capabilities.setBrowserName("MicrosoftEdge");
+		}
+
+		driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),capabilities);
+
 	    driver.manage().window().maximize();
 	    baseURL = ConfigReader.get("baseUrl");
 	}

@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class DriverFactory {
 	
@@ -28,7 +32,7 @@ public class DriverFactory {
     }
      
     //FACTORY -> Method that returns objects based on input
-    public static WebDriver createDriver(DriverConfig config) {
+    public static WebDriver createDriver(DriverConfig config) throws MalformedURLException {
 
         if(driver.get()==null){
 
@@ -55,13 +59,13 @@ public class DriverFactory {
                     newDriver = new FirefoxDriver();
                     break;
 
-                default:
+				default:
                     throw new RuntimeException("Invalid browser");
             }
 
             driver.set(newDriver);
         }
         
-        return driver.get();        
+        return driver.get();
     }
 }

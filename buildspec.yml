@@ -1,0 +1,41 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+
+    commands:
+      - echo "Checking Docker..."
+      - docker --version
+      - docker compose version
+
+  pre_build:
+    commands:
+      - echo "Starting Selenium Grid..."
+      - docker compose up -d
+
+      - echo "Waiting for Grid to be ready..."
+      - |
+        timeout 60 bash -c '
+        until curl -s http://localhost:4444/status | grep "\"ready\":true"
+        do
+          echo "Waiting..."
+          sleep 2
+        done
+        '
+
+  build:
+    commands:
+      - echo "Running Selenium Tests..."
+      - mvn clean test
+
+  post_build:
+    commands:
+      - echo "Stopping Selenium Grid..."
+      - docker compose down
+
+artifacts:
+  files:
+    - test-output/**
+    - ExtentReports/**
