@@ -4,7 +4,6 @@ phases:
   install:
     runtime-versions:
       java: corretto21
-
     commands:
       - echo "Checking Docker..."
       - docker --version
@@ -14,13 +13,22 @@ phases:
     commands:
       - echo "Starting Selenium Grid..."
       - docker compose up -d
-  
+
       - echo "===== Docker Containers ====="
       - docker ps -a
-  
+
       - echo "===== Docker Compose Status ====="
       - docker compose ps
-  
+
+      - echo "===== Hub Status ====="
+      - curl -s http://localhost:4444/status || true
+
+      - echo "===== Hub Logs ====="
+      - docker logs selenium-hub || true
+
+      - echo "===== Chrome Logs ====="
+      - docker logs chrome || true
+
       - echo "===== Waiting for Selenium Grid ====="
       - |
         timeout 300 bash -c '
@@ -30,9 +38,9 @@ phases:
           sleep 5
         done
         '
-  
+
       - echo "===== Grid is Ready ====="
-    
+
   build:
     commands:
       - echo "Running Selenium Tests..."
