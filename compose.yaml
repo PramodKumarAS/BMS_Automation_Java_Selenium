@@ -6,7 +6,6 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
-    restart: unless-stopped
 
   chrome:
     image: selenium/node-chrome:4.45.0
@@ -15,32 +14,6 @@ services:
     shm_size: 2gb
     depends_on:
       - selenium-hub
-    restart: unless-stopped
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-
-  firefox:
-    image: selenium/node-firefox:4.45.0
-    container_name: firefox
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    restart: unless-stopped
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-
-  edge:
-    image: selenium/node-edge:4.45.0
-    container_name: edge
-    platform: linux/amd64
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    restart: unless-stopped
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
