@@ -5,13 +5,14 @@ phases:
     runtime-versions:
       java: corretto21
     commands:
-      - echo "Checking Docker..."
+      - echo "===== Checking Docker ====="
       - docker --version
       - docker compose version
+      - java -version
 
   pre_build:
     commands:
-      - echo "Starting Selenium Grid..."
+      - echo "===== Starting Selenium Grid ====="
       - docker compose up -d
 
       - echo "===== Docker Containers ====="
@@ -20,38 +21,60 @@ phases:
       - echo "===== Docker Compose Status ====="
       - docker compose ps
 
-      - echo "===== Hub Status ====="
+      - echo "===== Initial Hub Status ====="
       - curl -s http://localhost:4444/status || true
 
-      - echo "===== Hub Logs ====="
+      - echo "===== Initial Hub Logs ====="
       - docker logs selenium-hub || true
 
-      - echo "===== Chrome Logs ====="
+      - echo "===== Initial Chrome Logs ====="
       - docker logs chrome || true
 
       - echo "===== Waiting for Selenium Grid ====="
       - |
-        timeout 300 bash -c '
-        until curl -s http://localhost:4444/status | grep "\"ready\":true"
+        for i in {1..60}
         do
-          echo "Waiting..."
+          echo "=============================="
+          echo "Attempt: $i"
+          echo "=============================="
+
+          curl -s http://localhost:4444/status || true
+          echo ""
+
+          if curl -s http://localhost:4444/status | grep '"ready":true' > /dev/null; then
+            echo "Selenium Grid is READY!"
+            break
+          fi
+
           sleep 5
         done
-        '
 
-      - echo "===== Grid is Ready ====="
+      - echo "===== Final Hub Status ====="
+      - curl -s http://localhost:4444/status || true
+
+      - echo "===== Final Hub Logs ====="
+      - docker logs selenium-hub || true
+
+      - echo "===== Final Chrome Logs ====="
+      - docker logs chrome || true
+
+      - |
+        if ! curl -s http://localhost:4444/status | grep '"ready":true' > /dev/null; then
+          echo "ERROR: Selenium Grid never became ready."
+          exit 1
+        fi
 
   build:
     commands:
-      - echo "Running Selenium Tests..."
+      - echo "===== Running Selenium Tests ====="
       - mvn clean test
 
   post_build:
     commands:
-      - echo "Stopping Selenium Grid..."
+      - echo "===== Stopping Selenium Grid ====="
       - docker compose down
 
 artifacts:
   files:
-    - test-output/**
-    - ExtentReports/**
+    - test-output/**/*
+    - ExtentReports/**/*
