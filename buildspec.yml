@@ -14,17 +14,25 @@ phases:
     commands:
       - echo "Starting Selenium Grid..."
       - docker compose up -d
-
-      - echo "Waiting for Grid to be ready..."
+  
+      - echo "===== Docker Containers ====="
+      - docker ps -a
+  
+      - echo "===== Docker Compose Status ====="
+      - docker compose ps
+  
+      - echo "===== Waiting for Selenium Grid ====="
       - |
-        timeout 60 bash -c '
+        timeout 300 bash -c '
         until curl -s http://localhost:4444/status | grep "\"ready\":true"
         do
           echo "Waiting..."
-          sleep 2
+          sleep 5
         done
         '
-
+  
+      - echo "===== Grid is Ready ====="
+    
   build:
     commands:
       - echo "Running Selenium Tests..."
