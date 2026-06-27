@@ -1,33 +1,4 @@
-# To execute this docker compose yml file use `docker compose -f docker-compose-v3.yml up`
-# Add the `-d` flag at the end for detached execution
-# To stop the execution, hit Ctrl+C, and then `docker compose -f docker-compose-v3.yml down`
 services:
-  chrome:
-    image: selenium/node-chrome:4.45.0
-    platform: linux/amd64
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-
-  edge:
-    image: selenium/node-edge:4.45.0
-    platform: linux/amd64
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-
-  firefox:
-    image: selenium/node-firefox:4.45.0
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-
   selenium-hub:
     image: selenium/hub:4.45.0
     container_name: selenium-hub
@@ -35,3 +6,42 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+    restart: unless-stopped
+
+  chrome:
+    image: selenium/node-chrome:4.45.0
+    container_name: chrome
+    platform: linux/amd64
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: unless-stopped
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  firefox:
+    image: selenium/node-firefox:4.45.0
+    container_name: firefox
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: unless-stopped
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  edge:
+    image: selenium/node-edge:4.45.0
+    container_name: edge
+    platform: linux/amd64
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: unless-stopped
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
