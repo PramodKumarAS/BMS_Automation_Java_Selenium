@@ -22,12 +22,12 @@ jobs:
         uses: actions/checkout@v4
 
       # 2. Java 8 — matches your pom.xml maven.compiler.source=1.8
-      - name: Set up JDK 8
-        uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-          cache: maven
+#      - name: Set up JDK 8
+#        uses: actions/setup-java@v4
+#        with:
+#          java-version: '11'
+#          distribution: 'temurin'
+#          cache: maven
 
       - name: Start Selenium Grid
         run : docker compose up -d
@@ -46,11 +46,11 @@ jobs:
             done
           '
 
-      # 3. Chrome for Selenium (WebDriverManager handles chromedriver automatically)
-      - name: Set up Chrome Browser
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
+#      # 3. Chrome for Selenium (WebDriverManager handles chromedriver automatically) - Required Only ChromeDriver automation
+#      - name: Set up Chrome Browser
+#        uses: browser-actions/setup-chrome@v1
+#        with:
+#          chrome-version: stable
 
       # 4. Cache ~/.m2 (Selenium 4.21, RestAssured 5.4, Allure, MongoDB, Extent etc.)
       - name: Cache Maven Dependencies
@@ -68,15 +68,6 @@ jobs:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           # API_BASE_URL: ${{ secrets.API_BASE_URL }}
 
-      # 6. Get Allure history for trend graphs (from gh-pages branch)
-      - name: Get Allure History
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
       # 7. Generate Allure HTML report
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
@@ -85,33 +76,6 @@ jobs:
           allure_results: target/allure-results
           allure_history: allure-history
           keep_reports: 20
-
-      # 8. Publish Allure to GitHub Pages (your-repo.github.io/BMSProject)
-      - name: Publish Allure to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
-
-      # 9. Upload TestNG test-output (includes Extent Report HTML files)
-      - name: Upload TestNG test-output
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: testng-test-output
-          path: test-output/
-          retention-days: 30
-
-      # 10. Upload Surefire XML reports
-      - name: Upload Surefire Reports
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: surefire-reports
-          path: target/surefire-reports/
-          retention-days: 30
 
       # 11. Upload raw Allure results
       - name: Upload Allure Results
@@ -133,17 +97,6 @@ jobs:
             ExtentReports/
             test-output/ExtentReport*.html
           retention-days: 30
-
-      # 13. Upload screenshots only on failure
-      - name: Upload Failure Screenshots
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: failure-screenshots
-          path: |
-            screenshots/
-            test-output/screenshots/
-          retention-days: 7
 
       - name: Stop Selenium Grid
         if: always()
