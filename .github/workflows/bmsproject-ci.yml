@@ -32,6 +32,10 @@ jobs:
       - name: Start Selenium Grid
         run : docker compose up -d
 
+      - name: Check Hub Status
+        run: |
+          curl http://localhost:4444/status || true
+
       - name: wait for Selenium Grid
         run : | 
           echo "waiting for selenium grid..."
@@ -140,3 +144,6 @@ jobs:
             screenshots/
             test-output/screenshots/
           retention-days: 7
+
+      - name: Stop Selenium Grid
+        run : docker compose down
