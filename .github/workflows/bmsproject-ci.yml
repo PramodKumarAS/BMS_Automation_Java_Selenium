@@ -14,7 +14,7 @@ on:
 jobs:
   selenium-tests:
     name: Run Selenium + API + Allure Tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       # 1. Checkout BMSProject code
