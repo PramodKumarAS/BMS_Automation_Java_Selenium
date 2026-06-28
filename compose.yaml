@@ -11,6 +11,7 @@ services:
     image: selenium/node-chrome:4.45.0
     depends_on:
       - selenium-hub
+    shm_size: 2gb
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
