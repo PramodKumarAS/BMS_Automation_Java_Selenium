@@ -32,20 +32,38 @@ jobs:
       - name: Start Selenium Grid
         run : docker compose up -d
 
-      - name: Check Hub Status
-        run: |
-          curl http://localhost:4444/status || true
+#      - name: Check Hub Status
+#        run: |
+#          curl http://localhost:4444/status || true
+#
+#      - name: Wait for Selenium Grid
+#        run: |
+#          timeout 60 bash -c '
+#            until curl -s http://localhost:4444/status | grep -q "\"ready\": *true"
+#            do
+#              echo "Waiting..."
+#              sleep 2
+#            done
+#          '
 
-      - name: Wait for Selenium Grid
+      - name: Wait for Grid (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
         run: |
-          timeout 60 bash -c '
-            until curl -s http://localhost:4444/status | grep -q "\"ready\": *true"
-            do
-              echo "Waiting..."
-              sleep 2
-            done
-          '
-
+          $timeout = (Get-Date).AddSeconds(60)
+          do {
+           try {
+               $status = Invoke-RestMethod http://localhost:4444/status
+               if ($status.value.ready) {
+                   Write-Host "Grid Ready!"
+                   exit 0
+               }
+           }
+           catch {}
+           Start-Sleep -Seconds 2
+          } while ((Get-Date) -lt $timeout)
+          
+          throw "Grid did not become ready within 60 seconds."
 #      # 3. Chrome for Selenium (WebDriverManager handles chromedriver automatically) - Required Only ChromeDriver automation
 #      - name: Set up Chrome Browser
 #        uses: browser-actions/setup-chrome@v1
