@@ -44,7 +44,7 @@ public class BaseTest {
 	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
 	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
-	            .browser("remote")
+	            .browser(browserName)
 	            .headless(isHeadless)   // ← now CI controls this
 	            .incognito(false)
 	            .build();
