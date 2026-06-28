@@ -37,35 +37,19 @@ public class BaseTest {
 	public WebDriver driver;
 	public String baseURL;
 	
-	@Parameters("browserType")
+	@Parameters({"browserType","typeOfRun"})
 	@BeforeClass
-	public void OneTimeSetUp(String browserName) throws MalformedURLException {
+	public void OneTimeSetUp(String browserName,String typeOfRun) throws MalformedURLException {
 
-//	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-//
-//	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
-//	            .browser("remotewebdriver")
-//	            .headless(isHeadless)   // ← now CI controls this
-//	            .incognito(false)
-//	            .build();
-//
-//	    driver = DriverFactory.createDriver(config);
+	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
+	            .browser("remote")
+	            .headless(isHeadless)   // ← now CI controls this
+	            .incognito(false)
+	            .build();
 
-		if(browserName.equalsIgnoreCase("chrome")){
-			capabilities.setBrowserName("chrome");
-		}
-
-		if(browserName.equalsIgnoreCase("firefox")){
-			capabilities.setBrowserName("firefox");
-		}
-
-		if(browserName.equalsIgnoreCase("edge")){
-			capabilities.setBrowserName("MicrosoftEdge");
-		}
-
-		driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),capabilities);
+	    driver = DriverFactory.createDriver(config,typeOfRun);
 
 	    driver.manage().window().maximize();
 	    baseURL = ConfigReader.get("baseUrl");

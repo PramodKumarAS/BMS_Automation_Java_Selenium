@@ -29,6 +29,19 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Start Selenium Grid
+        run : docker compose up -d
+
+      - name: wait for Selenium Grid
+        run : | 
+          echo "waiting for selenium grid..."
+          timeout 60 bash -c '
+               until curl -s http://localhost:4444/status | grep "\"ready\":true"
+                do
+                sleep 2
+                done
+          '
+
       # 3. Chrome for Selenium (WebDriverManager handles chromedriver automatically)
       - name: Set up Chrome Browser
         uses: browser-actions/setup-chrome@v1

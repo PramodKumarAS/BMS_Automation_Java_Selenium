@@ -1,6 +1,7 @@
 
 <suite name="BMSProject Suite" parallel="tests" thread-count="3" verbose="2">
 
+    <parameter name="typeOfRun" value="remote"/>
     <listeners>
         <listener class-name="listeners.ExtentTestListener"/>
         <listener class-name="listeners.RetryListener"/>
