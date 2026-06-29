@@ -10,13 +10,13 @@ pipeline{
     parameters{
         choice(
            name:'BROWSER',
-           choices:['chrome','firefox']
+           choices:['chrome','firefox'],
            description:'Select Browser'
         )
 
         choice(
            name:'RUN_TYPE',
-           choices:['local','remote']
+           choices:['local','remote'],
            description:'Execute Type'
         )
 
