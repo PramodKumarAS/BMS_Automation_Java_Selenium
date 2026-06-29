@@ -7,6 +7,26 @@ pipeline{
         maven 'mvn'
     }
 
+    parameters{
+        choice(
+           name:'BROWSER',
+           choices:['chrome','firefox']
+           description:'Select Browser'
+        )
+
+        choice(
+           name:'RUN_TYPE',
+           choices:['local','remote']
+           description:'Execute Type'
+        )
+
+        booleanParam(
+            name:'HEADLESS',
+            defaultValue:true,
+            description:'Run browser in headless mode'
+        )
+    }
+
     stages{
 
         stage('Check out'){
@@ -28,11 +48,8 @@ pipeline{
         }
 
         stage('Run selenium UI Tests'){
-
-
            steps{
-                 bat 'mvn clean test'
-           }
+                bat 'mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}'                        }
         }
     }
 

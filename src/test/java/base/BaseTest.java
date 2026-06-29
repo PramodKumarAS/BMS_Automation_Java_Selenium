@@ -41,6 +41,9 @@ public class BaseTest {
 	@BeforeClass
 	public void OneTimeSetUp(String browserName,String typeOfRun) throws MalformedURLException {
 
+		browserName = System.getProperty("browser",browserName);
+		typeOfRun   = System.getProperty("runType",typeOfRun);
+
 	    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
 	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
