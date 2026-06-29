@@ -59,6 +59,7 @@ pipeline{
            steps{
                 bat "mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
            }
+        }
     }
 
     post{
