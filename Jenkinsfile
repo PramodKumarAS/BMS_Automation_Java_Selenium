@@ -57,8 +57,8 @@ pipeline{
 
         stage('Run selenium UI Tests'){
            steps{
-                bat 'mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}'                        }
-        }
+                bat "mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
+           }
     }
 
     post{
