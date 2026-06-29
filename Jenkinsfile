@@ -1,6 +1,10 @@
 pipeline{
     agent any
 
+    tools{
+        maven 'mvn'
+    }
+
     stages{
 
         stage('Check out'){
@@ -22,6 +26,8 @@ pipeline{
         }
 
         stage('Run selenium UI Tests'){
+
+
            steps{
                  bat 'mvn clean test'
            }
