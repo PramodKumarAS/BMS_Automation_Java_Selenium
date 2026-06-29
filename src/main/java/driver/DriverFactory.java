@@ -71,17 +71,17 @@ public class DriverFactory {
 
 					case "chrome":
 						ChromeOptions chromeOptions = new ChromeOptions();
-						newDriver = new RemoteWebDriver(new URL("http://localhost:4444"),chromeOptions);
+						newDriver = new RemoteWebDriver(new URL("http://192.168.1.7:4444"),chromeOptions);
 						break;
 
 					case "firefox":
 						FirefoxOptions firefoxOptions = new FirefoxOptions();
-						newDriver = new RemoteWebDriver(new URL("http://localhost:4444"),firefoxOptions);
+						newDriver = new RemoteWebDriver(new URL("http://192.168.1.7:4444"),firefoxOptions);
 						break;
 
 					case "edge":
 						EdgeOptions	edgeOptions = new EdgeOptions();
-						newDriver = new RemoteWebDriver(new URL("http://localhost:4444"),edgeOptions);
+						newDriver = new RemoteWebDriver(new URL("http://192.168.1.7:4444"),edgeOptions);
 						break;
 
 					default:
