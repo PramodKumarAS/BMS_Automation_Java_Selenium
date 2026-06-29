@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+       label 'chrome'
+    }
 
     tools{
         maven 'mvn'
