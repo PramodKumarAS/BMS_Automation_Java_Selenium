@@ -29,6 +29,14 @@ pipeline{
 
     stages{
 
+        stage('Print Parameters') {
+            steps {
+                echo "Browser : ${params.BROWSER}"
+                echo "Run Type: ${params.RUN_TYPE}"
+                echo "Headless: ${params.HEADLESS}"
+            }
+        }
+
         stage('Check out'){
            steps{
                 echo 'Checking out source code'
