@@ -64,7 +64,32 @@ pipeline{
 
     post{
         always{
-               bat 'docker compose down'
+                bat 'docker compose down'
+
+                publishHTML([
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'test-output',
+                    reportFiles: 'ExtentReport.html',
+                    reportName: 'Extent Report'
+                ])
+
+                allure(
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'target/allure-results']]
+                )
+
+                archiveArtifacts(
+                    artifacts: '''
+                        reports/**,
+                        ExtentReports/**,
+                        test-output/ExtentReport*.html
+                    ''',
+                    fingerprint: true,
+                    allowEmptyArchive: true
+                )
         }
     }
 }
