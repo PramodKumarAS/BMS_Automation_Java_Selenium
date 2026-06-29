@@ -11,10 +11,8 @@ public class ExtentManager {
 	
 	public static ExtentReports getInstance() {
 		if(extent==null) {
-		
-            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-
-            ExtentSparkReporter spark =new ExtentSparkReporter("target/extent-reports/ExtentReport_" + timestamp + ".html");
+            String reportPath ="target/extent-reports/ExtentReport.html";
+            ExtentSparkReporter spark =new ExtentSparkReporter(reportPath);
 
             spark.config().setReportName("Automation Test Report");
             spark.config().setDocumentTitle("Selenium TestNG Report");

@@ -1,5 +1,7 @@
 package listeners;
 
+import io.qameta.allure.Allure;
+import org.bouncycastle.util.encoders.Base64Encoder;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,9 @@ import com.aventstack.extentreports.ExtentTest;
 
 import driver.DriverFactory;
 import reporting.ExtentManager;
+
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
 
 public class ExtentTestListener implements ITestListener {
 
@@ -43,11 +48,17 @@ public class ExtentTestListener implements ITestListener {
         // Capture screenshot and attach to report
         Object testInstance = result.getInstance();
         WebDriver driver = DriverFactory.getDriver();
-        if (driver != null) {
-            String base64 = ((TakesScreenshot) driver)
+
+        String base64 = ((TakesScreenshot) driver)
                     .getScreenshotAs(OutputType.BASE64);
-            test.get().addScreenCaptureFromBase64String(base64, "Failure Screenshot");
-        }
+
+        //Extent Listener Report failure screenshot
+        test.get().addScreenCaptureFromBase64String(base64, "Failure Screenshot");
+
+        //Allure Report failure screenshot
+        Allure.addAttachment("Failure screenshot",new ByteArrayInputStream(
+                Base64.getDecoder().decode(base64)
+        ));
     }
 
     @Override

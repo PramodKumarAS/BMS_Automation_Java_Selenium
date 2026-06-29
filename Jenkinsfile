@@ -70,7 +70,7 @@ pipeline{
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'test-output',
+                    reportDir: 'target/extent-reports',
                     reportFiles: 'ExtentReport.html',
                     reportName: 'Extent Report'
                 ])
@@ -83,9 +83,7 @@ pipeline{
 
                 archiveArtifacts(
                     artifacts: '''
-                        reports/**,
-                        ExtentReports/**,
-                        test-output/ExtentReport*.html
+                        target/extent-reports/**
                     ''',
                     fingerprint: true,
                     allowEmptyArchive: true
