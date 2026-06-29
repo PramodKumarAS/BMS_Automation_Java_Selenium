@@ -16,7 +16,7 @@
         </packages>
     </test>
 
-    <!-- <test name="Firefox Tests">
+    <!-- <test name="Firefox Testss">
         <parameter name="browserType" value="firefox"/>
         <packages>
             <package name="tests.api"/>
