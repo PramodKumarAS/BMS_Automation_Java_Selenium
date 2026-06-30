@@ -18,7 +18,6 @@ public class DriverFactory {
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-
 	public static WebDriver getDriver() {
 	    if(driver.get() == null){
 	        throw new RuntimeException("Driver not initialized. Call initDriver() first.");
