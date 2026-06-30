@@ -47,6 +47,9 @@ pipeline{
                 stage('chrome'){
                    steps{
                       ws("${env.WORKSPACE}\\chrome") {
+
+                        checkout scm
+
                         withCredentials([
                             usernamePassword(
                                 credentialsId:'user',
@@ -74,6 +77,8 @@ pipeline{
                 stage('firefox'){
                    steps{
                       ws("${env.WORKSPACE}\\firefox") {
+
+                        checkout scm
 
                         withCredentials([
                             usernamePassword(
