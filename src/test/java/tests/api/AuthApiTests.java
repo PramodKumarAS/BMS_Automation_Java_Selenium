@@ -29,7 +29,7 @@ public class AuthApiTests extends APIBaseTest  {
 	
 	@Test(groups = {"smoke"}, description = "POST /login: Should return 200 with valid JWT token, correct role and success message when valid credentials are provided")
 	public void shouldLoginSuccessfully_whenValidCredentialsProvided() {
-		LoginRequest request = RequestBuilder.buildLoginRequest(user.getEmail(), user.getPassword());
+		LoginRequest request = RequestBuilder.buildLoginRequest(System.getenv("USER_EMAIL"), System.getenv("USER_PASSWORD"));
 		LoginResponse apiLoginResponse = authClient.login(request)
 				.assertStatus(200)
 				.validateSchema("schema/login-schema.json")
@@ -43,7 +43,7 @@ public class AuthApiTests extends APIBaseTest  {
 	
 	@Test(groups = {"regression"}, description = "POST /login: Should return a JWT token with 3 parts (header.payload.signature) when login is successful")
 	public void shouldHaveValidJWTStructure_whenLoginSuccessful() {
-		LoginRequest request = RequestBuilder.buildLoginRequest(user.getEmail(), user.getPassword());
+		LoginRequest request = RequestBuilder.buildLoginRequest(System.getenv("USER_EMAIL"), System.getenv("USER_PASSWORD"));
 		
 		LoginResponse apiLoginResponse = authClient.login(request)
 				.assertStatus(200)
@@ -57,7 +57,7 @@ public class AuthApiTests extends APIBaseTest  {
 	
 	@Test(groups = {"regression"}, description = "POST /login: Should return a JWT payload containing userId, role and exp fields when Base64 decoded")
 	public void shouldDecodeJWTPayload_whenBase64Decoded() {
-		LoginRequest request = RequestBuilder.buildLoginRequest(user.getEmail(), user.getPassword());
+		LoginRequest request = RequestBuilder.buildLoginRequest(System.getenv("USER_EMAIL"), System.getenv("USER_PASSWORD"));
 		
 		LoginResponse apiLoginResponse = authClient.login(request)
 				.assertStatus(200)
@@ -75,7 +75,7 @@ public class AuthApiTests extends APIBaseTest  {
 	
 	@Test(groups = {"regression"}, description = "POST /login: Should return a JWT token with expiry (exp) greater than current epoch time when login is successful")
 	public void shouldHaveValidTokenExpiry_whenLoginSuccessful() {
-		LoginRequest request = RequestBuilder.buildLoginRequest(user.getEmail(), user.getPassword());
+		LoginRequest request = RequestBuilder.buildLoginRequest(System.getenv("USER_EMAIL"), System.getenv("USER_PASSWORD"));
 		
 		LoginResponse apiLoginResponse = authClient.login(request)
 				.assertStatus(200)
@@ -140,8 +140,8 @@ public class AuthApiTests extends APIBaseTest  {
 					.assertStatus(201)
 					.validateSchema("schema/register-schema.json")
 					.as(RegisterResponse.class);
-			
-			Assert.assertEquals(response.isSuccess(), true);
+
+            Assert.assertTrue(response.isSuccess());
 			Assert.assertEquals(response.getMessage(),AppConstants.REGISTER_SUCCESS_MESSAGE);		
 			Assert.assertNotNull(response.getData().getUserId());
 			Assert.assertEquals(response.getData().getEmail(),email);
@@ -175,27 +175,27 @@ public class AuthApiTests extends APIBaseTest  {
 		
 	@Test(description = "POST /register: Should return 409 with conflict message when registering with an already existing email")
 	public void shouldReturn409_whenRegisterWithExistingMail() {
-	    RegisterRequest request = RequestBuilder.buildRegisterRequest(AppConstants.TEST_USER_NAME,user.getEmail(),AppConstants.TEST_USER_PASSWORD);
+	    RegisterRequest request = RequestBuilder.buildRegisterRequest(AppConstants.TEST_USER_NAME,System.getenv("USER_EMAIL"),AppConstants.TEST_USER_PASSWORD);
 	    
 	    RegisterResponse response = authClient.register(request)
 	            .assertStatus(409)
 	            .as(RegisterResponse.class);
-	    
-	    Assert.assertEquals(response.isSuccess(),false);	    
+
+        Assert.assertFalse(response.isSuccess());
 	    Assert.assertEquals(response.getMessage(),AppConstants.REGISTER_EXISTS_MESSAGE);	    
 	    
 	}	
 	
 	@Test(groups = {"smoke"}, description = "POST /forget-password: Should return 200 with OTP sent success message when a valid registered email is provided")
 	public void shouldReturn200_whenForgetPasswordWithValidEmail() {
-		ForgetPasswordRequest request = RequestBuilder.buildForgetPasswordRequest(user.getEmail());
+		ForgetPasswordRequest request = RequestBuilder.buildForgetPasswordRequest(System.getenv("USER_EMAIL"));
 		
 		ForgetPasswordResponse response = authClient.forgetPassword(request)
 				  .assertStatus(200)
 				  .validateSchema("schema/forget-password-schema.json")
 				  .as(ForgetPasswordResponse.class);
-		
-		Assert.assertEquals(response.isSuccess(),true);
+
+        Assert.assertTrue(response.isSuccess());
 		Assert.assertEquals(response.getMessage(), AppConstants.FORGET_PASSWORD_SUCCESS_MESSAGE);	
 	}
 	
@@ -206,8 +206,8 @@ public class AuthApiTests extends APIBaseTest  {
 		ForgetPasswordResponse response = authClient.forgetPassword(request)
 				  .assertStatus(200)
 				  .as(ForgetPasswordResponse.class);
-		
-		Assert.assertEquals(response.isSuccess(),true);
+
+        Assert.assertTrue(response.isSuccess());
 		Assert.assertEquals(response.getMessage(), AppConstants.FORGET_PASSWORD_SUCCESS_MESSAGE);	
 	}
 	
@@ -218,23 +218,23 @@ public class AuthApiTests extends APIBaseTest  {
 		ForgetPasswordResponse response = authClient.forgetPassword(request)
 				  .assertStatus(400)
 				  .as(ForgetPasswordResponse.class);
-		
-		Assert.assertEquals(response.isSuccess(),false);
+
+        Assert.assertFalse(response.isSuccess());
 		Assert.assertEquals(response.getMessage(), AppConstants.FORGET_PASSWORD_EMAIL_REQUIRED_MESSAGE);	
 	}
 	
 	@Test(groups = {"smoke"}, description = "POST /reset-password: Should return 200 with success status and message when a valid OTP fetched from MongoDB is provided")
 	public void shouldReturn200_whenResetPasswordWithValidOTP() {
-		ForgetPasswordRequest request =  RequestBuilder.buildForgetPasswordRequest(user.getEmail());
+		ForgetPasswordRequest request =  RequestBuilder.buildForgetPasswordRequest(System.getenv("USER_EMAIL"));
 		
 		authClient.forgetPassword(request)
 				  .assertStatus(200);
 		
 		MongoCollection<Document> mdb_TestCollection =MongoConnection.connect(AppConstants.MONGO_DB_NAME, AppConstants.MONGO_USERS_COLLECTION);
-		Document mdb_TestDocument = MongoHelper.findOneByAnyParams(mdb_TestCollection, "email", user.getEmail());
+		Document mdb_TestDocument = MongoHelper.findOneByAnyParams(mdb_TestCollection, "email", System.getenv("USER_EMAIL"));
 		String otp = mdb_TestDocument.get("otp").toString();
 		
-		ResetPasswordRequest resetRequest = RequestBuilder.buildResetPasswordRequest(user.getPassword(),otp);
+		ResetPasswordRequest resetRequest = RequestBuilder.buildResetPasswordRequest(System.getenv("USER_PASSWORD"),otp);
 		
 		ResetPasswordResponse resetResponse = authClient.resetPassword(resetRequest)
 				  .assertStatus(200)
@@ -247,7 +247,7 @@ public class AuthApiTests extends APIBaseTest  {
 	
 	@Test(groups = {"regression"}, description = "POST /reset-password: Should return 401 with failure status and invalid request message when OTP is null")
 	public void shouldReturn401_whenOTPIsNull() {
-		ResetPasswordRequest request =  RequestBuilder.buildResetPasswordRequest(user.getPassword(),null);
+		ResetPasswordRequest request =  RequestBuilder.buildResetPasswordRequest(System.getenv("USER_PASSWORD"),null);
 		
 		ResetPasswordResponse response = authClient.resetPassword(request)
 		          .assertStatus(401)
@@ -271,7 +271,7 @@ public class AuthApiTests extends APIBaseTest  {
 	
 	@Test(groups = {"regression"}, description = "POST /reset-password: Should return 400 with failure status and wrong OTP message when an incorrect OTP is submitted")
 	public void shouldReturn400_whenResetPasswordWithWrongOTP() {
-		ResetPasswordRequest request =RequestBuilder.buildResetPasswordRequest(user.getPassword(),AppConstants.INVALID_OTP);
+		ResetPasswordRequest request =RequestBuilder.buildResetPasswordRequest(System.getenv("USER_PASSWORD"),AppConstants.INVALID_OTP);
 		
 		ResetPasswordResponse response = authClient.resetPassword(request)
 			      .assertStatus(400)
@@ -288,9 +288,9 @@ public class AuthApiTests extends APIBaseTest  {
 			      .assertStatus(200)
 			      .validateSchema("schema/get-current-user-schema.json")
 			      .as(CurrentUserResponse.class);
-		
-		Assert.assertEquals(response.isSuccess(), true);
-		Assert.assertEquals(response.getUser().getEmail(),user.getEmail());
+
+        Assert.assertTrue(response.isSuccess());
+		Assert.assertEquals(response.getUser().getEmail(),System.getenv("USER_EMAIL"));
 		Assert.assertEquals(response.getUser().getName(),AppConstants.TEST_USER_NAME);
 		Assert.assertEquals(response.getUser().getRole(),AppConstants.ROLE_USER);
 		Assert.assertNotEquals(response.getUser().getId(),null);
