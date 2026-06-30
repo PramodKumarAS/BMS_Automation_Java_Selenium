@@ -10,7 +10,7 @@
     <test name="Chrome Tests">
         <parameter name="browserType" value="chrome"/>
         <packages>
-            <!-- <package name="tests.api"/> -->s
+            <package name="tests.api"/>
             <package name="tests.functional"/>
             <package name="tests.e2e"/>
         </packages>

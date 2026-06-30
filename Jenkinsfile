@@ -61,18 +61,18 @@ pipeline{
                 withCredentials([
                     usernamePassword(
                         credentialsId:'user',
-                        userNameVariable:'USER_EMAIL',
-                        userPasswordVariable:'USER_PASSWORD'
+                        usernameVariable:'USER_EMAIL',
+                        passwordVariable:'USER_PASSWORD'
                     ),
                     usernamePassword(
                         credentialsId:'partner',
-                        userNameVariable:'PARTNER_EMAIL',
-                        userPasswordVariable:'PARTNER_PASSWORD'
+                        usernameVariable:'PARTNER_EMAIL',
+                        passwordVariable:'PARTNER_PASSWORD'
                     ),
                     usernamePassword(
                         credentialsId:'admin',
-                        userNameVariable:'ADMIN_EMAIL',
-                        userPasswordVariable:'ADMIN_PASSWORD'
+                        usernameVariable:'ADMIN_EMAIL',
+                        passwordVariable:'ADMIN_PASSWORD'
                     ),
                     string(credentialsId:'mongo-uri',variable:'MONGO_URI')
                 ]){
