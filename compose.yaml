@@ -4,6 +4,10 @@ services:
     image: selenium/node-chrome:4.45.0
     container_name: chrome-node
     shm_size: 2gb
+
+    ports:
+      - "5555:5555"
+
     environment:
       - SE_EVENT_BUS_HOST=192.168.1.7
       - SE_EVENT_BUS_PUBLISH_PORT=4442
