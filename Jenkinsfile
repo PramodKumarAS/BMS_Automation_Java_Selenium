@@ -29,20 +29,6 @@ pipeline{
 
     stages{
 
-        stage('Print Parameters') {
-            steps {
-                echo "Browser : ${params.BROWSER}"
-                echo "Run Type: ${params.RUN_TYPE}"
-                echo "Headless: ${params.HEADLESS}"
-            }
-        }
-
-        stage('Check out'){
-           steps{
-                echo 'Checking out source code'
-           }
-        }
-
         stage('Start Selenium Grid'){
            steps{
                  bat 'docker compose up -d'
@@ -56,30 +42,64 @@ pipeline{
         }
 
         stage('Run selenium UI Tests'){
-           steps{
 
-                withCredentials([
-                    usernamePassword(
-                        credentialsId:'user',
-                        usernameVariable:'USER_EMAIL',
-                        passwordVariable:'USER_PASSWORD'
-                    ),
-                    usernamePassword(
-                        credentialsId:'partner',
-                        usernameVariable:'PARTNER_EMAIL',
-                        passwordVariable:'PARTNER_PASSWORD'
-                    ),
-                    usernamePassword(
-                        credentialsId:'admin',
-                        usernameVariable:'ADMIN_EMAIL',
-                        passwordVariable:'ADMIN_PASSWORD'
-                    ),
-                    string(credentialsId:'mongo-uri',variable:'MONGO_URI')
-                ]){
-                    bat "mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
+            parallel{
+                stage('chrome'){
+                   steps{
+                      ws("${env.WORKSPACE}\\chrome") {
+                        withCredentials([
+                            usernamePassword(
+                                credentialsId:'user',
+                                usernameVariable:'USER_EMAIL',
+                                passwordVariable:'USER_PASSWORD'
+                            ),
+                            usernamePassword(
+                                credentialsId:'partner',
+                                usernameVariable:'PARTNER_EMAIL',
+                                passwordVariable:'PARTNER_PASSWORD'
+                            ),
+                            usernamePassword(
+                                credentialsId:'admin',
+                                usernameVariable:'ADMIN_EMAIL',
+                                passwordVariable:'ADMIN_PASSWORD'
+                            ),
+                            string(credentialsId:'mongo-uri',variable:'MONGO_URI')
+                        ]){
+                            bat "mvn clean test -Dbrowser=chrome -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
+                        }
+                      }
+                   }
                 }
 
-           }
+                stage('firefox'){
+                   steps{
+                      ws("${env.WORKSPACE}\\firefox") {
+
+                        withCredentials([
+                            usernamePassword(
+                                credentialsId:'user',
+                                usernameVariable:'USER_EMAIL',
+                                passwordVariable:'USER_PASSWORD'
+                            ),
+                            usernamePassword(
+                                credentialsId:'partner',
+                                usernameVariable:'PARTNER_EMAIL',
+                                passwordVariable:'PARTNER_PASSWORD'
+                            ),
+                            usernamePassword(
+                                credentialsId:'admin',
+                                usernameVariable:'ADMIN_EMAIL',
+                                passwordVariable:'ADMIN_PASSWORD'
+                            ),
+                            string(credentialsId:'mongo-uri',variable:'MONGO_URI')
+                        ]){
+                            bat "mvn clean test -Dbrowser=firefox -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
+                        }
+                      }
+                   }
+                }
+
+            }
         }
     }
 

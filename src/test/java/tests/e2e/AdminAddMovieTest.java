@@ -33,7 +33,7 @@ public class AdminAddMovieTest extends BaseTest {
 	public void beforeClass() {
 		movieData = TestDataLoader.loadMovies("movie.json");
 		
-		loginToApp(System.getenv("PARTNER_EMAIL"),System.getenv("PARTNER_PASSWORD"));
+		loginToApp(System.getenv("ADMIN_EMAIL"),System.getenv("ADMIN_PASSWORD"));
 		mdb_Shows_collection = MongoConnection.connect("test", "movies");		
 	}
 	
