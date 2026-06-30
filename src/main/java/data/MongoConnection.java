@@ -7,8 +7,6 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-import config.ConfigReader;
-
 //Singleton Pattern
 public class MongoConnection {
 
@@ -20,7 +18,6 @@ public class MongoConnection {
 	}
 
 	public static MongoCollection<Document> connect(String dbName,String collectionName){
-	
 		if(mongoClient==null) {
 			synchronized(MongoConnection.class) { //Thread1 acquires a LOCK on class MongoConnection and Ensure only one creation even in race conditions
 				if(mongoClient==null) {
