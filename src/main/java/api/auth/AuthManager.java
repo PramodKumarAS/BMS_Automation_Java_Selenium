@@ -19,17 +19,28 @@ public class AuthManager {
     }
 
     private static String generateToken(String role) {
-		UsersList users = TestDataLoader.loadUsers("users.json");
+        String userEmail = "";
+        String userPassword = "";
 
-		
-		User user = users.getUsers().stream()
-				.filter(u->u.getRole().equalsIgnoreCase(role))
-				.findFirst()
-                .orElseThrow(() -> new RuntimeException("No user found for role: " + role));				
+        switch (role){
+            case "user":
+                userEmail=System.getenv("USER_EMAIL");
+                userPassword=System.getenv("USER_PASSWORD");
+                break;
+            case "partner":
+                userEmail=System.getenv("PARTNER_EMAIL");
+                userPassword=System.getenv("PARTNER_PASSWORD");
+                break;
+
+            case "admin":
+                userEmail=System.getenv("ADMIN_EMAIL");
+                userPassword=System.getenv("ADMIN_PASSWORD");
+                break;
+        }
 
         AuthClient authClient = new AuthClient();
 
-	    String generatedtoken = authClient.login(RequestBuilder.buildLoginRequest(user.getEmail(), user.getPassword()))
+	    String generatedtoken = authClient.login(RequestBuilder.buildLoginRequest(userEmail, userPassword))
 	            .assertStatus(200)
 	            .as(LoginResponse.class)
 	            .getToken();

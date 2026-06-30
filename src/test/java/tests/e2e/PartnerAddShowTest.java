@@ -26,7 +26,6 @@ import ui.pages.ListOfShowsModalPage;
 import ui.pages.PartnerHomePage;
 
 public class PartnerAddShowTest extends BaseTest {
-	User userData=null;
 	Show showData=null;
  	PartnerHomePage partnerPage;
 	ListOfShowsModalPage showsModalPage;
@@ -42,13 +41,9 @@ public class PartnerAddShowTest extends BaseTest {
 	
 	@BeforeClass
 	public void oneTimeSetUp() {
-		
-		UsersList users = TestDataLoader.loadUsers("users.json");
-		userData = users.getUsers().get(1);
-
 		showData = TestDataLoader.loadShows("shows.json");
 		
-		loginToApp(userData.getEmail(),userData.getPassword());
+		loginToApp(System.getenv("PARTNER_EMAIL"),System.getenv("PARTNER_PASSWORD"));
 		mdb_Shows_collection = MongoConnection.connect("test", "shows");
 	}
 	

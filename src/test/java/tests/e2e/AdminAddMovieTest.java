@@ -26,16 +26,14 @@ public class AdminAddMovieTest extends BaseTest {
 	
 	AdminHomePage adminHomePage =null;
 	AddMovieModalPage addMovieModalPage=null;
-	UsersList users =null;
 	Movie movieData=null;
 	MongoCollection<Document> mdb_Shows_collection=null;
 
 	@BeforeClass
 	public void beforeClass() {
-		users = TestDataLoader.loadUsers("users.json");
 		movieData = TestDataLoader.loadMovies("movie.json");
 		
-		loginToApp(users.getUsers().get(2).getEmail(),users.getUsers().get(2).getPassword());	
+		loginToApp(System.getenv("PARTNER_EMAIL"),System.getenv("PARTNER_PASSWORD"));
 		mdb_Shows_collection = MongoConnection.connect("test", "movies");		
 	}
 	

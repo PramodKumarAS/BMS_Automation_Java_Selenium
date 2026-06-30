@@ -21,8 +21,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import api.model.User;
-import api.model.UsersList;
 import config.ConfigReader;
 import data.TestDataLoader;
 import driver.DriverConfig;
@@ -64,17 +62,13 @@ public class BaseTest {
 	}
 	
 	public void loginToApp() {
-		User userData=null;
-		UsersList users = TestDataLoader.loadUsers("users.json");
-		userData = users.getUsers().get(0);
-		
 		driver.get(baseURL);
 		
 		LoginPage loginPage = new LoginPage();
 
 		loginPage
-		   .txt_EmailField().setText(userData.getEmail())
-           .txt_PasswordField().setText(userData.getPassword())
+		   .txt_EmailField().setText(System.getenv("USER_EMAIL"))
+           .txt_PasswordField().setText(System.getenv("USER_PASSWORD"))
 	       .btn_Login().click();
 		
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));

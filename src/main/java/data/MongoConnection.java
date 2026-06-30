@@ -24,7 +24,7 @@ public class MongoConnection {
 		if(mongoClient==null) {
 			synchronized(MongoConnection.class) { //Thread1 acquires a LOCK on class MongoConnection and Ensure only one creation even in race conditions
 				if(mongoClient==null) {
-					mongoClient=MongoClients.create(ConfigReader.get("mongo.uri"));					
+					mongoClient=MongoClients.create(System.getenv("MONGO_URI"));
 				}
 			}
 		}

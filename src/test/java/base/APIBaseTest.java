@@ -21,13 +21,8 @@ public class APIBaseTest {
 	protected ShowClient showClient = new ShowClient();
 	protected BookClient bookClient = new BookClient();
 
-	public User user =null;
-	
 	@BeforeClass
 	public void setUp() {
 		RestAssuredClient.setUp();
-		
-		UsersList users = TestDataLoader.loadUsers("users.json");
-		user = users.getUsers().get(0);				
 	}
 }

@@ -57,7 +57,28 @@ pipeline{
 
         stage('Run selenium UI Tests'){
            steps{
-                bat "mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId:'user',
+                        userNameVariable:'USER_EMAIL',
+                        userPasswordVariable:'USER_PASSWORD'
+                    ),
+                    usernamePassword(
+                        credentialsId:'partner',
+                        userNameVariable:'PARTNER_EMAIL',
+                        userPasswordVariable:'PARTNER_PASSWORD'
+                    ),
+                    usernamePassword(
+                        credentialsId:'admin',
+                        userNameVariable:'ADMIN_EMAIL',
+                        userPasswordVariable:'ADMIN_PASSWORD'
+                    ),
+                    string(credentialsId:'mongo-uri',variable:'MONGO_URI')
+                ]){
+                    bat "mvn clean test -Dbrowser=${params.BROWSER} -DrunType=${params.RUN_TYPE} -Dheadless=${params.HEADLESS}"
+                }
+
            }
         }
     }
