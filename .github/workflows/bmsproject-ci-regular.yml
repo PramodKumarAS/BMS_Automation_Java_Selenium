@@ -51,7 +51,6 @@ jobs:
         with:
           name: extent-reports
           path: |
-            reports/
-            ExtentReports/
-            test-output/ExtentReport*.html
+            target/
+            extent-reports/ExtentReport*.html
           retention-days: 30
