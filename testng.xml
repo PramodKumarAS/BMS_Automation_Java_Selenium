@@ -1,7 +1,7 @@
 
 <suite name="BMSProject Suite" parallel="false" thread-count="3" verbose="2">
 
-    <parameter name="typeOfRun" value="remote"/>
+    <parameter name="typeOfRun" value="local"/>
     <listeners>
         <listener class-name="listeners.ExtentTestListener"/>
         <listener class-name="listeners.RetryListener"/>
@@ -16,7 +16,7 @@
         </packages>
     </test>
 
-    <!-- <test name="Firefox Tests">
+    <test name="Firefox Tests">
         <parameter name="browserType" value="firefox"/>
         <packages>
             <package name="tests.api"/>
@@ -32,6 +32,6 @@
             <package name="tests.functional"/>
             <package name="tests.e2e"/>
         </packages>
-    </test> -->
+    </test>
 
 </suite>

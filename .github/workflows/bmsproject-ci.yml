@@ -1,20 +1,12 @@
-name: BMSProject Selenium CI/CD
+name: BMSProject Selenium Grid + Docker CI/CD
 
 on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
   workflow_dispatch:
 
 jobs:
   selenium-tests:
-    name: Run Selenium + API + Allure Tests
-    runs-on: self-hosted
+    name: Run Tests in Selenium Grid + Docker
+    runs-on: ubuntu-latest
 
     steps:
       # 1. Checkout BMSProject code
@@ -29,46 +21,23 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      #3. Spin up docker
       - name: Start Selenium Grid
         run : docker compose up -d
 
-#      - name: Check Hub Status
-#        run: |
-#          curl http://localhost:4444/status || true
-#
-#      - name: Wait for Selenium Grid
-#        run: |
-#          timeout 60 bash -c '
-#            until curl -s http://localhost:4444/status | grep -q "\"ready\": *true"
-#            do
-#              echo "Waiting..."
-#              sleep 2
-#            done
-#          '
-      # Run command in windows
-      - name: Wait for Grid (Windows)
-        if: runner.os == 'Windows'
-        shell: pwsh
+      - name: Check Hub Status
         run: |
-          $timeout = (Get-Date).AddSeconds(60)
-          do {
-           try {
-               $status = Invoke-RestMethod http://localhost:4444/status
-               if ($status.value.ready) {
-                   Write-Host "Grid Ready!"
-                   exit 0
-               }
-           }
-           catch {}
-           Start-Sleep -Seconds 2
-          } while ((Get-Date) -lt $timeout)
-          
-          throw "Grid did not become ready within 60 seconds."
-#      # 3. Chrome for Selenium (WebDriverManager handles chromedriver automatically) - Required Only ChromeDriver automation
-#      - name: Set up Chrome Browser
-#        uses: browser-actions/setup-chrome@v1
-#        with:
-#          chrome-version: stable
+          curl http://localhost:4444/status || true
+
+      - name: Wait for Selenium Grid
+        run: |
+          timeout 60 bash -c '
+            until curl -s http://localhost:4444/status | grep -q "\"ready\": *true"
+            do
+              echo "Waiting..."
+              sleep 2
+            done
+          '
 
       # 4. Cache ~/.m2 (Selenium 4.21, RestAssured 5.4, Allure, MongoDB, Extent etc.)
       - name: Cache Maven Dependencies

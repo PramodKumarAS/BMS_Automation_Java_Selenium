@@ -12,3 +12,7 @@ test-output/
 # OS files
 .DS_Store
 Thumbs.db
+
+echo
+set
+.idea

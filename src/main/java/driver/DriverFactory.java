@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DriverFactory {
-	
+
 	//SINGLETON -> Private constructor + Private static instance + global access method
 	private DriverFactory() {}
 
@@ -24,14 +24,14 @@ public class DriverFactory {
 	    }
 	    return driver.get();
 	}
-	
+
     public static void quitDriver() {
         if(driver.get()!=null){
             driver.get().quit();
             driver.remove();
         }
     }
-     
+
     //FACTORY -> Method that returns objects based on input
     public static WebDriver createDriver(DriverConfig config,String typeOfRun) throws MalformedURLException {
 
@@ -91,7 +91,7 @@ public class DriverFactory {
 			}
 
         }
-        
+
         return driver.get();
     }
 }

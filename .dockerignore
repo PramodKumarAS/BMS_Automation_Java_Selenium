@@ -1,0 +1,8 @@
+target/
+test-output/
+.git/
+.idea/
+.settings/
+.metadata/
+.classpath
+.project

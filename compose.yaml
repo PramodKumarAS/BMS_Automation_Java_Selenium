@@ -1,31 +1,36 @@
 services:
 
+  selenium-hub:
+    image: selenium/hub:4.45.0
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
   chrome:
     image: selenium/node-chrome:4.45.0
-    container_name: chrome-node
     shm_size: 2gb
-
-    ports:
-      - "5555:5555"
-
+    depends_on: [selenium-hub]
     environment:
-      - SE_EVENT_BUS_HOST=192.168.1.7
+      - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_HOST=192.168.1.3
-      - SE_NODE_PORT=5555
 
   firefox:
     image: selenium/node-firefox:4.45.0
-    container_name: firefox-node
     shm_size: 2gb
-
-    ports:
-      - "5556:5555"
-
+    depends_on: [selenium-hub]
     environment:
-      - SE_EVENT_BUS_HOST=192.168.1.7
+      - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_HOST=192.168.1.3
-      - SE_NODE_PORT=5556
+
+  edge:
+    image: selenium/node-edge:4.45.0
+    shm_size: 2gb
+    depends_on: [selenium-hub]
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
