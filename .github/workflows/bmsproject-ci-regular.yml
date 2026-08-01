@@ -30,6 +30,7 @@ jobs:
     environment: ${{ inputs.target_env }}
     env:
       BROWSER: ${{ inputs.target_browser }}
+      MONGO_URI: ${{ secrets.MONGO_URI }}
 
     steps:
       - name: Checkout Repository
