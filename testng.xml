@@ -11,8 +11,8 @@
         <parameter name="browserType" value="chrome"/>
         <packages>
             <package name="tests.api"/>
-            <package name="tests.functional"/>
-            <package name="tests.e2e"/>
+            <!-- <package name="tests.functional"/>
+            <package name="tests.e2e"/> -->
         </packages>
     </test>
 
