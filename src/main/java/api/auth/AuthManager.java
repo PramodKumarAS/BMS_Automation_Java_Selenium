@@ -3,6 +3,7 @@ package api.auth;
 import api.builder.RequestBuilder;
 import api.endpoints.AuthClient;
 import api.model.LoginResponse;
+import config.CredentialsReader;
 
 public class AuthManager {
 
@@ -21,17 +22,17 @@ public class AuthManager {
 
         switch (role){
             case "User":
-                userEmail=System.getenv("USER_EMAIL");
-                userPassword=System.getenv("USER_PASSWORD");
+                userEmail= CredentialsReader.username("USER_EMAIL");
+                userPassword=CredentialsReader.password("USER_PASSWORD");
                 break;
             case "Partner":
-                userEmail=System.getenv("PARTNER_EMAIL");
-                userPassword=System.getenv("PARTNER_PASSWORD");
+                userEmail=CredentialsReader.username("PARTNER_EMAIL");
+                userPassword=CredentialsReader.password("PARTNER_PASSWORD");
                 break;
 
             case "Admin":
-                userEmail=System.getenv("ADMIN_EMAIL");
-                userPassword=System.getenv("ADMIN_PASSWORD");
+                userEmail=CredentialsReader.username("ADMIN_EMAIL");
+                userPassword=CredentialsReader.password("ADMIN_PASSWORD");
                 break;
         }
 

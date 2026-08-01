@@ -16,7 +16,7 @@ public class ApiResponse {
 		
 		return this;
 	}
-	
+
     public ApiResponse validateSchema(String schemaPath) {
         response.then().assertThat()
                 .body(matchesJsonSchemaInClasspath(schemaPath));

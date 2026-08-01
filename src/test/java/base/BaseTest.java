@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import config.CredentialsReader;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -37,7 +38,7 @@ public class BaseTest {
 	
 	@Parameters({"browserType","typeOfRun"})
 	@BeforeClass
-	public void OneTimeSetUp(String browserName,String typeOfRun) throws MalformedURLException {
+	public void OneTimeSetUp(@Optional("chrome") String browserName,@Optional("local") String typeOfRun) throws MalformedURLException {
 
 		browserName = System.getProperty("browser",browserName);
 		typeOfRun   = System.getProperty("runType",typeOfRun);
@@ -67,8 +68,8 @@ public class BaseTest {
 		LoginPage loginPage = new LoginPage();
 
 		loginPage
-		   .txt_EmailField().setText(System.getenv("USER_EMAIL"))
-           .txt_PasswordField().setText(System.getenv("USER_PASSWORD"))
+		   .txt_EmailField().setText(CredentialsReader.username("USER_EMAIL"))
+           .txt_PasswordField().setText(CredentialsReader.password("USER_PASSWORD"))
 	       .btn_Login().click();
 		
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));

@@ -46,7 +46,7 @@ public class SingleMoviePage extends BasePage<SingleMoviePage> {
 	}
 	
 	public Button<SingleMoviePage> btn_BookShow(){
-		return button().setProperties(By.xpath("//*[normalize-space(text())='Book Show -']/ancestor::button"));
+		return button().setProperties(By.xpath("//*[contains(text(),'Book Show - ')]/ancestor::button"));
 	}
 	
 	public SingleMoviePage waitForPageLoad() {

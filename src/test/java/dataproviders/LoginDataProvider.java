@@ -1,5 +1,6 @@
 package dataproviders;
 
+import config.CredentialsReader;
 import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 
@@ -9,20 +10,20 @@ public class LoginDataProvider {
 	public Object[][] loginData(){
 		return new Object[][] {
 	        {
-	            "pkUser@gmail.com",
-	            "14036",
+				CredentialsReader.username("USER_EMAIL"),
+	            CredentialsReader.password("USER_PASSWORD"),
 	            "UserPramod",
 	            By.xpath("//input[@placeholder='Type here to search for movies']")
 	        },
 	        {
-	            "pkPartner@gmail.com",
-	            "14036",
+				CredentialsReader.username("PARTNER_EMAIL"),
+	            CredentialsReader.password("PARTNER_PASSWORD"),
 	            "PartnerPramod",
 	            By.xpath("//*[normalize-space(text())='Add Theatre']/ancestor::button")
 	        },
 	        {
-	            "pkAdmin@gmail.com",
-	            "14036",
+				CredentialsReader.username("ADMIN_EMAIL"),
+	            CredentialsReader.password("ADMIN_PASSWORD"),
 	            "AdminPramod",
 	            By.xpath("//*[normalize-space(text())='Add Movie']/ancestor::button")
 	        }			
@@ -32,8 +33,8 @@ public class LoginDataProvider {
 	@DataProvider (name="invalidLoginData")
 	public Object[][] invalidLoginData(){
 		return new Object[][] {
-	        {"praod@gmail.com", "14036", "invalid email"},
-	        {"pkUser@gmail.com", "!212!!", "invalid password"}			
+	        {"praod@gmail.com", "12036", "invalid email"},
+	        {CredentialsReader.username("USER_EMAIL"), "!212!!", "invalid password"}
 		};
 	}
 	
@@ -41,9 +42,9 @@ public class LoginDataProvider {
 	public Object[][] ivalidInputs(){
 		return new Object[][] {
 	        {null, "pass123", "Email and password are required"},   // missing email
-	        {"pkUser@gmail.com", null, "Email and password are required"}, // missing password
+	        {CredentialsReader.username("USER_EMAIL"), null, "Email and password are required"}, // missing password
 	        {"", "pass123", "Email and password are required"},     // empty email
-	        {"pkUser@gmail.com", "", "Email and password are required"}, // empty password
+	        {CredentialsReader.username("USER_EMAIL"), "", "Email and password are required"}, // empty password
 	        {"abc", "pass123", "Invalid email format"}              // invalid email
 		};
 	}

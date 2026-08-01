@@ -1,6 +1,7 @@
 package api.client;
 
 import api.auth.AuthManager;
+import config.ConfigReader;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.http.ContentType;
@@ -11,6 +12,7 @@ public class RequestSpecFactory {
     // Base spec (no auth)
     public static RequestSpecification getBaseSpec() {
         return new RequestSpecBuilder()
+                .setBaseUri(ConfigReader.get("apiBaseUrl"))
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)      
                 .addFilter(ErrorLoggingFilter.logErrorsTo(System.err))  // prints only on failure

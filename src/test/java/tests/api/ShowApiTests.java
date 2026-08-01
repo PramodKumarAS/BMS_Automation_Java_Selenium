@@ -3,6 +3,7 @@ package tests.api;
 import java.time.Instant;
 import java.util.Date;
 
+import api.endpoints.ShowClient;
 import org.bson.Document;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -33,7 +34,6 @@ public class ShowApiTests extends APIBaseTest {
     MongoCollection<Document> mdb_TheatresCollection = null;
     String movieId   = null;
     String theatreId = null;
-
     @BeforeClass
     public void setup() {
         showData        = TestDataLoader.loadShows("shows.json");

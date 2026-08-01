@@ -1,6 +1,8 @@
 package tests.functional;
 
 import java.time.Duration;
+
+import config.CredentialsReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,7 +20,7 @@ public class AdminHomePageTest extends BaseTest {
 	
 	@BeforeClass
 	public void setUp() {
-		loginToApp("pkAdmin@gmail.com","14036");
+		loginToApp(CredentialsReader.username("ADMIN_EMAIL"),CredentialsReader.password("ADMIN_PASSWORD"));
 	}
 	
 	@BeforeMethod

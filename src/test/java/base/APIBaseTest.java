@@ -3,7 +3,6 @@ package base;
 
 import org.testng.annotations.BeforeClass;
 
-import api.client.RestAssuredClient;
 import api.endpoints.AuthClient;
 import api.endpoints.BookClient;
 import api.endpoints.MovieClient;
@@ -21,8 +20,8 @@ public class APIBaseTest {
 	protected ShowClient showClient = new ShowClient();
 	protected BookClient bookClient = new BookClient();
 
-	@BeforeClass
-	public void setUp() {
-		RestAssuredClient.setUp();
-	}
+//	@BeforeClass
+//	public void setUp() {
+//		RestAssuredClient.setUp();
+//	}
 }

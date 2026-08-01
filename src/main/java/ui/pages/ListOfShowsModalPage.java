@@ -3,6 +3,7 @@ package ui.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,9 +38,13 @@ public class ListOfShowsModalPage extends BasePage<ListOfShowsModalPage> {
 	}
 	
 	public ListOfShowsModalPage waitForTableToLoad() {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class='ant-modal-body']//table//tbody//tr//td//*[@aria-label='edit']")));
-		
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+		try{
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class='ant-modal-body']//table//tbody//tr//td//*[@aria-label='edit']")));
+		} catch (TimeoutException e) {
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class='ant-modal-body']//table//tbody//tr//td//div[normalize-space(text())='No data']")));
+		}
+
 		return this;
 	}	
 }

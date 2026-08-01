@@ -1,18 +1,18 @@
 
-<suite name="BMSProject Suite" parallel="classes" thread-count="3" verbose="2">
+<suite name="BMSProject Suite" parallel="methods" thread-count="3" verbose="2">
 
     <parameter name="typeOfRun" value="local"/>
     <listeners>
         <listener class-name="listeners.ExtentTestListener"/>
-        <listener class-name="listeners.RetryListener"/>
+<!--        <listener class-name="listeners.RetryListener"/>-->
     </listeners>
 
     <test name="Chrome Tests">
-        <parameter name="browserType" value="none"/>
+        <parameter name="browserType" value="chrome"/>
         <packages>
+            <package name="tests.api"/>
             <package name="tests.functional"/>
-<!--            <package name="tests.e2e"/>-->
-<!--            <package name="tests.api"/>-->
+            <package name="tests.e2e"/>
         </packages>
     </test>
 

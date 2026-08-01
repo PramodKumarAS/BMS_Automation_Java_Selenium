@@ -46,8 +46,8 @@ public class MongoHelper {
         
     public static Document findOne(MongoCollection<Document> collection,String parmName,String id) {
     	return collection.find(new Document(parmName, new ObjectId(id))).first();
-    }  
-    
+    }
+
     public static Document findOneByAnyParams(MongoCollection<Document> collection,String parmName,String value) {
     	return collection.find(new Document(parmName,value)).first();
     }  

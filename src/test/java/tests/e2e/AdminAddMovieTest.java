@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
+import config.CredentialsReader;
 import org.bson.Document;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -33,7 +34,7 @@ public class AdminAddMovieTest extends BaseTest {
 	public void beforeClass() {
 		movieData = TestDataLoader.loadMovies("movie.json");
 		
-		loginToApp(System.getenv("ADMIN_EMAIL"),System.getenv("ADMIN_PASSWORD"));
+		loginToApp(CredentialsReader.username("ADMIN_EMAIL"),CredentialsReader.password("ADMIN_PASSWORD"));
 		mdb_Shows_collection = MongoConnection.connect("test", "movies");		
 	}
 	

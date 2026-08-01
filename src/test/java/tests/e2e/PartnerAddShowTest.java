@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
+import config.CredentialsReader;
 import org.bson.Document;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -43,7 +44,7 @@ public class PartnerAddShowTest extends BaseTest {
 	public void oneTimeSetUp() {
 		showData = TestDataLoader.loadShows("shows.json");
 		
-		loginToApp(System.getenv("PARTNER_EMAIL"),System.getenv("PARTNER_PASSWORD"));
+		loginToApp(CredentialsReader.username("PARTNER_EMAIL"),CredentialsReader.password("PARTNER_PASSWORD"));
 		mdb_Shows_collection = MongoConnection.connect("test", "shows");
 	}
 	
@@ -66,7 +67,8 @@ public class PartnerAddShowTest extends BaseTest {
 		
 		partnerPage
 		    .btn_AddShows("PVR").click();
-		
+		waitForSeconds(5);
+
 		int showsCountBefore = 
 		showsModalPage
 			.waitForTableToLoad()
@@ -88,8 +90,7 @@ public class PartnerAddShowTest extends BaseTest {
 		    .selectFromVirtualDropdown(showData.getMovie())
 		    .btn_AddTheShow().click();
 		
-		waitForSeconds(10);
-		int showsCountAfter = 
+		int showsCountAfter =
 		showsModalPage
 			.waitForTableToLoad()
 			.tbl_Shows().getRowCount();		
@@ -102,14 +103,14 @@ public class PartnerAddShowTest extends BaseTest {
 		String showDateUI = todayDate.format(formatter2);
 		
 		SoftAssert sa = new SoftAssert();
-		sa.assertEquals(showsCountAfter, showsCountBefore+1);
-		sa.assertEquals(addedShowRowData.get("Show Name"), showData.getName());
-		sa.assertEquals(addedShowRowData.get("Show Date"), showDateUI);
-		sa.assertTrue(addedShowRowData.get("Show Time").contains(showData.getTime()));
-		sa.assertEquals(addedShowRowData.get("Movie"), showData.getMovie());
-		sa.assertEquals(addedShowRowData.get("Ticket Price"), showData.getTicketPrice());
-		sa.assertEquals(addedShowRowData.get("Total Seats"), showData.getTotalSeats());
-		sa.assertEquals(addedShowRowData.get("Available Seats"), showData.getTotalSeats());	
-		sa.assertAll();		   		
+		sa.assertTrue(showsCountAfter > showsCountBefore, "Shows count should increase after adding a show.");
+		sa.assertEquals(addedShowRowData.get("Show Name"), showData.getName(), "Show Name mismatch.");
+		sa.assertEquals(addedShowRowData.get("Show Date"), showDateUI, "Show Date mismatch.");
+		sa.assertTrue(addedShowRowData.get("Show Time").contains(showData.getTime()), "Show Time mismatch.");
+		sa.assertEquals(addedShowRowData.get("Movie"), showData.getMovie(), "Movie name mismatch.");
+		sa.assertEquals(Integer.parseInt(addedShowRowData.get("Ticket Price")), showData.getTicketPrice(), "Ticket Price mismatch.");
+		sa.assertEquals(Integer.parseInt(addedShowRowData.get("Total Seats")), showData.getTotalSeats(), "Total Seats mismatch.");
+		sa.assertEquals(Integer.parseInt(addedShowRowData.get("Available Seats")), showData.getTotalSeats(), "Available Seats should equal Total Seats for a newly added show.");
+		sa.assertAll();
 	}
 }

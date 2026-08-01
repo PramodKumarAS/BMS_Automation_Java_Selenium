@@ -38,7 +38,7 @@ public class Table<T> {
 	}
 	
 	public int getRowCount() {
-		List<WebElement> recordCount = _driver.findElements(By.xpath("//table//tbody//tr"));
+		List<WebElement> recordCount = _driver.findElements(By.xpath("//table//tbody//tr[not(contains(@class,'ant-table-placeholder'))]"));
 		
 		return recordCount.size();
 	}
