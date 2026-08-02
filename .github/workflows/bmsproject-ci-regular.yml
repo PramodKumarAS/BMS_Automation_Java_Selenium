@@ -31,6 +31,12 @@ jobs:
     env:
       BROWSER: ${{ inputs.target_browser }}
       MONGO_URI: ${{ secrets.MONGO_URI }}
+      USER_EMAIL : ${{ secrets.USER_EMAIL }}
+      USER_PASSWORD : ${{ secrets.USER_EMAIL }}
+      ADMIN_EMAIL : ${{ secrets.ADMIN_EMAIL }}
+      ADMIN_PASSWORD : ${{ secrets.ADMIN_PASSWORD }}
+      PARTNER_EMAIL : ${{ secrets.PARTNER_EMAIL }}
+      PARTNER_PASSWORD : ${{ secrets.PARTNER_PASSWORD }}
 
     steps:
       - name: Checkout Repository
