@@ -43,9 +43,9 @@ public class ExtentTestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-
-        //For API Tests no need to attach sceenshots
-        if(DriverFactory.getDriver()!=null){
+        String className = result.getTestClass().getName();
+        //For API Tests no need to attach screenshots
+        if(!className.contains("tests.api")){
             test.get().fail(result.getThrowable());
 
             // Capture screenshot and attach to report
