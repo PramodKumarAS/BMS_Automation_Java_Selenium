@@ -179,8 +179,9 @@ public class TheatreApiTests extends APIBaseTest {
 		        .orElse(null);				
 		
 		Document mdb_Document = MongoHelper.findOne(mdb_TestCollection, "_id", response.getTheatre().getId());
-				
-		Assert.assertEquals(addedTheatreResponse.getName(), mdb_Document.get("name").toString());
+
+        Assert.assertNotNull(addedTheatreResponse);
+        Assert.assertEquals(addedTheatreResponse.getName(), mdb_Document.get("name").toString());
 		Assert.assertEquals(addedTheatreResponse.getAddress(), mdb_Document.get("address").toString());
 		Assert.assertEquals(addedTheatreResponse.getEmail(), mdb_Document.get("email").toString());
 		Assert.assertEquals(addedTheatreResponse.getPhone(),String.valueOf(((Number) mdb_Document.get("phone")).longValue()));
@@ -205,16 +206,16 @@ public class TheatreApiTests extends APIBaseTest {
 		AddTheatreResponse response = theatreClient.addTheatre(request)
 		 			 .assertStatus(200)
 		 			 .as(AddTheatreResponse.class);
-					
-		Assert.assertEquals(response.isSuccess(), true);
+
+        Assert.assertTrue(response.isSuccess());
 		Assert.assertEquals(response.getMessage(), AppConstants.THEATRE_SUCCESS_MESSAGE);
 				
 		GetTheatresResponse getAllTheatreResponse = theatreClient.getAllTheatres()
 					.assertStatus(200)
 					.validateSchema("schema/getAllTheatres-schema.json")
 					.as(GetTheatresResponse.class);
-		
-		Assert.assertEquals(getAllTheatreResponse.isSuccess(), true);
+
+        Assert.assertTrue(getAllTheatreResponse.isSuccess());
 		Assert.assertEquals(getAllTheatreResponse.getMessage(), AppConstants.GET_ALL_THEATRES_SUCCESS_MESSAGE);
 		
 		Theatre addedTheatreResponse = getAllTheatreResponse.getAllTheatres().stream()
@@ -223,8 +224,9 @@ public class TheatreApiTests extends APIBaseTest {
 		        .orElse(null);				
 		
 		Document mdb_Document = MongoHelper.findOne(mdb_TestCollection, "_id", response.getTheatre().getId());
-				
-		Assert.assertEquals(addedTheatreResponse.getName(), mdb_Document.get("name").toString());
+
+        Assert.assertNotNull(addedTheatreResponse);
+        Assert.assertEquals(addedTheatreResponse.getName(), mdb_Document.get("name").toString());
 		Assert.assertEquals(addedTheatreResponse.getAddress(), mdb_Document.get("address").toString());
 		Assert.assertEquals(addedTheatreResponse.getEmail(), mdb_Document.get("email").toString());
 		Assert.assertEquals(addedTheatreResponse.getPhone(),String.valueOf(((Number) mdb_Document.get("phone")).longValue()));

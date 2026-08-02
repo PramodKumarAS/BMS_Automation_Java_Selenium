@@ -1,6 +1,7 @@
 package tests.api;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.bson.Document;
 import org.testng.Assert;
@@ -148,7 +149,7 @@ public class BookApiTests extends APIBaseTest {
                 .as(PaymentResponse.class);
 
         BookShowRequest bookRequest = RequestBuilder.buildBookShowRequest(
-                Arrays.asList(10),
+                List.of(10),
                 showResponse.getShow().getId(),
                 paymentResponse.getData(),
                 authResponse.getUser().getId()
