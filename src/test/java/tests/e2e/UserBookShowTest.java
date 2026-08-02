@@ -29,6 +29,7 @@ import com.mongodb.client.MongoCollection;
 import base.BaseTest;
 import data.MongoConnection;
 import data.MongoHelper;
+import driver.DriverFactory;
 import ui.pages.HomePage;
 import ui.pages.MovieDetailsPage;
 import ui.pages.SingleMoviePage;
@@ -48,7 +49,7 @@ public class UserBookShowTest extends BaseTest {
 	MongoCollection<Document> mdb_MoviesCollection  = null;
 	ShowClient showClient ;
 
-	@BeforeClass
+	@BeforeMethod
 	public void setUp() {
 		loginToApp();
 		
@@ -62,15 +63,12 @@ public class UserBookShowTest extends BaseTest {
 
 		Document mdb_Theatre = MongoHelper.findOneByAnyParams(mdb_TheatresCollection, "name", AppConstants.SEED_THEATRE_NAME);
 		theatreId = mdb_Theatre.getObjectId("_id").toHexString();
-	}
-	
-	@BeforeMethod
-	public void initPages() {
+
 		homePage = new HomePage();
 		singleMoviePage = new SingleMoviePage();
 		movieDetailsPage = new MovieDetailsPage();
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		MongoHelper.deleteAll(mdb_Booking_collection);
@@ -116,7 +114,7 @@ public class UserBookShowTest extends BaseTest {
 
 			UpdateResult result  =  MongoHelper.updateShowDate(mdb_Shows_collection, movieId.toString(), LocalDate.now());
 			Assert.isTrue(result.getModifiedCount()<1,"Show not added");
-			driver.navigate().refresh();
+			DriverFactory.getDriver().navigate().refresh();
 			waitForSeconds(5);			
 		}
 			
@@ -130,9 +128,9 @@ public class UserBookShowTest extends BaseTest {
 		   .btn_SelectSeat("13").click()
 		   .btn_PayNow().click();
 		
-		String bookingURL = driver.getCurrentUrl();
-		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		String bookingURL = DriverFactory.getDriver().getCurrentUrl();
+
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),Duration.ofSeconds(45));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0));
 		waitForSeconds(5);//Wait for Card to open 
 		
@@ -148,10 +146,10 @@ public class UserBookShowTest extends BaseTest {
 		   .input_CVC().setText("123")
 		   .btn_Pay().click();
 		
-		driver.switchTo().defaultContent();
+		DriverFactory.getDriver().switchTo().defaultContent();
 		homePage.waitForPageToLoad();
-		
-		driver.get(bookingURL);
+
+		DriverFactory.getDriver().get(bookingURL);
 		String[] url=bookingURL.split("/");
 		bookingShowId = url[url.length-1];
 		

@@ -10,6 +10,7 @@ import ui.components.*;
 
 public class LoginPage extends BasePage<LoginPage> {
 
+
     public Element<LoginPage> ele_loginPageHeader()  { 
     	return element().setProperties(By.xpath("//h2[normalize-space(text())='🎬 BookMyShow']"));
     };

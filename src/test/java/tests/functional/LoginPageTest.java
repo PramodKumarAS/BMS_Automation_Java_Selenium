@@ -1,5 +1,6 @@
 package tests.functional;
 
+import driver.DriverFactory;
 import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
@@ -8,23 +9,14 @@ import base.BaseTest;
 import ui.pages.*;
 
 public class LoginPageTest extends BaseTest{
-    LoginPage loginPage = null;
-    RegisterPage registerPage = null;
-    ForgetPasswordPage forgetPasswordPage=null;
-	
-    @BeforeMethod
-    public void initPages() {
-        loginPage = new LoginPage();
-        registerPage = new RegisterPage();
-        forgetPasswordPage = new ForgetPasswordPage();
-    }
 
     @Test(groups = {"smoke"},priority=1,testName="Login Page UI Test")
     public void TS01_Validate_loginPageTest() {
+
+        LoginPage loginPage = new LoginPage();
     	SoftAssert sa = new SoftAssert();
 
-        driver.get(baseURL);
-        
+        DriverFactory.getDriver().get(baseURL);
         boolean isloginPageHeader_Exists=loginPage.ele_loginPageHeader().exist();
         boolean isEmailTextField_Exists=loginPage.txt_EmailField().exist();
         boolean isPasswordTextField_Exists=loginPage.txt_PasswordField().exist();
@@ -51,10 +43,13 @@ public class LoginPageTest extends BaseTest{
     
     @Test(groups = {"smoke"},priority=2,testName="Register Page UI Test")
     public void TS02_Validate_registerPageTest() {
-    	SoftAssert sa = new SoftAssert();
+        LoginPage loginPage = new LoginPage();
+        RegisterPage registerPage = new RegisterPage();
+        SoftAssert sa = new SoftAssert();
 
-    	driver.get(baseURL);
-    	loginPage.btn_NewRegister().click();
+        DriverFactory.getDriver().get(baseURL);
+
+        loginPage.btn_NewRegister().click();
     	
         loginPage.waitForElementVisible(By.xpath("//*[normalize-space(text())='Register to BookMyShow']"), 10);
 
@@ -79,10 +74,13 @@ public class LoginPageTest extends BaseTest{
     
     @Test(groups = {"smoke"},priority=3,testName="Forget Password Page UI Test")
     public void TS03_Validate_forgetPasswordPageTest() {
-    	SoftAssert sa = new SoftAssert();
+        LoginPage loginPage = new LoginPage();
+        ForgetPasswordPage forgetPasswordPage = new ForgetPasswordPage();
 
-    	driver.get(baseURL);
-    	loginPage
+        SoftAssert sa = new SoftAssert();
+
+        DriverFactory.getDriver().get(baseURL);
+        loginPage
     			.btn_FogotPassword().click();
 
     	boolean isEmailTextField_Exists = forgetPasswordPage.txt_Email().exist();   			                                             			

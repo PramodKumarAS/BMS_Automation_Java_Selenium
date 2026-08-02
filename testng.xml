@@ -4,13 +4,13 @@
     <parameter name="typeOfRun" value="local"/>
     <listeners>
         <listener class-name="listeners.ExtentTestListener"/>
-<!--        <listener class-name="listeners.RetryListener"/>-->
+        <listener class-name="listeners.RetryListener"/>
     </listeners>
 
     <test name="Chrome Tests">
         <parameter name="browserType" value="chrome"/>
         <packages>
-<!--            <package name="tests.api"/>-->
+            <package name="tests.api"/>
             <package name="tests.functional"/>
             <package name="tests.e2e"/>
         </packages>

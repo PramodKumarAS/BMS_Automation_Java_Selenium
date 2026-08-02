@@ -11,25 +11,22 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import base.BaseTest;
+import driver.DriverFactory;
 import ui.pages.HomePage;
 
 public class UserHomePageTest extends BaseTest {
 	HomePage homePage;
 	
-	@BeforeClass
+	@BeforeMethod
 	public void setUp() {
 		loginToApp();
-	}
-	
-	@BeforeMethod
-	public void initPages() {
 		homePage = new HomePage();
 	}
 	
 	@Test (groups = {"smoke"},priority=1,testName="Validate User Home Page")
 	public void TS01_Validate_userHomePageTest() {
 				
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),Duration.ofSeconds(45));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@alt='Movie Poster']")));
 
 		boolean isSearchMovie_Exists = homePage.txt_SearchMovies().exist();

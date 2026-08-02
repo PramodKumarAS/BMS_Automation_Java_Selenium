@@ -11,33 +11,24 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import config.ConfigReader;
 import data.TestDataLoader;
 import driver.DriverConfig;
 import driver.DriverFactory;
-import listeners.ExtentTestListener;
-import listeners.RetryListener;
 import ui.pages.LoginPage;
 
-@Listeners({RetryListener.class, ExtentTestListener.class})
 public class BaseTest {
 
-	public WebDriver driver;
 	public String baseURL;
 	
 	@Parameters({"browserType","typeOfRun"})
-	@BeforeClass
+	@BeforeMethod
 	public void OneTimeSetUp(@Optional("chrome") String browserName,@Optional("local") String typeOfRun) throws MalformedURLException {
 
 		browserName = System.getProperty("browser",browserName);
@@ -50,44 +41,47 @@ public class BaseTest {
 	            .headless(isHeadless)
 	            .incognito(false)
 	            .build();
+		System.out.println("SETUP   " + Thread.currentThread().getId());
 
-	    driver = DriverFactory.createDriver(config,typeOfRun);
+	    DriverFactory.createDriver(config,typeOfRun);
 
-	    driver.manage().window().maximize();
+	    DriverFactory.getDriver().manage().window().maximize();
 	    baseURL = ConfigReader.get("baseUrl");
 	}
 	
-	@AfterClass
+	@AfterMethod
 	public void OneTimeTearDown() {
+		System.out.println("TEARDOWN " + Thread.currentThread().getId());
+
 		DriverFactory.quitDriver();
 	}
 	
 	public void loginToApp() {
-		driver.get(baseURL);
-		
+		DriverFactory.getDriver().get(baseURL);
+
 		LoginPage loginPage = new LoginPage();
 
 		loginPage
 		   .txt_EmailField().setText(CredentialsReader.username("USER_EMAIL"))
            .txt_PasswordField().setText(CredentialsReader.password("USER_PASSWORD"))
 	       .btn_Login().click();
-		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),Duration.ofSeconds(45));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Type here to search for movies']")));
 	}
-	
+
 	public void loginToApp(String userEmail,String userPassword) {
-		driver.get(baseURL);
-		
+		DriverFactory.getDriver().get(baseURL);
+
 		LoginPage loginPage = new LoginPage();
-		
+
 		loginPage
 		   .txt_EmailField().setText(userEmail)
            .txt_PasswordField().setText(userPassword)
-	       .btn_Login().click();		
-		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@data-menu-id,'user-menu')]")));	
+	       .btn_Login().click();
+
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),Duration.ofSeconds(45));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@data-menu-id,'user-menu')]")));
 	}
 	
 	public void waitForSeconds(int seconds) {
@@ -100,7 +94,7 @@ public class BaseTest {
 	}
 	
 	public void captureScreenShot(String testName) {
-		TakesScreenshot ts = (TakesScreenshot) driver;
+		TakesScreenshot ts = (TakesScreenshot) DriverFactory.getDriver();
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		File dest = new File("target/screenshots/" +testName+ ".png");
 		

@@ -30,20 +30,17 @@ public class AdminAddMovieTest extends BaseTest {
 	Movie movieData=null;
 	MongoCollection<Document> mdb_Shows_collection=null;
 
-	@BeforeClass
+	@BeforeMethod
 	public void beforeClass() {
 		movieData = TestDataLoader.loadMovies("movie.json");
 		
 		loginToApp(CredentialsReader.username("ADMIN_EMAIL"),CredentialsReader.password("ADMIN_PASSWORD"));
-		mdb_Shows_collection = MongoConnection.connect("test", "movies");		
-	}
-	
-	@BeforeMethod
-	public void setUp() {
+		mdb_Shows_collection = MongoConnection.connect("test", "movies");
+
 		adminHomePage = new AdminHomePage();
 		addMovieModalPage = new AddMovieModalPage();
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		MongoHelper.deleteOne(mdb_Shows_collection,"movieName",movieData.getMovieName());		

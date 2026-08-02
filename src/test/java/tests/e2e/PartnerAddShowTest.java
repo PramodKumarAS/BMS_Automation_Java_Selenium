@@ -34,18 +34,15 @@ public class PartnerAddShowTest extends BaseTest {
 	MongoCollection<Document> mdb_Shows_collection=null;
 
 	@BeforeMethod
-	public void setUp() {
-		partnerPage = new PartnerHomePage();
-		showsModalPage = new ListOfShowsModalPage();
-		addShowModalPage = new AddShowModalPage();
-	}
-	
-	@BeforeClass
 	public void oneTimeSetUp() {
 		showData = TestDataLoader.loadShows("shows.json");
 		
 		loginToApp(CredentialsReader.username("PARTNER_EMAIL"),CredentialsReader.password("PARTNER_PASSWORD"));
 		mdb_Shows_collection = MongoConnection.connect("test", "shows");
+
+		partnerPage = new PartnerHomePage();
+		showsModalPage = new ListOfShowsModalPage();
+		addShowModalPage = new AddShowModalPage();
 	}
 	
 	@AfterMethod

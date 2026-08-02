@@ -11,25 +11,22 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import base.BaseTest;
+import driver.DriverFactory;
 import ui.pages.HomePage;
 
 public class PartnerHomePageTest extends BaseTest {
 	HomePage homePage;
 	
-	@BeforeClass
+	@BeforeMethod
 	public void setUp() {
 		loginToApp(CredentialsReader.username("PARTNER_EMAIL"),CredentialsReader.password("PARTNER_PASSWORD"));
-	}
-	
-	@BeforeMethod
-	public void initPages() {
 		homePage = new HomePage();
 	}
-	
+
 	@Test (groups = {"smoke"},priority=1,testName="Validate Partner Home Page")
 	public void TS01_Validate_userHomePageTest() {
 				
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(45));
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(),Duration.ofSeconds(45));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[normalize-space(text())='Partner Page']")));
 
 		boolean isTheatresTab_Exists = homePage.ele_Theatres().exist();		

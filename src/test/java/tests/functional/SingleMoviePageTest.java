@@ -11,16 +11,13 @@ import ui.pages.SingleMoviePage;
 public class SingleMoviePageTest extends BaseTest{	
 	HomePage homePage;
 
-	@BeforeClass
+	@BeforeMethod
 	public void beforeClass() {
 		loginToApp();
-	}
-	
-	@BeforeMethod
-	public void initPages() {
+
 		homePage = new HomePage();
 	}
-		
+
 	@Test(groups = {"smoke"},priority=1,testName="Validation of single movie page")
 	public void TS01_singleMovie() {
 				
