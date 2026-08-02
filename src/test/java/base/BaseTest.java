@@ -47,7 +47,7 @@ public class BaseTest {
 
 	    DriverConfig config = new DriverConfig.DriverConfigBuilder()
 	            .browser(browserName)
-	            .headless(isHeadless)   // ← now CI controls this
+	            .headless(isHeadless)
 	            .incognito(false)
 	            .build();
 
