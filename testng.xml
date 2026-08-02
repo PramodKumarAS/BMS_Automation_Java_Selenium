@@ -10,28 +10,10 @@
     <test name="Chrome Tests">
         <parameter name="browserType" value="chrome"/>
         <packages>
-            <package name="tests.api"/>
-            <!-- <package name="tests.functional"/>
-            <package name="tests.e2e"/> -->
+<!--            <package name="tests.api"/>-->
+            <package name="tests.functional"/>
+            <package name="tests.e2e"/>
         </packages>
     </test>
-
-<!--    <test name="Firefox Tests">-->
-<!--        <parameter name="browserType" value="firefox"/>-->
-<!--        <packages>-->
-<!--            <package name="tests.api"/>-->
-<!--            <package name="tests.functional"/>-->
-<!--            <package name="tests.e2e"/>-->
-<!--        </packages>-->
-<!--    </test>-->
-
-<!--    <test name="Edge Tests">-->
-<!--        <parameter name="browserType" value="edge"/>-->
-<!--        <packages>-->
-<!--            <package name="tests.api"/>-->
-<!--            <package name="tests.functional"/>-->
-<!--            <package name="tests.e2e"/>-->
-<!--        </packages>-->
-<!--    </test>-->
 
 </suite>
